@@ -1,6 +1,6 @@
 ---
 name:
-   first: Slav
-   last: Petrov
-email: slav@petrovi.de
-leaderboard: SlavPetrov
+   first: Dan
+   last: Foreman-Mackey
+email: nlp@dfm.io
+leaderboard: dfm
