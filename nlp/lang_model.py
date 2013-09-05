@@ -32,42 +32,6 @@ def load_sentence_collection(fn):
     return collection
 
 
-def _get_distance(list1, list2, p1, p2, best):
-    if p1 > len(list1) or p2 > len(list2):
-        return best, False
-    if p1 == len(list1) and p2 == len(list2):
-        best[p1][p2] = 0.0
-        return best, True
-
-    if np.isnan(best[p1][p2]):
-        dist = np.inf
-
-        best, flag = _get_distance(list1, list2, p1+1, p2, best)
-        dist = np.min([dist, INSERT_COST + best[p1+1][p2] if flag else np.inf])
-
-        best, flag = _get_distance(list1, list2, p1, p2+1, best)
-        dist = np.min([dist, DELETE_COST + best[p1][p2+1] if flag else np.inf])
-
-        best, flag = _get_distance(list1, list2, p1+1, p2+1, best)
-        dist = np.min([dist, SUBSTITUTE_COST + best[p1+1][p2+1]
-                       if flag else np.inf])
-
-        if p1 < len(list1) and p2 < len(list2) and list1[p1] == list2[p2]:
-            best, flag = _get_distance(list1, list2, p1+1, p2+1, best)
-            dist = np.min([dist, best[p1+1][p2+1] if flag else np.inf])
-        best[p1][p2] = dist
-
-    return best, True
-
-
-def get_edit_distance(list1, list2):
-    return _edit.distance(list1, list2)
-
-    best_dists = np.nan + np.zeros((len(list1)+1, len(list2)+1),
-                                   dtype=np.float64)
-    return _get_distance(list1, list2, 0, 0, best_dists)[0][0][0]
-
-
 class NBestList(object):
 
     def __init__(self, basepath, vocabulary):
@@ -175,7 +139,7 @@ class LanguageModel(object):
             dwbest = 0.0
             for guess, ac_score in guesses:
                 score = self.get_sentence_lnprobability(guess) + ac_score/16.0
-                distance = get_edit_distance(correct, guess)
+                distance = _edit.distance(correct, guess)
                 if score == best_score:
                     nwbest += 1
                     dwbest += distance
