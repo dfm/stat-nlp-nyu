@@ -16,6 +16,7 @@ INSERT_COST = 1.0
 DELETE_COST = 1.0
 SUBSTITUTE_COST = 1.0
 
+START = "<S>"
 STOP = "</S>"
 UNKNOWN = "*UNKNOWN*"
 
@@ -99,7 +100,7 @@ class WordCounter(object):
         return self.counts.keys()
 
     def get(self, word):
-        return self.counts.get(word, self.counts.get(UNKNOWN))
+        return self.counts.get(word, self.counts.get(UNKNOWN, 0.0))
 
 
 class LanguageModel(object):
@@ -167,6 +168,34 @@ class LanguageModel(object):
                 break
 
 
+class BigramModel(LanguageModel):
+
+    def __init__(self, sentence_collection, factor=0.6):
+        super(BigramModel, self).__init__(sentence_collection)
+        self.factor = factor
+
+        # Compute the empirical bigram frequencies.
+        self.bigrams = defaultdict(WordCounter)
+        [self.bigrams[w].incr(s[i])
+         if i < len(s) else self.bigrams[w].incr(STOP)
+         for s in sentence_collection
+         for i, w in enumerate([START] + s)]
+        [bg.normalize() for bg in self.bigrams.values()]
+
+    def get_bigram_lnprobability(self, prev, word):
+        ug = self.unigrams.get(word)
+        bg = self.bigrams[prev]
+        return log((1 - self.factor) * ug + self.factor*bg.get(word))
+
+    def get_sentence_lnprobability(self, sentence):
+        prev = START
+        lnprob = 0.0
+        for word in sentence + [STOP]:
+            lnprob += self.get_bigram_lnprobability(prev, word)
+            prev = word
+        return lnprob
+
+
 if __name__ == "__main__":
     import sys
 
@@ -177,7 +206,8 @@ if __name__ == "__main__":
     test_collection = load_sentence_collection(
         "data/treebank-sentences-spoken-test.txt")
 
-    model = LanguageModel(train_collection)
+    model = BigramModel(train_collection)
+    # model = LanguageModel(train_collection)
     nbest = NBestList("data/wsj_n_bst", model.vocabulary)
 
     print("WSJ Perplexity: {0}".format(model.get_perplexity(test_collection)))
