@@ -3,13 +3,13 @@
 
 from __future__ import division, print_function, absolute_import
 
-__all__ = []
-
 import os
 import re
 import numpy as np
 from math import log
 from collections import defaultdict
+
+import _edit
 
 
 INSERT_COST = 1.0
@@ -32,42 +32,40 @@ def load_sentence_collection(fn):
     return collection
 
 
-def _get_distance(first_list, second_list, first_pos, second_pos, best_dists):
-    if first_pos > len(first_list) or second_pos > len(second_list):
-        return np.inf
-    if first_pos == len(first_list) and second_pos == len(second_list):
-        return 0.0
+def _get_distance(list1, list2, p1, p2, best):
+    if p1 > len(list1) or p2 > len(list2):
+        return best, False
+    if p1 == len(list1) and p2 == len(list2):
+        best[p1][p2] = 0.0
+        return best, True
 
-    if np.isnan(best_dists[first_pos][second_pos]):
+    if np.isnan(best[p1][p2]):
         dist = np.inf
-        dist = np.min([dist, INSERT_COST + _get_distance(first_list,
-                                                         second_list,
-                                                         first_pos+1,
-                                                         second_pos,
-                                                         best_dists)])
-        dist = np.min([dist, DELETE_COST + _get_distance(first_list,
-                                                         second_list,
-                                                         first_pos,
-                                                         second_pos+1,
-                                                         best_dists)])
-        dist = np.min([dist, SUBSTITUTE_COST + _get_distance(first_list,
-                                                             second_list,
-                                                             first_pos+1,
-                                                             second_pos+1,
-                                                             best_dists)])
-        if (first_pos < len(first_list) and second_pos < len(second_list) and
-                first_list[first_pos] == second_list[second_pos]):
-            dist = np.min([dist, _get_distance(first_list, second_list,
-                                               first_pos+1, second_pos+1,
-                                               best_dists)])
-        best_dists[first_pos][second_pos] = dist
 
-    return best_dists[first_pos][second_pos]
+        best, flag = _get_distance(list1, list2, p1+1, p2, best)
+        dist = np.min([dist, INSERT_COST + best[p1+1][p2] if flag else np.inf])
+
+        best, flag = _get_distance(list1, list2, p1, p2+1, best)
+        dist = np.min([dist, DELETE_COST + best[p1][p2+1] if flag else np.inf])
+
+        best, flag = _get_distance(list1, list2, p1+1, p2+1, best)
+        dist = np.min([dist, SUBSTITUTE_COST + best[p1+1][p2+1]
+                       if flag else np.inf])
+
+        if p1 < len(list1) and p2 < len(list2) and list1[p1] == list2[p2]:
+            best, flag = _get_distance(list1, list2, p1+1, p2+1, best)
+            dist = np.min([dist, best[p1+1][p2+1] if flag else np.inf])
+        best[p1][p2] = dist
+
+    return best, True
 
 
 def get_edit_distance(list1, list2):
-    return _get_distance(list1, list2, 0, 0, np.nan + np.zeros((len(list1)+1,
-                                                                len(list2)+1)))
+    return _edit.distance(list1, list2)
+
+    best_dists = np.nan + np.zeros((len(list1)+1, len(list2)+1),
+                                   dtype=np.float64)
+    return _get_distance(list1, list2, 0, 0, best_dists)[0][0][0]
 
 
 class NBestList(object):
@@ -171,7 +169,6 @@ class LanguageModel(object):
         total_distance = 0.0
         total_words = 0.0
         for correct, guesses in zip(nbest.correct, nbest.guesses):
-            print("CORRECT: " + " ".join(correct))
             best_guess = None
             best_score = -np.inf
             nwbest = 0.0
@@ -190,16 +187,25 @@ class LanguageModel(object):
             total_distance += dwbest / nwbest
             total_words += len(correct)
             if verbose:
-                self.display_hypothesis("GUESS", best_guess, nbest)
-                self.display_hypothesis("GOLD", correct, nbest)
+                print()
+                self.display_hypothesis("GUESS", best_guess, guesses)
+                self.display_hypothesis("GOLD", correct, guesses)
 
         return total_distance / total_words
 
-    def display_hypothesis(self, title, guess, nbest):
-        pass
+    def display_hypothesis(self, title, guess, guesses):
+        for g, ac_score in guesses:
+            if g == guess:
+                lnprob = self.get_sentence_lnprobability(guess)
+                print("{0}:\tAM: {1:.2e}\tLM: {2:.2e}\tTotal: {3:.2e}\t{4}"
+                      .format(title, ac_score/16., lnprob,
+                              ac_score/16.+lnprob, guess))
+                break
 
 
 if __name__ == "__main__":
+    import sys
+
     train_collection = load_sentence_collection(
         "data/treebank-sentences-spoken-train.txt")
     validation_collection = load_sentence_collection(
@@ -212,5 +218,5 @@ if __name__ == "__main__":
 
     print("WSJ Perplexity: {0}".format(model.get_perplexity(test_collection)))
     print("HUB Perplexity: {0}".format(model.get_perplexity(nbest.correct)))
-    wer = model.get_word_error_rate(nbest)
+    wer = model.get_word_error_rate(nbest, verbose=("--verbose" in sys.argv))
     print("HUB Word Error Rate: {0}".format(wer))
