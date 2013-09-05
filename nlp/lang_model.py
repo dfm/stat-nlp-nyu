@@ -162,9 +162,9 @@ class LanguageModel(object):
         for g, ac_score in guesses:
             if g == guess:
                 lnprob = self.get_sentence_lnprobability(guess)
-                print("{0}:\tAM: {1:.2e}\tLM: {2:.2e}\tTotal: {3:.2e}\t{4}"
+                print("{0}:\tAM: {1:.2e}\tLM: {2:.2e}\tTotal: {3:.2e}\t[{4}]"
                       .format(title, ac_score/16., lnprob,
-                              ac_score/16.+lnprob, guess))
+                              ac_score/16.+lnprob, ", ".join(guess)))
                 break
 
 
@@ -196,6 +196,36 @@ class BigramModel(LanguageModel):
         return lnprob
 
 
+class TrigramModel(BigramModel):
+
+    def __init__(self, sentence_collection, bigram_factor=0.3,
+                 trigram_factor=0.5):
+        super(TrigramModel, self).__init__(sentence_collection,
+                                           factor=bigram_factor)
+        self.trigram_factor = trigram_factor
+
+        # Compute the empirical trigram frequencies.
+        self.trigrams = defaultdict(WordCounter)
+        for sentence in sentence_collection:
+            s = [START, START] + sentence + [STOP]
+            [self.trigrams[" ".join([s[i], s[i+1]])].incr(w)
+             for i, w in enumerate(s[2:])]
+        [tg.normalize() for tg in self.trigrams.values()]
+
+    def get_trigram_lnprobability(self, w1, w2, w3):
+        ug = self.unigrams.get(w3)
+        bg = self.bigrams[w2]
+        tg = self.trigrams[" ".join([w1, w2])]
+        return log((1-self.factor-self.trigram_factor)*ug
+                   + self.factor*bg.get(w3)
+                   + self.trigram_factor*tg.get(w3))
+
+    def get_sentence_lnprobability(self, sentence):
+        sentence = [START, START] + sentence + [STOP]
+        return sum([self.get_trigram_lnprobability(*(sentence[i:i+3]))
+                    for i in range(len(sentence) - 2)])
+
+
 if __name__ == "__main__":
     import sys
 
@@ -206,7 +236,8 @@ if __name__ == "__main__":
     test_collection = load_sentence_collection(
         "data/treebank-sentences-spoken-test.txt")
 
-    model = BigramModel(train_collection)
+    model = TrigramModel(train_collection)
+    # model = BigramModel(train_collection)
     # model = LanguageModel(train_collection)
     nbest = NBestList("data/wsj_n_bst", model.vocabulary)
 
