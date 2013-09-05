@@ -7,6 +7,7 @@ import os
 import re
 import numpy as np
 from math import log
+import scipy.optimize as op
 from collections import defaultdict
 
 import _edit
@@ -225,6 +226,22 @@ class TrigramModel(BigramModel):
         return sum([self.get_trigram_lnprobability(*(sentence[i:i+3]))
                     for i in range(len(sentence) - 2)])
 
+    def _objective(self, p, nbest):
+        self.factor, self.trigram_factor = p
+        if (self.factor < 0 or self.trigram_factor < 0 or
+                not (0.0 <= self.factor + self.trigram_factor <= 1.0)):
+            return 1e20
+        wer = self.get_word_error_rate(nbest, verbose=False)
+        print(p, wer)
+        return wer
+
+    def optimize(self, nbest):
+        results = op.minimize(self._objective,
+                              [self.factor, self.trigram_factor],
+                              args=[nbest],
+                              method="L-BFGS-B")
+        print(results)
+
 
 if __name__ == "__main__":
     import sys
@@ -236,10 +253,19 @@ if __name__ == "__main__":
     test_collection = load_sentence_collection(
         "data/treebank-sentences-spoken-test.txt")
 
-    model = TrigramModel(train_collection)
+    model = TrigramModel(train_collection, bigram_factor=0.31,
+                         trigram_factor=0.51)
     # model = BigramModel(train_collection)
     # model = LanguageModel(train_collection)
+
     nbest = NBestList("data/wsj_n_bst", model.vocabulary)
+    # model.optimize(nbest)
+
+    # for f in np.linspace(0.2, 0.4, 10):
+    #     model.factor = f
+    #     for tf in np.linspace(0.4, 0.6, 10):
+    #         model.trigram_factor = tf
+    #         print(f, tf, model.get_word_error_rate(nbest, verbose=False))
 
     print("WSJ Perplexity: {0}".format(model.get_perplexity(test_collection)))
     print("HUB Perplexity: {0}".format(model.get_perplexity(nbest.correct)))
