@@ -4,7 +4,6 @@
 from __future__ import division, print_function, absolute_import
 
 import os
-import sys
 import argparse
 from nlp.lang_model import NBestList, load_sentence_collection
 
@@ -17,6 +16,9 @@ parser.add_argument("-m", "--model", default="LanguageModel",
                     "language model.")
 parser.add_argument("-d", "--data", default="data",
                     help="The base path for the data files.")
+parser.add_argument("-a", "--args", default="",
+                    help="Any arguments for the language model "
+                    "initialization in the form \"factor=0.9\"")
 
 
 if __name__ == "__main__":
@@ -35,7 +37,7 @@ if __name__ == "__main__":
         os.path.join(args.data, "treebank-sentences-spoken-test.txt"))
 
     # Train the model.
-    model = eval("{0}(train_collection)".format(args.model))
+    model = eval("{0}(train_collection, {1})".format(args.model, args.args))
 
     # Load the HUB data.
     nbest = NBestList(os.path.join(args.data, "wsj_n_bst"), model.vocabulary)

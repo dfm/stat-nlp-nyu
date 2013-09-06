@@ -107,6 +107,14 @@ class WordCounter(object):
 
 
 class LanguageModel(object):
+    """
+    This class implements a simple unigram language model. You should subclass
+    it and overload ``get_sentence_lnprobability``.
+
+    :param sentence_collection:
+        A list of "sentences" (lists of words).
+
+    """
 
     def __init__(self, sentence_collection):
         self.sentence_collection = sentence_collection
@@ -125,6 +133,13 @@ class LanguageModel(object):
         return log(self.unigrams.get(word))
 
     def get_sentence_lnprobability(self, sentence):
+        """
+        This is the function to overload.
+
+        :param sentence:
+            A list of strings that may form a sentence.
+
+        """
         return sum(map(self.get_word_lnprobability, sentence + [STOP]))
 
     def get_perplexity(self, sentence_collection):
@@ -188,33 +203,3 @@ class BigramModel(LanguageModel):
             lnprob += self.get_bigram_lnprobability(prev, word)
             prev = word
         return lnprob
-
-
-class TrigramModel(BigramModel):
-
-    def __init__(self, sentence_collection, bigram_factor=0.3,
-                 trigram_factor=0.5):
-        super(TrigramModel, self).__init__(sentence_collection,
-                                           factor=bigram_factor)
-        self.trigram_factor = trigram_factor
-
-        # Compute the empirical trigram frequencies.
-        self.trigrams = defaultdict(WordCounter)
-        for sentence in sentence_collection:
-            s = [START, START] + sentence + [STOP]
-            [self.trigrams[" ".join([s[i], s[i+1]])].incr(w)
-             for i, w in enumerate(s[2:])]
-        [tg.normalize() for tg in self.trigrams.values()]
-
-    def get_trigram_lnprobability(self, w1, w2, w3):
-        ug = self.unigrams.get(w3)
-        bg = self.bigrams[w2]
-        tg = self.trigrams[" ".join([w1, w2])]
-        return log((1-self.factor-self.trigram_factor)*ug
-                   + self.factor*bg.get(w3)
-                   + self.trigram_factor*tg.get(w3))
-
-    def get_sentence_lnprobability(self, sentence):
-        sentence = [START, START] + sentence + [STOP]
-        return sum([self.get_trigram_lnprobability(*(sentence[i:i+3]))
-                    for i in range(len(sentence) - 2)])
