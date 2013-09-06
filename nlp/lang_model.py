@@ -3,14 +3,16 @@
 
 from __future__ import division, print_function, absolute_import
 
+__all__ = ["LanguageModel", "NBestList", "WordCounter",
+           "load_sentence_collection"]
+
 import os
 import re
 import numpy as np
 from math import log
-import scipy.optimize as op
 from collections import defaultdict
 
-import _edit
+from . import _edit
 
 
 INSERT_COST = 1.0
@@ -159,15 +161,6 @@ class LanguageModel(object):
 
         return total_distance / total_words
 
-    def display_hypothesis(self, title, guess, guesses):
-        for g, ac_score in guesses:
-            if g == guess:
-                lnprob = self.get_sentence_lnprobability(guess)
-                print("{0}:\tAM: {1:.2e}\tLM: {2:.2e}\tTotal: {3:.2e}\t[{4}]"
-                      .format(title, ac_score/16., lnprob,
-                              ac_score/16.+lnprob, ", ".join(guess)))
-                break
-
 
 class BigramModel(LanguageModel):
 
@@ -225,22 +218,6 @@ class TrigramModel(BigramModel):
         sentence = [START, START] + sentence + [STOP]
         return sum([self.get_trigram_lnprobability(*(sentence[i:i+3]))
                     for i in range(len(sentence) - 2)])
-
-    def _objective(self, p, nbest):
-        self.factor, self.trigram_factor = p
-        if (self.factor < 0 or self.trigram_factor < 0 or
-                not (0.0 <= self.factor + self.trigram_factor <= 1.0)):
-            return 1e20
-        wer = self.get_word_error_rate(nbest, verbose=False)
-        print(p, wer)
-        return wer
-
-    def optimize(self, nbest):
-        results = op.minimize(self._objective,
-                              [self.factor, self.trigram_factor],
-                              args=[nbest],
-                              method="L-BFGS-B")
-        print(results)
 
 
 if __name__ == "__main__":
