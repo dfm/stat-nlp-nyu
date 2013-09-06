@@ -259,13 +259,6 @@ if __name__ == "__main__":
     # model = LanguageModel(train_collection)
 
     nbest = NBestList("data/wsj_n_bst", model.vocabulary)
-    # model.optimize(nbest)
-
-    # for f in np.linspace(0.2, 0.4, 10):
-    #     model.factor = f
-    #     for tf in np.linspace(0.4, 0.6, 10):
-    #         model.trigram_factor = tf
-    #         print(f, tf, model.get_word_error_rate(nbest, verbose=False))
 
     print("WSJ Perplexity: {0}".format(model.get_perplexity(test_collection)))
     print("HUB Perplexity: {0}".format(model.get_perplexity(nbest.correct)))
