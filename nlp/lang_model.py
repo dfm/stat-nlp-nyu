@@ -218,26 +218,3 @@ class TrigramModel(BigramModel):
         sentence = [START, START] + sentence + [STOP]
         return sum([self.get_trigram_lnprobability(*(sentence[i:i+3]))
                     for i in range(len(sentence) - 2)])
-
-
-if __name__ == "__main__":
-    import sys
-
-    train_collection = load_sentence_collection(
-        "data/treebank-sentences-spoken-train.txt")
-    validation_collection = load_sentence_collection(
-        "data/treebank-sentences-spoken-validate.txt")
-    test_collection = load_sentence_collection(
-        "data/treebank-sentences-spoken-test.txt")
-
-    model = TrigramModel(train_collection, bigram_factor=0.31,
-                         trigram_factor=0.51)
-    # model = BigramModel(train_collection)
-    # model = LanguageModel(train_collection)
-
-    nbest = NBestList("data/wsj_n_bst", model.vocabulary)
-
-    print("WSJ Perplexity: {0}".format(model.get_perplexity(test_collection)))
-    print("HUB Perplexity: {0}".format(model.get_perplexity(nbest.correct)))
-    wer = model.get_word_error_rate(nbest, verbose=("--verbose" in sys.argv))
-    print("HUB Word Error Rate: {0}".format(wer))
