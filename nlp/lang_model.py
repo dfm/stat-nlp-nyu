@@ -203,3 +203,32 @@ class BigramModel(LanguageModel):
             lnprob += self.get_bigram_lnprobability(prev, word)
             prev = word
         return lnprob
+
+
+class TrigramModel(BigramModel):
+
+    def __init__(self, sentence_collection, f2=0.3, f3=0.5):
+        super(TrigramModel, self).__init__(sentence_collection)
+        self.f2 = f2
+        self.f3 = f3
+
+        # Compute the empirical trigram frequencies.
+        self.trigrams = defaultdict(WordCounter)
+        for sentence in sentence_collection:
+            s = [START, START] + sentence + [STOP]
+            [self.trigrams[" ".join([s[i], s[i+1]])].incr(w)
+             for i, w in enumerate(s[2:])]
+        [tg.normalize() for tg in self.trigrams.values()]
+
+    def get_trigram_lnprobability(self, w1, w2, w3):
+        ug = self.unigrams.get(w3)
+        bg = self.bigrams[w2]
+        tg = self.trigrams[" ".join([w1, w2])]
+        return log((1-self.f2-self.f3)*ug
+                   + self.f2*bg.get(w3)
+                   + self.f3*tg.get(w3))
+
+    def get_sentence_lnprobability(self, sentence):
+        sentence = [START, START] + sentence + [STOP]
+        return sum([self.get_trigram_lnprobability(*(sentence[i:i+3]))
+                    for i in range(len(sentence) - 2)])
