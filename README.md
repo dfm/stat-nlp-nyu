@@ -32,3 +32,8 @@ If it takes any arguments, you can run:
 ```
 python hw1_runner.py --data /path/to/data --model BigramModel --args "factor=0.9"
 ```
+
+License
+-------
+
+The Python code is licensed under MIT.
