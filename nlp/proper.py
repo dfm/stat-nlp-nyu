@@ -3,7 +3,7 @@
 
 from __future__ import division, print_function, absolute_import
 
-__all__ = []
+__all__ = ["Distribution", "Dataset", "UnigramModel"]
 
 import numpy as np
 from collections import defaultdict
@@ -67,21 +67,28 @@ class UnigramModel(object):
             return classes[ind], probabilities[ind] / np.sum(probabilities)
         return self.prior.argmax(), 0.0
 
-    def test(self, test_set, verbose=True):
+    def test(self, test_set, outfile=None):
+        if outfile is not None:
+            open(outfile, "w")
         success = 0
         total = 0
         for correct, word in test_set:
             guess, confidence = self.classify(word)
-            if verbose:
-                print(("Example:\t{word}\tguess={guess}\tgold={correct}\t"
-                       "confidence={confidence}").format(word=word,
-                                                         guess=guess,
-                                                         confidence=confidence,
-                                                         correct=correct))
+            if outfile is not None:
+                with open(outfile, "a") as f:
+                    f.write(("Example:\t{word}\tguess={guess}"
+                             "\tgold={correct}\tconfidence={confidence}\n")
+                            .format(word=word, guess=guess,
+                                    confidence=confidence, correct=correct))
             if correct == guess:
                 success += 1
             total += 1
         return success / total
+
+
+class BigramModel(UnigramModel):
+
+    pass
 
 
 if __name__ == "__main__":
@@ -90,5 +97,6 @@ if __name__ == "__main__":
     test_set = Dataset("data/pnp-test.txt")
 
     model = UnigramModel(training_set)
-    # print(model.test(validation_set, verbose=False))
-    model.test(test_set)
+    print("Validation accuracy: {0}".format(
+        model.test(validation_set)))
+    model.test(test_set, outfile="hw2/output.txt")
