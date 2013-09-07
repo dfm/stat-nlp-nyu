@@ -1,6 +1,3 @@
-Using base path: ../../data
-Using model: baseline
-Testing on: test
 Example:	A-200 Shampoo Concentrate	guess=movie	gold=	confidence=0.29877600449807534
 Example:	Acet-2	guess=movie	gold=	confidence=0.29877600449807534
 Example:	Actifed Cold & Sinus Caplets 26	guess=movie	gold=	confidence=0.29877600449807534
@@ -2863,4 +2860,3 @@ Example:	Wynns International Inc.	guess=movie	gold=	confidence=0.298776004498075
 Example:	YPF	guess=movie	gold=	confidence=0.29877600449807534
 Example:	iStar Financial Inc.	guess=movie	gold=	confidence=0.29877600449807534
 Example:	lehman Brothers Holdings Capital.	guess=movie	gold=	confidence=0.29877600449807534
-Accuracy: 0.0
