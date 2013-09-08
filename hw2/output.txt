@@ -2515,7 +2515,7 @@ Example:	Zwei vom Blitz getroffen    guess=movie	 gold=	confidence=0.29877600449
 Example:	°Ja me maaten..!	    guess=movie	 gold=	confidence=0.29877600449807534
 Example:	¿ ma soeur!		    guess=movie	 gold=	confidence=0.29877600449807534
 Example:	…pouse-moi		    guess=movie	 gold=	confidence=0.29877600449807534
-Example:	Ï¡ŒƒŸ€ ”≈“≈¬“…”‘Ÿ 	    guess=movie	 gold=	confidence=0.29877600449807534
+Example:	Ï¡ŒƒŸ€ ”≈“≈¬“…”‘Ÿ 	    guess=movie	 gold=	confidence=0.29877600449807534
 Example:	AEGON N.V.		    guess=movie	 gold=	confidence=0.29877600449807534
 Example:	ALZA Corporation	    guess=movie	 gold=	confidence=0.29877600449807534
 Example:	AMPCO Pittsburgh Corporation		 guess=movie	gold=	confidence=0.29877600449807534
