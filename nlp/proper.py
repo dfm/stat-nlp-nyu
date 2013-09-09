@@ -95,8 +95,9 @@ class UnigramModel(object):
 
 class BigramModel(UnigramModel):
 
-    def __init__(self, training_set, f2=0.9):
+    def __init__(self, training_set, f2=1.0):
         super(BigramModel, self).__init__(training_set)
+        self.f2 = f2
         self.bigrams = dict([(c, defaultdict(Distribution))
                              for c in training_set.classes])
         for cls, word in training_set:
@@ -117,6 +118,12 @@ class BigramModel(UnigramModel):
                     prob[cls] *= dist[char][word[i].lower()]
                 else:
                     prob[cls] *= dist[char][STOP]
+
+        # Linearly interpolate.
+        unigram_prob = super(BigramModel, self).get_probabilities(word)
+        [prob.__setitem__(k, self.f2*prob[k]+(1-self.f2)*unigram_prob[k])
+         for k in prob]
+
         return prob
 
 
