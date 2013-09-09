@@ -35,7 +35,6 @@ class Dataset(object):
                          if line[0] != "\t"
                          else ["", line.strip()]
                          for line in f]
-        print(self.data)
         self.classes, tmp = zip(*self.data)
         self.classes = set(self.classes)
 
@@ -54,7 +53,7 @@ class UnigramModel(object):
             [self.distributions[c].incr(l.lower()) for l in w if l != " "]
 
     def classify(self, word):
-        return "movie", 0.2
+        # return "movie", 0.2
         prob = defaultdict(lambda: 1.0)
         for char in word.lower():
             if char == " ":
