@@ -27,7 +27,7 @@ static PyObject
         return NULL;
 
     PyArrayObject *w_array = (PyArrayObject*)PyArray_FROM_OTF(w_obj, NPY_DOUBLE, NPY_IN_ARRAY),
-                  *inds_array = (PyArrayObject*)PyArray_FROM_OTF(inds_obj, NPY_DOUBLE, NPY_IN_ARRAY),
+                  *inds_array = (PyArrayObject*)PyArray_FROM_OTF(inds_obj, NPY_LONG, NPY_IN_ARRAY),
                   *f_array = (PyArrayObject*)PyArray_FROM_OTF(f_obj, NPY_DOUBLE, NPY_IN_ARRAY);
     int i, j, k,
         nweights = PyArray_DIM(w_array, 0),
@@ -35,10 +35,18 @@ static PyObject
         nsamples = PyArray_DIM(inds_array, 0),
         nclasses = nweights / nfeatures;
 
-    double lnprob = 0.0, value, p, norm,
+    // Allocate the memory for the Jacobian.
+    npy_intp dim[1] = {nweights};
+    PyArrayObject *grad_array = (PyArrayObject*)PyArray_SimpleNew(1, dim,
+                                                                  NPY_DOUBLE);
+
+    double nlp = 0.0, value, p, norm, factor,
            *w = PyArray_DATA(w_array),
-           *inds = PyArray_DATA(inds_array),
-           *f = PyArray_DATA(f_array);
+           *f = PyArray_DATA(f_array),
+           *grad = PyArray_DATA(grad_array);
+    long *inds = PyArray_DATA(inds_array);
+
+    for (i = 0; i < nweights; ++i) grad[i] = 0.0;
 
     for (i = 0; i < nsamples; ++i) {
         norm = -INFINITY;
@@ -49,22 +57,36 @@ static PyObject
             if (inds[i] == j) p = value;
             norm = logsumexp(norm, value);
         }
-        lnprob += p - norm;
+        nlp -= p - norm;
+
+        factor = exp(p - norm);
+        for (j = 0; j < nclasses; ++j)
+            for (k = 0; k < nfeatures; ++k)
+                grad[j*nfeatures+k] += factor * f[k];
+
+        for (k = 0; k < nfeatures; ++k) grad[inds[i]*nfeatures+k] -= f[k];
     }
 
     // L2 norm.
     double l2 = 0.0;
-    for (i = 0; i < nweights; ++i) l2 += w[i] * w[i];
-    lnprob -= 0.5 * l2 / sigma / sigma;
+    sigma = 1.0 / sigma / sigma;
+    for (i = 0; i < nweights; ++i) {
+        l2 += w[i] * w[i];
+        grad[i] += sigma * w[i];
+    }
+    nlp += 0.5 * l2 * sigma;
 
     // Clean up.
     Py_DECREF(w_array);
     Py_DECREF(inds_array);
     Py_DECREF(f_array);
 
-    printf("%f\n", lnprob);
+    printf("%f\n", -nlp);
 
-    return Py_BuildValue("d", -lnprob);
+    PyObject *ret = Py_BuildValue("dO", nlp, grad_array);
+    Py_DECREF(grad_array);
+
+    return ret;
 }
 
 static PyMethodDef maxent_methods[] = {

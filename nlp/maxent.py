@@ -67,25 +67,11 @@ class MaximumEntropyClassifier(object):
     def train(self, data):
         label_indicies = [self.classes.index(inst[0]) for inst in data]
         feature_vector_list = [self.extractor(inst) for inst in data]
-        results = op.minimize(_maxent.objective, self.vector,
+        results = op.minimize(_maxent.objective, self.vector, jac=True,
                               args=(label_indicies, feature_vector_list,
                                     self.sigma))
         print(results)
         self.vector = results.x
-
-    def objective(self, weights, label_indicies, feature_vector_list):
-        w = weights.reshape(self.wshape)
-
-        lnprob = 0.0
-        for i, f in zip(label_indicies, feature_vector_list):
-            p = w.dot(f)
-            norm = logsumexp(p)
-            lnprob += p[i] - norm
-
-        # L2-norm.
-        lnprob -= self._hinvsig2 * weights.dot(weights)
-
-        return -lnprob
 
     def test(self, data):
         correct = 0

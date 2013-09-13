@@ -4,9 +4,11 @@
 from __future__ import division, print_function, absolute_import
 
 import os
+import sys
 import argparse
 from nlp.proper import Dataset
 from nlp.maxent import UnigramExtractor, MaximumEntropyClassifier
+from nlp import _maxent
 
 parser = argparse.ArgumentParser(
     description="Proper noun classifier.")
@@ -14,6 +16,8 @@ parser.add_argument("-v", "--verbose", action="store_true",
                     help="Display all the results.")
 parser.add_argument("-d", "--data", default="data",
                     help="The base path for the data files.")
+parser.add_argument("--test-grad", action="store_true",
+                    help="Test the gradient computation.")
 
 
 if __name__ == "__main__":
@@ -31,6 +35,12 @@ if __name__ == "__main__":
 
     # Initialize the classifier.
     classifier = MaximumEntropyClassifier(training_data.classes, extractor)
+
+    if args.test_grad:
+        print(_maxent.objective)
+        sys.exit(0)
+
+    # Train.
     classifier.train(training_data)
 
     # Test.
