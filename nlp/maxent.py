@@ -108,7 +108,8 @@ class MaximumEntropyClassifier(object):
                     f.write(("Example:\t{word}\tguess={guess}"
                              "\tgold={correct}\tconfidence={confidence}\n")
                             .format(word=word, guess=guess,
-                                    confidence=p[ind], correct=correct))
+                                    confidence=np.exp(p[ind]),
+                                    correct=correct))
             if correct == guess:
                 success += 1
             total += 1
