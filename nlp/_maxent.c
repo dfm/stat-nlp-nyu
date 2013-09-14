@@ -40,7 +40,8 @@ static PyObject
     PyArrayObject *grad_array = (PyArrayObject*)PyArray_SimpleNew(1, dim,
                                                                   NPY_DOUBLE);
 
-    double nlp = 0.0, value, p, norm, factor,
+    double nlp = 0.0, value, norm, factor,
+           *probs = malloc(nclasses*sizeof(double)),
            *w = PyArray_DATA(w_array),
            *f = PyArray_DATA(f_array),
            *grad = PyArray_DATA(grad_array);
@@ -54,18 +55,21 @@ static PyObject
             value = 0.0;
             for (k = 0; k < nfeatures; ++k)
                 value += w[j*nfeatures+k] * f[i*nfeatures+k];
-            if (inds[i] == j) p = value;
+            probs[j] = value;
             norm = logsumexp(norm, value);
         }
-        nlp -= p - norm;
+        nlp -= probs[inds[i]] - norm;
 
-        factor = exp(p - norm);
-        for (j = 0; j < nclasses; ++j)
+        for (j = 0; j < nclasses; ++j) {
+            factor = exp(probs[j] - norm);
             for (k = 0; k < nfeatures; ++k)
-                grad[j*nfeatures+k] += factor * f[k];
+                grad[j*nfeatures+k] += factor * f[i*nfeatures+k];
+        }
 
-        for (k = 0; k < nfeatures; ++k) grad[inds[i]*nfeatures+k] -= f[k];
+        for (k = 0; k < nfeatures; ++k)
+            grad[inds[i]*nfeatures+k] -= f[i*nfeatures+k];
     }
+    free(probs);
 
     // L2 norm.
     double l2 = 0.0;
@@ -80,8 +84,6 @@ static PyObject
     Py_DECREF(w_array);
     Py_DECREF(inds_array);
     Py_DECREF(f_array);
-
-    printf("%f\n", -nlp);
 
     PyObject *ret = Py_BuildValue("dO", nlp, grad_array);
     Py_DECREF(grad_array);
