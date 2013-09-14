@@ -6,9 +6,12 @@ from __future__ import division, print_function, absolute_import
 __all__ = []
 
 import numpy as np
-import scipy.optimize as op
 
 from . import _maxent
+
+
+START = "|"
+STOP = "\\"
 
 
 def logsumexp(arr):
@@ -31,8 +34,8 @@ class FeatureExtractor(object):
 
 class UnigramExtractor(FeatureExtractor):
 
-    def __init__(self, features):
-        super(UnigramExtractor, self).__init__(features)
+    def __init__(self, unigrams):
+        super(UnigramExtractor, self).__init__(unigrams)
         self.nfeatures += 1
 
     def __call__(self, instance):
@@ -43,6 +46,25 @@ class UnigramExtractor(FeatureExtractor):
             except ValueError:
                 # Unknown character.
                 f[-1] += 1
+        return f
+
+
+class BigramExtractor(UnigramExtractor):
+
+    def __init__(self, unigrams, bigrams):
+        super(BigramExtractor, self).__init__(unigrams)
+        self.features += list(set(bigrams))
+        self.nfeatures = len(self.features) + 1
+
+    def __call__(self, instance):
+        f = super(BigramExtractor, self).__call__(instance)
+        word = START + instance[1] + STOP
+        for i, char in enumerate(word[:-1]):
+            try:
+                f[self.features.index(char+word[i+1])] += 1
+            except ValueError:
+                # Unknown character.
+                pass
         return f
 
 
@@ -64,27 +86,36 @@ class MaximumEntropyClassifier(object):
     def vector(self, v):
         self.weights = v.reshape(self.wshape)
 
-    def train(self, data, **options):
+    def train(self, data, maxiter=40):
         label_indicies = [self.classes.index(inst[0]) for inst in data]
         feature_vector_list = [self.extractor(inst) for inst in data]
-        results = op.minimize(_maxent.objective, self.vector, jac=True,
-                              args=(label_indicies, feature_vector_list,
-                                    self.sigma),
-                              options=options)
-        self.vector = results.x
+        nlp, self.vector = _maxent.optimize(self.vector, label_indicies,
+                                            feature_vector_list, self.sigma,
+                                            maxiter)
 
-    def test(self, data):
-        correct = 0
+    def test(self, test_set, outfile=None):
+        if outfile is not None:
+            open(outfile, "w")
+
+        success = 0
         total = 0
-        for instance in data:
-            p = self.get_log_probabilities(instance)
-            if np.argmax(p) == self.classes.index(instance[0]):
-                correct += 1
+        for correct, word in test_set:
+            p = self.get_log_probabilities(word)
+            ind = np.argmax(p)
+            guess = self.classes[ind]
+            if outfile is not None:
+                with open(outfile, "a") as f:
+                    f.write(("Example:\t{word}\tguess={guess}"
+                             "\tgold={correct}\tconfidence={confidence}\n")
+                            .format(word=word, guess=guess,
+                                    confidence=p[ind], correct=correct))
+            if correct == guess:
+                success += 1
             total += 1
-        return correct / total
+        return success / total
 
     def get_log_probabilities(self, feature_vector):
-        p = self.weights.dot(self.extractor(feature_vector))
+        p = self.weights.dot(self.extractor((None, feature_vector)))
         return p - logsumexp(p)
 
 if __name__ == "__main__":
