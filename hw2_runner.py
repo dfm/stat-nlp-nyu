@@ -24,6 +24,8 @@ parser.add_argument("--test-grad", action="store_true",
                     help="Test the gradient computation.")
 parser.add_argument("--debug", action="store_true",
                     help="Use the debug dataset?")
+parser.add_argument("-i", "--iterations", default=40, type=int,
+                    help="The maximum number of optimizer iterations to run.")
 
 
 if __name__ == "__main__":
@@ -80,7 +82,7 @@ if __name__ == "__main__":
         sys.exit(0)
 
     # Train.
-    classifier.train(training_data, maxiter=40)
+    classifier.train(training_data, maxiter=args.iterations)
 
     # Test.
     print(classifier.test(validation_data))

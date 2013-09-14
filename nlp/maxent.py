@@ -71,7 +71,6 @@ class MaximumEntropyClassifier(object):
                               args=(label_indicies, feature_vector_list,
                                     self.sigma),
                               options=options)
-        print(results)
         self.vector = results.x
 
     def test(self, data):
