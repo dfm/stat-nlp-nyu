@@ -80,7 +80,10 @@ if __name__ == "__main__":
         sys.exit(0)
 
     # Train.
-    classifier.train(training_data)
+    classifier.train(training_data, maxiter=40)
 
     # Test.
     print(classifier.test(validation_data))
+    if args.debug:
+        print(classifier.classes,
+              np.exp(classifier.get_log_probabilities(test_data[0])))

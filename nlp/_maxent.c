@@ -85,6 +85,8 @@ static PyObject
     Py_DECREF(inds_array);
     Py_DECREF(f_array);
 
+    printf("%f\n", -nlp);
+
     PyObject *ret = Py_BuildValue("dO", nlp, grad_array);
     Py_DECREF(grad_array);
 

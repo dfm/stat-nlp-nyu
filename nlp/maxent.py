@@ -64,12 +64,13 @@ class MaximumEntropyClassifier(object):
     def vector(self, v):
         self.weights = v.reshape(self.wshape)
 
-    def train(self, data):
+    def train(self, data, **options):
         label_indicies = [self.classes.index(inst[0]) for inst in data]
         feature_vector_list = [self.extractor(inst) for inst in data]
         results = op.minimize(_maxent.objective, self.vector, jac=True,
                               args=(label_indicies, feature_vector_list,
-                                    self.sigma))
+                                    self.sigma),
+                              options=options)
         print(results)
         self.vector = results.x
 
