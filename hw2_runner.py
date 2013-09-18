@@ -15,6 +15,10 @@ parser = argparse.ArgumentParser(
     description="Proper noun classifier.")
 parser.add_argument("-v", "--verbose", action="store_true",
                     help="Display all the results.")
+parser.add_argument("-o", "--online", action="store_true",
+                    help="Run an online algorithm.")
+parser.add_argument("-r", "--rate", default=0.1, type=float,
+                    help="The learning rate.")
 parser.add_argument("-d", "--data", default="data",
                     help="The base path for the data files.")
 parser.add_argument("-s", "--sigma", default=1.0, type=float,
@@ -58,7 +62,11 @@ if __name__ == "__main__":
     classifier = MaximumEntropyClassifier(labels, extractors, sigma=args.sigma)
 
     # Train.
-    classifier.train(training_data, maxiter=args.iterations)
+    if args.online:
+        classifier.online(training_data, maxiter=args.iterations,
+                          rate=args.rate)
+    else:
+        classifier.train(training_data, maxiter=args.iterations)
 
     # Test.
     print("Validation accuracy: {0}".format(classifier.test(validation_data)))

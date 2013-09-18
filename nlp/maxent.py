@@ -145,12 +145,15 @@ class MaximumEntropyClassifier(object):
                                             feature_vector_list, self.sigma,
                                             maxiter)
 
-    def online(self, data, maxiter=40):
+    def online(self, data, maxiter=40, rate=0.1):
+        np.random.suffle(data)
         label_indicies = [self.classes.index(inst[0]) for inst in data]
         feature_vector_list = [self.extract(inst) for inst in data]
-        nlp, self.vector = _maxent.optimize(self.vector, label_indicies,
-                                            feature_vector_list, self.sigma,
-                                            maxiter)
+
+        v = self.vector
+        _maxent.online(v, label_indicies, feature_vector_list, self.sigma,
+                       maxiter, rate)
+        self.vector = v
 
     def test(self, test_set, outfile=None):
         if outfile is not None:
