@@ -34,8 +34,12 @@ class FeatureExtractor(object):
 
 class UnigramExtractor(FeatureExtractor):
 
-    def __init__(self, unigrams):
+    def __init__(self, training_data):
+        # Find all the character unigrams.
+        unigrams = [c for label, word in training_data for c in word]
         super(UnigramExtractor, self).__init__(unigrams)
+
+        # Allow for unknown characters.
         self.nfeatures += 1
 
     def __call__(self, instance):
@@ -49,15 +53,20 @@ class UnigramExtractor(FeatureExtractor):
         return f
 
 
-class BigramExtractor(UnigramExtractor):
+class BigramExtractor(FeatureExtractor):
 
-    def __init__(self, unigrams, bigrams):
-        super(BigramExtractor, self).__init__(unigrams)
-        self.features += list(set(bigrams))
-        self.nfeatures = len(self.features) + 1
+    def __init__(self, training_data):
+        # Then, find the bigrams.
+        bigrams = []
+        for label, w in training_data:
+            word = START + w + STOP
+            bigrams += [c+word[i+1] for i, c in enumerate(word[:-1])]
+
+        # Initialize the extractor.
+        super(BigramExtractor, self).__init__(bigrams)
 
     def __call__(self, instance):
-        f = super(BigramExtractor, self).__call__(instance)
+        f = np.zeros(self.nfeatures)
         word = START + instance[1] + STOP
         for i, char in enumerate(word[:-1]):
             try:
@@ -70,12 +79,12 @@ class BigramExtractor(UnigramExtractor):
 
 class MaximumEntropyClassifier(object):
 
-    def __init__(self, classes, extractor, sigma=1.0):
+    def __init__(self, classes, extractors, sigma=1.0):
         self.classes = list(classes)
         self.sigma = sigma
         self._hinvsig2 = 0.5 / sigma / sigma
-        self.extractor = extractor
-        self.wshape = (len(classes), extractor.nfeatures)
+        self.extractors = extractors
+        self.wshape = (len(classes), sum([e.nfeatures for e in extractors]))
         self.weights = np.zeros(self.wshape)
 
     @property
@@ -86,9 +95,12 @@ class MaximumEntropyClassifier(object):
     def vector(self, v):
         self.weights = v.reshape(self.wshape)
 
+    def extract(self, inst):
+        return np.concatenate([e(inst) for e in self.extractors])
+
     def train(self, data, maxiter=40):
         label_indicies = [self.classes.index(inst[0]) for inst in data]
-        feature_vector_list = [self.extractor(inst) for inst in data]
+        feature_vector_list = [self.extract(inst) for inst in data]
         nlp, self.vector = _maxent.optimize(self.vector, label_indicies,
                                             feature_vector_list, self.sigma,
                                             maxiter)
@@ -116,7 +128,7 @@ class MaximumEntropyClassifier(object):
         return success / total
 
     def get_log_probabilities(self, feature_vector):
-        p = self.weights.dot(self.extractor((None, feature_vector)))
+        p = self.weights.dot(self.extract((None, feature_vector)))
         return p - logsumexp(p)
 
 if __name__ == "__main__":
@@ -128,7 +140,7 @@ if __name__ == "__main__":
     features = [f for datum in training_data for f in datum[1]]
     extractor = FeatureExtractor(features)
 
-    classifier = MaximumEntropyClassifier(["cat", "bear"], extractor)
+    classifier = MaximumEntropyClassifier(["cat", "bear"], [extractor])
     classifier.train(training_data)
     print(classifier.test([test_datum]))
     print(classifier.classes,

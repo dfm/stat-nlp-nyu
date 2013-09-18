@@ -8,7 +8,7 @@ import argparse
 import numpy as np
 from nlp.proper import Dataset
 from nlp.maxent import (FeatureExtractor, BigramExtractor,
-                        MaximumEntropyClassifier, STOP, START)
+                        MaximumEntropyClassifier)
 
 np.random.seed(123)
 
@@ -36,25 +36,20 @@ if __name__ == "__main__":
         test_data = [(None, ["claws", "small"])]
 
         features = [f for datum in training_data for f in datum[1]]
-        extractor = FeatureExtractor(features)
+        extractors = [FeatureExtractor(features)]
         labels = ["bear", "cat"]
+
     else:
         # Load the datasets.
         training_data = Dataset(os.path.join(args.data, "pnp-train.txt"))
         validation_data = Dataset(os.path.join(args.data, "pnp-validate.txt"))
         test_data = Dataset(os.path.join(args.data, "pnp-test.txt"))
 
-        # Figure out the list of features in the training data.
-        unigrams = [c for label, word in training_data for c in word]
-        bigrams = []
-        for label, w in training_data:
-            word = START + w + STOP
-            bigrams += [c+word[i+1] for i, c in enumerate(word[:-1])]
-        extractor = BigramExtractor(unigrams, bigrams)
+        extractors = [BigramExtractor(training_data)]
         labels = training_data.classes
 
     # Initialize the classifier.
-    classifier = MaximumEntropyClassifier(labels, extractor)
+    classifier = MaximumEntropyClassifier(labels, extractors)
 
     # Train.
     classifier.train(training_data, maxiter=args.iterations)
