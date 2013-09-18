@@ -28,6 +28,37 @@ typedef struct dataset {
 } Dataset;
 
 static
+double evaluate_one (Dataset *data, double *w, double *grad, int n, int i)
+{
+    int j, k,
+        nclasses = data->nclasses,
+        nfeatures = data->nfeatures;
+    long *inds = data->inds;
+    double norm = -INFINITY, nlp = 0.0, factor, *f = data->f,
+           *probs = malloc(nclasses*sizeof(double));
+    for (j = 0; j < nclasses; ++j) {
+        double value = 0.0;
+        for (k = 0; k < nfeatures; ++k)
+            value += w[j*nfeatures+k] * f[i*nfeatures+k];
+        probs[j] = value;
+        norm = logsumexp(norm, value);
+    }
+    nlp -= probs[inds[i]] - norm;
+    free(probs);
+
+    for (j = 0; j < nclasses; ++j) {
+        factor = exp(probs[j] - norm);
+        for (k = 0; k < nfeatures; ++k)
+            grad[j*nfeatures+k] += factor * f[i*nfeatures+k];
+    }
+
+    for (k = 0; k < nfeatures; ++k)
+        grad[inds[i]*nfeatures+k] -= f[i*nfeatures+k];
+
+    return nlp;
+}
+
+static
 lbfgsfloatval_t evaluate(void *instance, const lbfgsfloatval_t *w,
                          lbfgsfloatval_t *grad, const int n,
                          const lbfgsfloatval_t step)
@@ -38,33 +69,13 @@ lbfgsfloatval_t evaluate(void *instance, const lbfgsfloatval_t *w,
         nclasses = ((Dataset*)instance)->nclasses,
         nfeatures = ((Dataset*)instance)->nfeatures;
     long *inds = ((Dataset*)instance)->inds;
-    double *probs = malloc(nclasses*sizeof(double)),
-           *f = ((Dataset*)instance)->f,
+    double *f = ((Dataset*)instance)->f,
            norm, factor, nlp = 0.0;
 
     for (i = 0; i < nweights; ++i) grad[i] = 0.0;
 
-    for (i = 0; i < nsamples; ++i) {
-        norm = -INFINITY;
-        for (j = 0; j < nclasses; ++j) {
-            double value = 0.0;
-            for (k = 0; k < nfeatures; ++k)
-                value += w[j*nfeatures+k] * f[i*nfeatures+k];
-            probs[j] = value;
-            norm = logsumexp(norm, value);
-        }
-        nlp -= probs[inds[i]] - norm;
-
-        for (j = 0; j < nclasses; ++j) {
-            factor = exp(probs[j] - norm);
-            for (k = 0; k < nfeatures; ++k)
-                grad[j*nfeatures+k] += factor * f[i*nfeatures+k];
-        }
-
-        for (k = 0; k < nfeatures; ++k)
-            grad[inds[i]*nfeatures+k] -= f[i*nfeatures+k];
-    }
-    free(probs);
+    for (i = 0; i < nsamples; ++i)
+        nlp += evaluate_one();
 
     // L2 norm.
     double l2 = 0.0, sigma = ((Dataset*)instance)->sigma;
@@ -141,6 +152,56 @@ static PyObject
     int r = lbfgs(nweights, x, &fx, evaluate, progress, dataset, &param);
     printf("L-BFGS optimization terminated with status code = %d\n", r);
     printf("  fx = %f\n", fx);
+
+    for (i = 0; i < nweights; ++i) out_data[i] = x[i];
+    nlp = fx;
+
+    lbfgs_free(x);
+    free(dataset);
+
+    // Clean up.
+    Py_DECREF(w_array);
+    Py_DECREF(inds_array);
+    Py_DECREF(f_array);
+
+    PyObject *ret = Py_BuildValue("dO", nlp, out_array);
+    Py_DECREF(out_array);
+
+    return ret;
+}
+
+static PyObject
+*maxent_online (PyObject *self, PyObject *args)
+{
+    int maxiter;
+    double sigma;
+    PyObject *w_obj, *inds_obj, *f_obj;
+    if (!PyArg_ParseTuple(args, "OOOdi", &w_obj, &inds_obj, &f_obj, &sigma,
+                          &maxiter))
+        return NULL;
+
+    PyArrayObject *w_array = (PyArrayObject*)PyArray_FROM_OTF(w_obj, NPY_DOUBLE, NPY_IN_ARRAY),
+                  *inds_array = (PyArrayObject*)PyArray_FROM_OTF(inds_obj, NPY_LONG, NPY_IN_ARRAY),
+                  *f_array = (PyArrayObject*)PyArray_FROM_OTF(f_obj, NPY_DOUBLE, NPY_IN_ARRAY);
+    int i,
+        nweights = PyArray_DIM(w_array, 0),
+        nfeatures = PyArray_DIM(f_array, 1),
+        nsamples = PyArray_DIM(inds_array, 0),
+        nclasses = nweights / nfeatures;
+
+    npy_intp dim[1] = {nweights};
+    PyArrayObject *out_array = (PyArrayObject*)PyArray_SimpleNew(1, dim,
+                                                                 NPY_DOUBLE);
+
+    double nlp = 0.0,
+           *w = PyArray_DATA(w_array),
+           *f = PyArray_DATA(f_array),
+           *out_data = PyArray_DATA(out_array);
+    long *inds = PyArray_DATA(inds_array);
+
+    for (iteration = 0; iterations < maxiter; ++iterations) {
+
+    }
 
     for (i = 0; i < nweights; ++i) out_data[i] = x[i];
     nlp = fx;

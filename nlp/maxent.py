@@ -4,7 +4,8 @@
 from __future__ import division, print_function, absolute_import
 
 __all__ = ["FeatureExtractor", "UnigramExtractor", "BigramExtractor",
-           "SuffixExtractor", "MaximumEntropyClassifier"]
+           "SuffixExtractor", "MaximumEntropyClassifier",
+           "DigitExtractor"]
 
 import re
 import numpy as np
@@ -101,8 +102,8 @@ class DigitExtractor(FeatureExtractor):
 
     _re = re.compile("[0-9]")
 
-    def __init__(self):
-        super(DigitExtractor, self).setup(range(10))
+    def __init__(self, number=10):
+        super(DigitExtractor, self).setup(range(number))
 
     def setup(self, training_data):
         pass
@@ -110,7 +111,7 @@ class DigitExtractor(FeatureExtractor):
     def __call__(self, inst):
         f = np.zeros(self.nfeatures)
         try:
-            f[len(re.findall(inst[1]))] = 1
+            f[len(self._re.findall(inst[1]))] = 1
         except IndexError:
             f[-1] = 1
         return f
