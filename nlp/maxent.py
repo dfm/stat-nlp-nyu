@@ -3,8 +3,10 @@
 
 from __future__ import division, print_function, absolute_import
 
-__all__ = []
+__all__ = ["FeatureExtractor", "UnigramExtractor", "BigramExtractor",
+           "SuffixExtractor", "MaximumEntropyClassifier"]
 
+import re
 import numpy as np
 
 from . import _maxent
@@ -21,7 +23,7 @@ def logsumexp(arr):
 
 class FeatureExtractor(object):
 
-    def __init__(self, features):
+    def setup(self, features):
         self.features = list(set(features))
         self.nfeatures = len(self.features)
 
@@ -34,10 +36,10 @@ class FeatureExtractor(object):
 
 class UnigramExtractor(FeatureExtractor):
 
-    def __init__(self, training_data):
+    def setup(self, training_data):
         # Find all the character unigrams.
         unigrams = [c for label, word in training_data for c in word]
-        super(UnigramExtractor, self).__init__(unigrams)
+        super(UnigramExtractor, self).setup(unigrams)
 
         # Allow for unknown characters.
         self.nfeatures += 1
@@ -55,7 +57,7 @@ class UnigramExtractor(FeatureExtractor):
 
 class BigramExtractor(FeatureExtractor):
 
-    def __init__(self, training_data):
+    def setup(self, training_data):
         # Then, find the bigrams.
         bigrams = []
         for label, w in training_data:
@@ -63,7 +65,7 @@ class BigramExtractor(FeatureExtractor):
             bigrams += [c+word[i+1] for i, c in enumerate(word[:-1])]
 
         # Initialize the extractor.
-        super(BigramExtractor, self).__init__(bigrams)
+        super(BigramExtractor, self).setup(bigrams)
 
     def __call__(self, instance):
         f = np.zeros(self.nfeatures)
@@ -74,6 +76,43 @@ class BigramExtractor(FeatureExtractor):
             except ValueError:
                 # Unknown character.
                 pass
+        return f
+
+
+class SuffixExtractor(FeatureExtractor):
+
+    def __init__(self, length):
+        self.length = length
+
+    def setup(self, training_data):
+        suffs = [w[-self.length:] for label, w in training_data]
+        super(SuffixExtractor, self).setup(suffs)
+
+    def __call__(self, instance):
+        f = np.zeros(self.nfeatures)
+        try:
+            f[self.features.index(instance[1][-self.length:])] = 1
+        except ValueError:
+            pass
+        return f
+
+
+class DigitExtractor(FeatureExtractor):
+
+    _re = re.compile("[0-9]")
+
+    def __init__(self):
+        super(DigitExtractor, self).setup(range(10))
+
+    def setup(self, training_data):
+        pass
+
+    def __call__(self, inst):
+        f = np.zeros(self.nfeatures)
+        try:
+            f[len(re.findall(inst[1]))] = 1
+        except IndexError:
+            pass
         return f
 
 

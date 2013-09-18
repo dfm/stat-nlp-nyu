@@ -7,8 +7,7 @@ import os
 import argparse
 import numpy as np
 from nlp.proper import Dataset
-from nlp.maxent import (FeatureExtractor, BigramExtractor,
-                        MaximumEntropyClassifier)
+from nlp.maxent import *
 
 np.random.seed(123)
 
@@ -18,10 +17,14 @@ parser.add_argument("-v", "--verbose", action="store_true",
                     help="Display all the results.")
 parser.add_argument("-d", "--data", default="data",
                     help="The base path for the data files.")
+parser.add_argument("-s", "--sigma", default=1.0, type=float,
+                    help="The L2 coefficient.")
 parser.add_argument("--debug", action="store_true",
                     help="Use the debug dataset?")
 parser.add_argument("-i", "--iterations", default=40, type=int,
                     help="The maximum number of optimizer iterations to run.")
+parser.add_argument("-e", "--extractors", default="UnigramExtractor()",
+                    help="A comma separated list of extractors to use.")
 
 
 if __name__ == "__main__":
@@ -44,12 +47,15 @@ if __name__ == "__main__":
         training_data = Dataset(os.path.join(args.data, "pnp-train.txt"))
         validation_data = Dataset(os.path.join(args.data, "pnp-validate.txt"))
         test_data = Dataset(os.path.join(args.data, "pnp-test.txt"))
-
-        extractors = [BigramExtractor(training_data)]
         labels = training_data.classes
 
+        extractors = []
+        for e in args.extractors.split(","):
+            extractors.append(eval("{0}".format(e.strip())))
+            extractors[-1].setup(training_data)
+
     # Initialize the classifier.
-    classifier = MaximumEntropyClassifier(labels, extractors)
+    classifier = MaximumEntropyClassifier(labels, extractors, sigma=args.sigma)
 
     # Train.
     classifier.train(training_data, maxiter=args.iterations)
