@@ -5,7 +5,7 @@ from __future__ import division, print_function, absolute_import
 
 __all__ = ["FeatureExtractor", "UnigramExtractor", "BigramExtractor",
            "SuffixExtractor", "MaximumEntropyClassifier",
-           "DigitExtractor"]
+           "DigitExtractor", "PrefixExtractor"]
 
 import re
 import numpy as np
@@ -98,6 +98,24 @@ class SuffixExtractor(FeatureExtractor):
         return f
 
 
+class PrefixExtractor(FeatureExtractor):
+
+    def __init__(self, length):
+        self.length = length
+
+    def setup(self, training_data):
+        suffs = [w[:self.length] for label, w in training_data]
+        super(PrefixExtractor, self).setup(suffs)
+
+    def __call__(self, instance):
+        f = np.zeros(self.nfeatures)
+        try:
+            f[self.features.index(instance[1][:self.length])] = 1
+        except ValueError:
+            pass
+        return f
+
+
 class DigitExtractor(FeatureExtractor):
 
     _re = re.compile("[0-9]")
@@ -139,13 +157,6 @@ class MaximumEntropyClassifier(object):
         return np.concatenate([e(inst) for e in self.extractors])
 
     def train(self, data, maxiter=40):
-        label_indicies = [self.classes.index(inst[0]) for inst in data]
-        feature_vector_list = [self.extract(inst) for inst in data]
-        nlp, self.vector = _maxent.optimize(self.vector, label_indicies,
-                                            feature_vector_list, self.sigma,
-                                            maxiter)
-
-    def online(self, data, maxiter=40):
         label_indicies = [self.classes.index(inst[0]) for inst in data]
         feature_vector_list = [self.extract(inst) for inst in data]
         nlp, self.vector = _maxent.optimize(self.vector, label_indicies,
