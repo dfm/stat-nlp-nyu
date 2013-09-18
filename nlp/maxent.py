@@ -112,7 +112,7 @@ class DigitExtractor(FeatureExtractor):
         try:
             f[len(re.findall(inst[1]))] = 1
         except IndexError:
-            pass
+            f[-1] = 1
         return f
 
 
