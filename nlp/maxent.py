@@ -4,8 +4,8 @@
 from __future__ import division, print_function, absolute_import
 
 __all__ = ["FeatureExtractor", "UnigramExtractor", "BigramExtractor",
-           "SuffixExtractor", "MaximumEntropyClassifier",
-           "DigitExtractor", "PrefixExtractor"]
+           "SuffixExtractor", "PrefixExtractor", "MaximumEntropyClassifier",
+           "DigitExtractor"]
 
 import re
 import numpy as np
@@ -162,6 +162,21 @@ class MaximumEntropyClassifier(object):
         nlp, self.vector = _maxent.optimize(self.vector, label_indicies,
                                             feature_vector_list, self.sigma,
                                             maxiter)
+
+    def online(self, data, maxiter=40, rate=0.5, C=1):
+        label_indicies = [self.classes.index(inst[0]) for inst in data]
+        feature_vector_list = [self.extract(inst) for inst in data]
+
+        inds = np.arange(len(label_indicies))
+        np.random.shuffle(inds)
+
+        label_indicies = [label_indicies[i] for i in inds]
+        feature_vector_list = [feature_vector_list[i] for i in inds]
+
+        v = self.vector
+        _maxent.online(v, label_indicies, feature_vector_list, self.sigma,
+                       maxiter, rate, C)
+        self.vector = v
 
     def test(self, test_set, outfile=None):
         if outfile is not None:

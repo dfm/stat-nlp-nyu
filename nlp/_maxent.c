@@ -28,6 +28,49 @@ typedef struct dataset {
 } Dataset;
 
 static
+double evalute_one (Dataset *data, double *w, double *grad, int ind)
+{
+    int i, j, k,
+        nweights = data->nweights,
+        nclasses = data->nclasses,
+        nfeatures = data->nfeatures;
+    long *inds = data->inds;
+    double *probs = malloc(nclasses*sizeof(double)), *f = data->f,
+           norm, factor, nlp;
+
+    norm = -INFINITY;
+    for (j = 0; j < nclasses; ++j) {
+        double value = 0.0;
+        for (k = 0; k < nfeatures; ++k)
+            value += w[j*nfeatures+k] * f[ind*nfeatures+k];
+        probs[j] = value;
+        norm = logsumexp(norm, value);
+    }
+    nlp = norm - probs[inds[ind]];
+
+    for (j = 0; j < nclasses; ++j) {
+        factor = exp(probs[j] - norm);
+        for (k = 0; k < nfeatures; ++k)
+            grad[j*nfeatures+k] = factor * f[ind*nfeatures+k];
+    }
+    free(probs);
+
+    for (k = 0; k < nfeatures; ++k)
+        grad[inds[ind]*nfeatures+k] -= f[ind*nfeatures+k];
+
+    // L2 norm.
+    double l2 = 0.0, sigma = data->sigma;
+    sigma = 1.0 / sigma / sigma;
+    for (i = 0; i < nweights; ++i) {
+        l2 += w[i] * w[i];
+        grad[i] += sigma * w[i];
+    }
+    nlp += 0.5 * l2 * sigma;
+
+    return nlp;
+}
+
+static
 lbfgsfloatval_t evaluate(void *instance, const lbfgsfloatval_t *w,
                          lbfgsfloatval_t *grad, const int n,
                          const lbfgsfloatval_t step)
@@ -84,10 +127,7 @@ int progress(void *instance, const lbfgsfloatval_t *x,
              const lbfgsfloatval_t xnorm, const lbfgsfloatval_t gnorm,
              const lbfgsfloatval_t step, int n, int k, int ls)
 {
-    printf("Iteration %d: ", k);
-    printf("fx = %f\n", fx);
-    printf("  xnorm = %f, gnorm = %f, step = %f\n", xnorm, gnorm, step);
-    printf("\n");
+    printf("%d: %f\n", k, fx);
     return 0;
 }
 
@@ -159,9 +199,76 @@ static PyObject
     return ret;
 }
 
+static PyObject
+*maxent_online (PyObject *self, PyObject *args)
+{
+    int maxiter;
+    double sigma, rate, C;
+    PyObject *w_obj, *inds_obj, *f_obj;
+    if (!PyArg_ParseTuple(args, "OOOdidd", &w_obj, &inds_obj, &f_obj, &sigma,
+                          &maxiter, &rate, &C))
+        return NULL;
+
+    PyArrayObject *w_array = (PyArrayObject*)PyArray_FROM_OTF(w_obj, NPY_DOUBLE, NPY_INOUT_ARRAY),
+                  *inds_array = (PyArrayObject*)PyArray_FROM_OTF(inds_obj, NPY_LONG, NPY_IN_ARRAY),
+                  *f_array = (PyArrayObject*)PyArray_FROM_OTF(f_obj, NPY_DOUBLE, NPY_IN_ARRAY);
+    int i, j, k,
+        nweights = PyArray_DIM(w_array, 0),
+        nfeatures = PyArray_DIM(f_array, 1),
+        nsamples = PyArray_DIM(inds_array, 0),
+        nclasses = nweights / nfeatures;
+
+    // Allocate the memory for the Jacobian.
+    npy_intp dim[1] = {nweights};
+    PyArrayObject *out_array = (PyArrayObject*)PyArray_SimpleNew(1, dim,
+                                                                 NPY_DOUBLE);
+
+    double nlp = 0.0,
+           *w = PyArray_DATA(w_array),
+           *f = PyArray_DATA(f_array),
+           *out_data = PyArray_DATA(out_array);
+    long *inds = PyArray_DATA(inds_array);
+
+    // Set up the dataset.
+    Dataset *dataset = malloc(sizeof(Dataset));
+    dataset->nweights = nweights;
+    dataset->nsamples = nsamples;
+    dataset->nclasses = nclasses;
+    dataset->nfeatures = nfeatures;
+    dataset->inds = inds;
+    dataset->f = f;
+    dataset->sigma = sigma;
+
+    for (i = 0; i < maxiter; ++i) {
+        nlp = 0.0;
+        for (j = 0; j < nsamples; ++j) {
+            nlp += evalute_one (dataset, w, out_data, i);
+            for (k = 0; k < nweights; ++k)
+                w[k] -= rate * out_data[k] / (C + i * nsamples + j);
+        }
+        printf("%d: %f\n", i, nlp);
+    }
+
+    free(dataset);
+
+    // Clean up.
+    Py_DECREF(w_array);
+    Py_DECREF(inds_array);
+    Py_DECREF(f_array);
+
+    PyObject *ret = Py_BuildValue("dO", nlp, out_array);
+    Py_DECREF(out_array);
+
+    return ret;
+}
+
 static PyMethodDef maxent_methods[] = {
     {"optimize",
      (PyCFunction) maxent_optimize,
+     METH_VARARGS,
+     ""},
+    {"online",
+     (PyCFunction) maxent_online,
      METH_VARARGS,
      ""},
     {NULL, NULL, 0, NULL}
