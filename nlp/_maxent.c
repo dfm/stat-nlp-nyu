@@ -51,12 +51,12 @@ double evalute_one (Dataset *data, double *w, double *grad, int ind)
     for (j = 0; j < nclasses; ++j) {
         factor = exp(probs[j] - norm);
         for (k = 0; k < nfeatures; ++k)
-            grad[j*nfeatures+k] += factor * f[ind*nfeatures+k];
+            grad[j*nfeatures+k] = factor * f[ind*nfeatures+k];
     }
     free(probs);
 
     for (k = 0; k < nfeatures; ++k)
-        grad[inds[ind]*nfeatures+k] = -f[ind*nfeatures+k];
+        grad[inds[ind]*nfeatures+k] -= f[ind*nfeatures+k];
 
     // L2 norm.
     double l2 = 0.0, sigma = data->sigma;
@@ -127,10 +127,7 @@ int progress(void *instance, const lbfgsfloatval_t *x,
              const lbfgsfloatval_t xnorm, const lbfgsfloatval_t gnorm,
              const lbfgsfloatval_t step, int n, int k, int ls)
 {
-    printf("Iteration %d: ", k);
-    printf("fx = %f\n", fx);
-    printf("  xnorm = %f, gnorm = %f, step = %f\n", xnorm, gnorm, step);
-    printf("\n");
+    printf("%d: %f\n", k, fx);
     return 0;
 }
 
@@ -206,10 +203,10 @@ static PyObject
 *maxent_online (PyObject *self, PyObject *args)
 {
     int maxiter;
-    double sigma, rate;
+    double sigma, rate, C;
     PyObject *w_obj, *inds_obj, *f_obj;
-    if (!PyArg_ParseTuple(args, "OOOdid", &w_obj, &inds_obj, &f_obj, &sigma,
-                          &maxiter, &rate))
+    if (!PyArg_ParseTuple(args, "OOOdidd", &w_obj, &inds_obj, &f_obj, &sigma,
+                          &maxiter, &rate, &C))
         return NULL;
 
     PyArrayObject *w_array = (PyArrayObject*)PyArray_FROM_OTF(w_obj, NPY_DOUBLE, NPY_INOUT_ARRAY),
@@ -243,10 +240,13 @@ static PyObject
     dataset->sigma = sigma;
 
     for (i = 0; i < maxiter; ++i) {
+        nlp = 0.0;
         for (j = 0; j < nsamples; ++j) {
-            evalute_one (dataset, w, out_data, i);
-            for (k = 0; k < nweights; ++k) w[k] -= rate * out_data[k];
+            nlp += evalute_one (dataset, w, out_data, i);
+            for (k = 0; k < nweights; ++k)
+                w[k] -= rate * out_data[k] / (C + i * nsamples + j);
         }
+        printf("%d: %f\n", i, nlp);
     }
 
     free(dataset);

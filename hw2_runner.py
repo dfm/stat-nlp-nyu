@@ -19,6 +19,8 @@ parser.add_argument("-o", "--online", action="store_true",
                     help="Run an online algorithm.")
 parser.add_argument("-r", "--rate", default=0.1, type=float,
                     help="The learning rate.")
+parser.add_argument("-c", "--const", default=1, type=float,
+                    help="The learning rate decay constant.")
 parser.add_argument("-d", "--data", default="data",
                     help="The base path for the data files.")
 parser.add_argument("-s", "--sigma", default=1.0, type=float,
@@ -64,7 +66,7 @@ if __name__ == "__main__":
     # Train.
     if args.online:
         classifier.online(training_data, maxiter=args.iterations,
-                          rate=args.rate)
+                          rate=args.rate, C=args.const)
     else:
         classifier.train(training_data, maxiter=args.iterations)
 
