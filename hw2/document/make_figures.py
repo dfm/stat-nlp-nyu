@@ -37,4 +37,4 @@ axes[1].set_xlabel("L-BFGS iterations")
 axes[1].yaxis.set_major_locator(MaxNLocator(5))
 axes[1].yaxis.set_label_coords(-0.1, 0.5)
 
-fig.savefig("full_500_convergence.png")
+fig.savefig("full_500_convergence.pdf")
