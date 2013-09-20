@@ -127,7 +127,10 @@ int progress(void *instance, const lbfgsfloatval_t *x,
              const lbfgsfloatval_t xnorm, const lbfgsfloatval_t gnorm,
              const lbfgsfloatval_t step, int n, int k, int ls)
 {
-    printf("%d: %f\n", k, fx);
+    printf("Iteration %d: ", k);
+    printf("fx = %f\n", fx);
+    printf("  xnorm = %f, gnorm = %f, step = %f\n", xnorm, gnorm, step);
+    printf("\n");
     return 0;
 }
 

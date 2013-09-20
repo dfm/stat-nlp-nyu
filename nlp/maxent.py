@@ -156,12 +156,29 @@ class MaximumEntropyClassifier(object):
     def extract(self, inst):
         return np.concatenate([e(inst) for e in self.extractors])
 
-    def train(self, data, maxiter=40):
+    def train(self, data, schedule=[25, 50, 100, 150, 200], convout=None,
+              validation_set=None):
         label_indicies = [self.classes.index(inst[0]) for inst in data]
         feature_vector_list = [self.extract(inst) for inst in data]
-        nlp, self.vector = _maxent.optimize(self.vector, label_indicies,
-                                            feature_vector_list, self.sigma,
-                                            maxiter)
+
+        if convout is not None:
+            open(convout, "w")
+
+        iterations = 0
+        for maxiter in schedule:
+            nlp, self.vector = _maxent.optimize(self.vector, label_indicies,
+                                                feature_vector_list,
+                                                self.sigma, maxiter-iterations)
+            iterations = maxiter
+            if convout is not None:
+                train_acc = self.test(data)
+                validation_acc = (0.0 if validation_set is None
+                                  else self.test(validation_set))
+                with open(convout, "a") as f:
+                    f.write("{0:d} {1} {2}".format(iterations, nlp, train_acc))
+                    if validation_set is not None:
+                        f.write(" {0}".format(validation_acc))
+                    f.write("\n")
 
     def online(self, data, maxiter=40, rate=0.5, C=1):
         label_indicies = [self.classes.index(inst[0]) for inst in data]

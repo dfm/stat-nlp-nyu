@@ -27,8 +27,8 @@ parser.add_argument("-s", "--sigma", default=1.0, type=float,
                     help="The L2 coefficient.")
 parser.add_argument("--debug", action="store_true",
                     help="Use the debug dataset?")
-parser.add_argument("-i", "--iterations", default=40, type=int,
-                    help="The maximum number of optimizer iterations to run.")
+parser.add_argument("-i", "--iterations", default="25, 50, 100, 150, 200",
+                    help="The schedule of optimizer iterations to run.")
 parser.add_argument("-e", "--extractors", default="UnigramExtractor()",
                     help="A comma separated list of extractors to use.")
 
@@ -64,11 +64,13 @@ if __name__ == "__main__":
     classifier = MaximumEntropyClassifier(labels, extractors, sigma=args.sigma)
 
     # Train.
+    iterations = map(int, args.iterations.split(","))
     if args.online:
-        classifier.online(training_data, maxiter=args.iterations,
+        classifier.online(training_data, maxiter=max(iterations),
                           rate=args.rate, C=args.const)
     else:
-        classifier.train(training_data, maxiter=args.iterations)
+        classifier.train(training_data, validation_set=validation_data,
+                         convout="hw2/convergence.txt", schedule=iterations)
 
     # Test.
     print("Validation accuracy: {0}".format(classifier.test(validation_data)))
