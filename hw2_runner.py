@@ -6,6 +6,7 @@ from __future__ import division, print_function, absolute_import
 import os
 import argparse
 import numpy as np
+import cPickle as pickle
 from nlp.proper import Dataset
 from nlp.maxent import *
 
@@ -72,9 +73,14 @@ if __name__ == "__main__":
         classifier.train(training_data, validation_set=validation_data,
                          convout="hw2/convergence.txt", schedule=iterations)
 
+    # Save the final classifier.
+    pickle.dump(classifier, open("hw2/model.pkl", "wb"), -1)
+
     # Test.
-    print("Validation accuracy: {0}".format(classifier.test(validation_data)))
-    classifier.test(test_data, outfile="hw2/output.txt")
+    print("Validation accuracy: {0}".format(classifier.test(validation_data,
+                                                            outfile="hw2/"
+                                                            "validation.txt")))
+    classifier.test(test_data, outfile="hw2/test.txt")
 
     if args.debug:
         print(classifier.classes,
