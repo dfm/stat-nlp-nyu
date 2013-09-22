@@ -3,3 +3,13 @@ data
 *.pyc
 *.so
 build
+.DS_Store
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.dvi
+*.ps
+*.eps
+*.pdf
