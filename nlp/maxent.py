@@ -80,6 +80,30 @@ class BigramExtractor(FeatureExtractor):
         return f
 
 
+class TrigramExtractor(FeatureExtractor):
+
+    def setup(self, training_data):
+        # Find the trigrams in the training data.
+        trigrams = []
+        for label, w in training_data:
+            word = START + w + STOP
+            trigrams += [c+word[i+1:i+3] for i, c in enumerate(word[:-2])]
+
+        # Initialize the extractor.
+        super(TrigramExtractor, self).setup(trigrams)
+
+    def __call__(self, instance):
+        f = np.zeros(self.nfeatures)
+        word = START + instance[1] + STOP
+        for i, char in enumerate(word[:-2]):
+            try:
+                f[self.features.index(char+word[i+1:i+3])] += 1
+            except ValueError:
+                # Unknown character.
+                pass
+        return f
+
+
 class SuffixExtractor(FeatureExtractor):
 
     def __init__(self, length):
