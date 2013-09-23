@@ -84,4 +84,5 @@ def plot_confusion_matrix(model):
 
 
 if __name__ == "__main__":
-    plot_confusion_matrix("unigram")
+    plot_convergence("full_500")
+    plot_confusion_matrix("full_500")
