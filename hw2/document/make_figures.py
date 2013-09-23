@@ -69,7 +69,7 @@ def plot_confusion_matrix(model):
                         wspace=0.0, hspace=0.0)
 
     ax = pl.gca()
-    ax.imshow(conf, cmap="gray", interpolation="nearest")
+    ax.imshow(np.max(conf) - conf, cmap="gray", interpolation="nearest")
 
     ax.set_xticks(range(len(keys)))
     ax.set_xticklabels(keys)
