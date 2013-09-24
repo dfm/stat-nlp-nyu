@@ -10,7 +10,7 @@ __all__ = ["FeatureExtractor", "UnigramExtractor", "BigramExtractor",
 
 import os
 import re
-from multiprocessing import Pool
+import cPickle as pickle
 import numpy as np
 
 from . import _maxent
@@ -300,12 +300,15 @@ class MaximumEntropyClassifier(object):
     def extract(self, inst):
         return np.concatenate([e(inst) for e in self.extractors])
 
-    def train(self, data, schedule=[25, 50, 100, 150, 200], convout=None,
+    def train(self, data, schedule=[25, 50, 100, 150, 200], outdir=None,
               validation_set=None):
         label_indicies = [self.classes.index(inst[0]) for inst in data]
         feature_vector_list = [self.extract(inst) for inst in data]
 
-        if convout is not None:
+        convout = None
+        validout = None
+        if outdir is not None:
+            convout = os.path.join(outdir, "convergence.txt")
             open(convout, "w")
 
         iterations = 0
@@ -314,15 +317,22 @@ class MaximumEntropyClassifier(object):
                                                 feature_vector_list,
                                                 self.sigma, maxiter-iterations)
             iterations = maxiter
-            if convout is not None:
+            if outdir is not None:
                 train_acc = self.test(data)
+                validout = os.path.join(outdir, "validation.{0}.txt"
+                                        .format(iterations))
                 validation_acc = (0.0 if validation_set is None
-                                  else self.test(validation_set))
+                                  else self.test(validation_set,
+                                                 outfile=validout))
                 with open(convout, "a") as f:
                     f.write("{0:d} {1} {2}".format(iterations, nlp, train_acc))
                     if validation_set is not None:
                         f.write(" {0}".format(validation_acc))
                     f.write("\n")
+                pickle.dump(self,
+                            open(os.path.join(outdir,
+                                              "model.{0}.pkl"
+                                              .format(iterations)), "wb"), -1)
 
     def online(self, data, maxiter=40, rate=0.5, C=1):
         label_indicies = [self.classes.index(inst[0]) for inst in data]

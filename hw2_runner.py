@@ -84,7 +84,7 @@ if __name__ == "__main__":
                           rate=args.rate, C=args.const)
     else:
         classifier.train(training_data, validation_set=validation_data,
-                         convout=os.path.join(args.outdir, "convergence.txt"),
+                         outdir=args.outdir,
                          schedule=iterations)
 
     # Save the final classifier.
