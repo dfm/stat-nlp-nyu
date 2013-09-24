@@ -4,6 +4,7 @@
 from __future__ import division, print_function, absolute_import
 
 import os
+import sys
 import argparse
 import numpy as np
 import cPickle as pickle
@@ -16,7 +17,7 @@ parser = argparse.ArgumentParser(
     description="Proper noun classifier.")
 parser.add_argument("-v", "--verbose", action="store_true",
                     help="Display all the results.")
-parser.add_argument("-o", "--online", action="store_true",
+parser.add_argument("--online", action="store_true",
                     help="Run an online algorithm.")
 parser.add_argument("-r", "--rate", default=0.1, type=float,
                     help="The learning rate.")
@@ -32,11 +33,21 @@ parser.add_argument("-i", "--iterations", default="25, 50, 100, 150, 200",
                     help="The schedule of optimizer iterations to run.")
 parser.add_argument("-e", "--extractors", default="UnigramExtractor()",
                     help="A comma separated list of extractors to use.")
+parser.add_argument("-o", "--outdir", default="hw2",
+                    help="The output directory to save to.")
 
 
 if __name__ == "__main__":
     # Parse the command line arguments.
     args = parser.parse_args()
+
+    try:
+        os.makedirs(args.outdir)
+    except os.error:
+        pass
+
+    with open(os.path.join(args.outdir, "args"), "w") as fl:
+        fl.write(" ".join(sys.argv))
 
     if args.debug:
         training_data = [("cat", ["fuzzy", "claws", "small"]),
@@ -57,7 +68,7 @@ if __name__ == "__main__":
         labels = training_data.classes
 
         extractors = []
-        for e in args.extractors.split(","):
+        for e in args.extractors.split("|"):
             extractors.append(eval("{0}".format(e.strip())))
             extractors[-1].setup(training_data)
 
@@ -71,16 +82,19 @@ if __name__ == "__main__":
                           rate=args.rate, C=args.const)
     else:
         classifier.train(training_data, validation_set=validation_data,
-                         convout="hw2/convergence.txt", schedule=iterations)
+                         convout=os.path.join(args.outdir, "convergence.txt"),
+                         schedule=iterations)
 
     # Save the final classifier.
-    pickle.dump(classifier, open("hw2/model.pkl", "wb"), -1)
+    pickle.dump(classifier, open(os.path.join(args.outdir, "model.pkl"), "wb"),
+                -1)
 
     # Test.
-    print("Validation accuracy: {0}".format(classifier.test(validation_data,
-                                                            outfile="hw2/"
-                                                            "validation.txt")))
-    classifier.test(test_data, outfile="hw2/test.txt")
+    print("Validation accuracy: {0}".format(
+        classifier.test(validation_data,
+                        outfile=os.path.join(args.outdir, "validation.txt"))))
+    classifier.test(test_data,
+                    outfile=os.path.join(args.outdir, "test.txt"))
 
     if args.debug:
         print(classifier.classes,

@@ -38,17 +38,23 @@ class FeatureExtractor(object):
 
 class UnigramExtractor(FeatureExtractor):
 
+    def __init__(self, lower=False):
+        self.lower = lower
+
     def setup(self, training_data):
+        lower = lambda w: w.lower() if self.lower else w
+
         # Find all the character unigrams.
-        unigrams = [c for label, word in training_data for c in word]
+        unigrams = [c for label, word in training_data for c in lower(word)]
         super(UnigramExtractor, self).setup(unigrams)
 
         # Allow for unknown characters.
         self.nfeatures += 1
 
     def __call__(self, instance):
+        lower = lambda w: w.lower() if self.lower else w
         f = np.zeros(self.nfeatures)
-        for char in instance[1]:
+        for char in lower(instance[1]):
             try:
                 f[self.features.index(char)] += 1
             except ValueError:
@@ -59,19 +65,25 @@ class UnigramExtractor(FeatureExtractor):
 
 class BigramExtractor(FeatureExtractor):
 
+    def __init__(self, lower=False):
+        self.lower = lower
+
     def setup(self, training_data):
+        lower = lambda w: w.lower() if self.lower else w
+
         # Then, find the bigrams.
         bigrams = []
         for label, w in training_data:
-            word = START + w + STOP
+            word = START + lower(w) + STOP
             bigrams += [c+word[i+1] for i, c in enumerate(word[:-1])]
 
         # Initialize the extractor.
         super(BigramExtractor, self).setup(bigrams)
 
     def __call__(self, instance):
+        lower = lambda w: w.lower() if self.lower else w
         f = np.zeros(self.nfeatures)
-        word = START + instance[1] + STOP
+        word = START + lower(instance[1]) + STOP
         for i, char in enumerate(word[:-1]):
             try:
                 f[self.features.index(char+word[i+1])] += 1
@@ -83,19 +95,25 @@ class BigramExtractor(FeatureExtractor):
 
 class TrigramExtractor(FeatureExtractor):
 
+    def __init__(self, lower=False):
+        self.lower = lower
+
     def setup(self, training_data):
+        lower = lambda w: w.lower() if self.lower else w
+
         # Find the trigrams in the training data.
         trigrams = []
         for label, w in training_data:
-            word = START + w + STOP
+            word = START + lower(w) + STOP
             trigrams += [c+word[i+1:i+3] for i, c in enumerate(word[:-2])]
 
         # Initialize the extractor.
         super(TrigramExtractor, self).setup(trigrams)
 
     def __call__(self, instance):
+        lower = lambda w: w.lower() if self.lower else w
         f = np.zeros(self.nfeatures)
-        word = START + instance[1] + STOP
+        word = START + lower(instance[1]) + STOP
         for i, char in enumerate(word[:-2]):
             try:
                 f[self.features.index(char+word[i+1:i+3])] += 1
@@ -107,18 +125,22 @@ class TrigramExtractor(FeatureExtractor):
 
 class SuffixExtractor(FeatureExtractor):
 
-    def __init__(self, length):
+    def __init__(self, length, lower=False):
         self.length = length
+        self.lower = lower
 
     def setup(self, training_data):
-        suffs = [w.strip()[-self.length:] for label, instance in training_data
+        lower = lambda w: w.lower() if self.lower else w
+        suffs = [lower(w).strip()[-self.length:]
+                 for label, instance in training_data
                  for w in instance.split()]
         super(SuffixExtractor, self).setup(suffs)
 
     def __call__(self, instance):
+        lower = lambda w: w.lower() if self.lower else w
         f = np.zeros(self.nfeatures)
         try:
-            f[self.features.index(instance[1][-self.length:])] = 1
+            f[self.features.index(lower(instance[1])[-self.length:])] = 1
         except ValueError:
             pass
         return f
@@ -126,18 +148,22 @@ class SuffixExtractor(FeatureExtractor):
 
 class PrefixExtractor(FeatureExtractor):
 
-    def __init__(self, length):
+    def __init__(self, length, lower=False):
         self.length = length
+        self.lower = lower
 
     def setup(self, training_data):
-        suffs = [w.strip()[:self.length] for label, instance in training_data
+        lower = lambda w: w.lower() if self.lower else w
+        suffs = [lower(w).strip()[:self.length]
+                 for label, instance in training_data
                  for w in instance.split()]
         super(PrefixExtractor, self).setup(suffs)
 
     def __call__(self, instance):
+        lower = lambda w: w.lower() if self.lower else w
         f = np.zeros(self.nfeatures)
         try:
-            f[self.features.index(instance[1][:self.length])] = 1
+            f[self.features.index(lower(instance[1])[:self.length])] = 1
         except ValueError:
             pass
         return f
