@@ -274,10 +274,45 @@ it is the only class that regularly ends with a period.
 
 \Fig{bigram-convergence} shows the convergence of the model as a function of
 optimization steps.
+This model does somewhat better than the unigram features alone---as one would
+hope, given how much more flexible the model is---but the features are clearly
+still not discriminative enough (only $\sim 82.5\%$ accuracy on the validation
+set) to be useful in practice.
+\Fig{bigram-confusion} shows the confusion matrix for this feature set and the
+most striking feature is the confusion between the \code{person} and
+\code{movie} labels.
+Taking a look at the validation errors, it's interesting to note that the
+token \code{Ben Affleck}, for example, is labeled as a \code{movie} when any
+human could easily guess that he's probably a \code{person}.
+I'll keep this---and other similar examples---in mind in the next section.
+
+I also implemented a trigram feature extractor and the results again get
+marginally better: converging to $\sim 88\%$ accuracy on the validation set
+(using unigrams, bigrams, and trigrams).
+It's interesting to note here that in all of these examples, the performance
+of my models on the test set was consistently and systematically less accurate
+by $\sim 1\%$ than on the validation set.
+\Fig{trigram-confusion} shows the confusion matrix produced by this feature
+set.
+In this model, most of the confusion is between \code{place} and \code{movie}.
+
+It is also interesting to note (from \fig{trigram-confidence-scale}) that this
+model is somewhat \emph{over-confident} in its predictions.
+To attempt to correct for this, I tried optimizing this model with a
+different value of the L2 normalization scale $\sigma$.
+In production, it would be a good idea to run a grid of models with different
+values of $\sigma$ and chose the best one using cross-validation.
+Since I didn't have time---or the computational resources---to try this for
+this assignment, I simply tried a second value of $\sigma = 1/2$.
+This produces somewhat better predictions (see \fig{trigram-0.5-confusion})
+and the confidences were much better calibrated (see
+\fig{trigram-0.5-confidence-scale}).
+This is probably because the initial trigram model was over-fitting the
+training data.
 
 \begin{figure}[htbp]
 \begin{center}
-    \includegraphics[width=\textwidth]{bigrams_convergence.pdf}
+    \includegraphics[width=0.65\textwidth]{bigrams_convergence.pdf}
 \end{center}
 \caption{%
 The same a \fig{unigram-convergence} but including bigram features.
@@ -286,12 +321,67 @@ The same a \fig{unigram-convergence} but including bigram features.
 
 \begin{figure}[htbp]
 \begin{center}
-    \includegraphics[width=\textwidth]{bigrams_confusion.pdf}
+    \includegraphics[width=0.65\textwidth]{bigrams_confusion.pdf}
 \end{center}
 \caption{%
 The same a \fig{unigram-confusion} but including bigram features.
 \figlabel{bigram-confusion}}
 \end{figure}
 
+\begin{figure}[htbp]
+\begin{center}
+    \includegraphics[width=0.65\textwidth]{trigram_confusion.pdf}
+\end{center}
+\caption{%
+The same a \fig{unigram-confusion} but including bigram and trigram
+features.
+\figlabel{trigram-confusion}}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+    \includegraphics[width=0.65\textwidth]{trigram_confidence_scale.pdf}
+\end{center}
+\caption{%
+The same a \fig{unigram-confidence-scale} but including bigram and trigram
+features.
+\figlabel{trigram-confidence-scale}}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+    \includegraphics[width=0.65\textwidth]{trigram_0_5_confusion.pdf}
+\end{center}
+\caption{%
+The same a \fig{trigram-confusion} but with $\sigma = 1/2$.
+\figlabel{trigram-0.5-confusion}}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+    \includegraphics[width=0.65\textwidth]{trigram_0_5_confidence_scale.pdf}
+\end{center}
+\caption{%
+The same a \fig{trigram-confidence-scale} but with $\sigma = 1/2$.
+\figlabel{trigram-0.5-confidence-scale}}
+\end{figure}
+
+\clearpage
+
+\section{Descriptive features}
+
+After trying the default N-gram feature sets described above, I wanted to try
+some more ``descriptive'' features based on something like \emph{domain
+knowledge} (translation: looking at the validation set and guessing).
+Some features that I thought of are:
+\begin{itemize}
+\item{the total number of characters in the string,}
+\item{the number of words in the string,}
+\item{the number of digits in the string,}
+\item{the number and identities of the stop words in the string (English,
+      French, etc.),}
+\item{the N-character suffixes and prefixes (considering the individual
+      words or the full string),}
+\end{itemize}
 
 \end{document}
