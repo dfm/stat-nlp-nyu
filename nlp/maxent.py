@@ -4,10 +4,11 @@
 from __future__ import division, print_function, absolute_import
 
 __all__ = ["FeatureExtractor", "UnigramExtractor", "BigramExtractor",
-           "TrigramExtractor",
+           "TrigramExtractor", "StopWordExtractor",
            "SuffixExtractor", "PrefixExtractor", "MaximumEntropyClassifier",
            "DigitExtractor", "NWordsExtractor"]
 
+import os
 import re
 import numpy as np
 
@@ -33,6 +34,31 @@ class FeatureExtractor(object):
         f = np.zeros(self.nfeatures)
         for feature in instance[1]:
             f[self.features.index(feature)] += 1
+        return f
+
+
+class StopWordExtractor(FeatureExtractor):
+
+    def __init__(self):
+        stopwords = list(set([w.strip()
+                              for w in os.path.join(os.path.dirname(
+                                                    os.path.abspath(__file__)),
+                                                    "stopwords.txt")]))
+        super(StopWordExtractor, self).__init__(stopwords)
+
+    def setup(self, training_data):
+        pass
+
+    def __call__(self, instance):
+        words = instance[1].split()
+        f = np.zeros(self.nfeatures)
+        for w in words:
+            try:
+                ind = self.features.index(w)
+            except ValueError:
+                pass
+            else:
+                f[ind] += 1
         return f
 
 
