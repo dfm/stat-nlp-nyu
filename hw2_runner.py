@@ -67,10 +67,12 @@ if __name__ == "__main__":
         test_data = Dataset(os.path.join(args.data, "pnp-test.txt"))
         labels = training_data.classes
 
+        print("Number of parameters:")
         extractors = []
         for e in args.extractors.split("|"):
             extractors.append(eval("{0}".format(e.strip())))
             extractors[-1].setup(training_data)
+            print("    {0}: {1}".format(e.strip(), extractors[-1].nfeatures))
 
     # Initialize the classifier.
     classifier = MaximumEntropyClassifier(labels, extractors, sigma=args.sigma)

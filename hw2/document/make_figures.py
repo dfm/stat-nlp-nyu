@@ -49,15 +49,24 @@ def plot_confusion_matrix(model):
     norm = defaultdict(int)
     matrix = defaultdict(lambda: defaultdict(int))
     extractor = re.compile(r"Example:(?:\s*)(.*?)(?:\s*?)guess=(\w*?)(?:\s*?)"
-                           r"gold=(\w*)\b")
+                           r"gold=(\w*)(?:\s*)confidence=(.*)")
+    correct_confidences = []
+    incorrect_confidences = []
+    open("results/{0}/mistakes.txt".format(model), "w")
     with open("results/{0}/validation.txt".format(model)) as f:
         for line in f:
-            word, guess, gold = extractor.findall(
+            word, guess, gold, confidence = extractor.findall(
                 line.decode("utf-8", errors="ignore"))[0]
             norm[gold] += 1
             matrix[gold][guess] += 1
             if gold != guess:
-                print("{0} -> {1}: {2}".format(guess, gold, word))
+                incorrect_confidences.append(float(confidence.strip()))
+                with open("results/{0}/mistakes.txt".format(model),
+                          "a") as fout:
+                    fout.write("{0} -> {1}: {2} ({3})\n"
+                               .format(guess, gold, word, confidence.strip()))
+            else:
+                correct_confidences.append(float(confidence.strip()))
 
     keys = norm.keys()
     conf = np.zeros((len(keys), len(keys)))
@@ -82,6 +91,22 @@ def plot_confusion_matrix(model):
     ax.set_ylabel("gold", fontsize=36)
 
     pl.savefig("{0}_confusion.pdf".format(model))
+
+    # Plot histograms.
+    pl.figure()
+    bins = np.linspace(0, 1, 50)
+    nc, b, p = pl.hist(correct_confidences, bins, histtype="step", color="g")
+    ni, b, p = pl.hist(incorrect_confidences, bins, histtype="step", color="r")
+    pl.xlabel("confidence")
+    pl.ylabel("number of examples")
+    pl.savefig("{0}_confidence_hist.pdf".format(model))
+
+    pl.clf()
+    pl.plot(0.5*(bins[1:]+bins[:-1]), nc / (nc + ni), ".k")
+    pl.plot([0, 1], [0, 1], "--k", lw=2)
+    pl.xlabel("confidence")
+    pl.ylabel("fraction correct")
+    pl.savefig("{0}_confidence_scale.pdf".format(model))
 
 
 if __name__ == "__main__":

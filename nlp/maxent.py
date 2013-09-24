@@ -10,6 +10,7 @@ __all__ = ["FeatureExtractor", "UnigramExtractor", "BigramExtractor",
 
 import os
 import re
+from multiprocessing import Pool
 import numpy as np
 
 from . import _maxent
@@ -174,24 +175,31 @@ class TrigramExtractor(FeatureExtractor):
 
 class SuffixExtractor(FeatureExtractor):
 
-    def __init__(self, length, lower=False):
+    def __init__(self, length, lower=False, split=True):
         self.length = length
         self.lower = lower
+        self.split = split
 
     def setup(self, training_data):
         lower = lambda w: w.lower() if self.lower else w
-        suffs = [lower(w).strip()[-self.length:]
-                 for label, instance in training_data
-                 for w in instance.split()]
+        if self.split:
+            suffs = [lower(w).strip()[-self.length:]
+                     for label, instance in training_data
+                     for w in instance.split()]
+        else:
+            suffs = [lower(instance).strip()[-self.length:]
+                     for label, instance in training_data]
         super(SuffixExtractor, self).setup(suffs)
 
     def __call__(self, instance):
         lower = lambda w: w.lower() if self.lower else w
         f = np.zeros(self.nfeatures)
-        try:
-            f[self.features.index(lower(instance[1])[-self.length:])] = 1
-        except ValueError:
-            pass
+        words = instance[1].split() if self.split else [instance[1]]
+        for word in words:
+            try:
+                f[self.features.index(lower(word)[-self.length:])] += 1
+            except ValueError:
+                pass
         return f
 
 

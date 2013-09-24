@@ -1,377 +1,377 @@
-place -> drug: Abbokinase
-person -> drug: Almacone II
-movie -> drug: Amerge
-movie -> drug: Artane Sequels
-place -> drug: Astone
-place -> drug: Auroto
-movie -> drug: Backwoods Cutter
-company -> drug: Balminil Decongestant Syrup
-movie -> drug: Bion Tears
-movie -> drug: Bismed
-company -> drug: BQ Cold
-person -> drug: Brylcreem Antidandruff
-movie -> drug: Canesten 6-Day Therapy
-person -> drug: Carnation Good Start
-place -> drug: Celestone
-movie -> drug: Children's Sucrets
-movie -> drug: Climara
-person -> drug: Coppertone Dark Tanning
-movie -> drug: D(Rh o ) immune globulin
-place -> drug: DexFerrum
-movie -> drug: Diamox Sequels
-movie -> drug: Doktors
-movie -> drug: Essential Care Medicated Dandruff Wash
-person -> drug: EZ III
-place -> drug: Fer-gen-sol
-place -> drug: Ferralet
-movie -> drug: Fiberlan
-company -> drug: FML S.O.P.
-movie -> drug: Gasmas
-movie -> drug: Goniosoft
-movie -> drug: Goody's Headache Powders
-movie -> drug: Hold DM
-movie -> drug: Homapin
-place -> drug: Ircon
-place -> drug: Iveegam
-movie -> drug: Kiddy Koff 130
-movie -> drug: Life Antacid
-company -> drug: Liquor Carbonis Detergens
-place -> drug: Lopurin
-movie -> drug: Monoket
-movie -> drug: Muse
-place -> drug: NebuPent
-place -> drug: Neupogen
-movie -> drug: North American coral snake antivenin2
-place -> drug: Ombrelle Sunscreen
-movie -> drug: Onguent de Calamine
-person -> drug: P.N. Ophthalmic
-place -> drug: Pancrease
-place -> drug: Pontocaine
-movie -> drug: Posture 13
-movie -> drug: Presun Clear
-movie -> drug: Primatuss Cough Mixture 4
-movie -> drug: Pronto Lice Killing Shampoo Kit
-movie -> drug: Propa pH Medicated Cleansing Pads Sensitive Skin
-movie -> drug: Propecia
-movie -> drug: Pyopen
-movie -> drug: Q.T. Quick Tanning 32
-place -> drug: Reserfia
-place -> drug: ReVia
-movie -> drug: Rogaine For Women
-place -> drug: Saleto
-movie -> drug: Semilente insulin: S
-movie -> drug: Sential
-place -> drug: Sertan
-movie -> drug: Soda Mint
-movie -> drug: Student's Choice Acne Medication
-movie -> drug: Tar Doak
-movie -> drug: Tarpaste `Doak'
-person -> drug: Triaz Cleanser
-movie -> drug: Trivora
-movie -> drug: Yoman
-drug -> person: Aethelwulf
-movie -> person: Amos Rusie
-place -> person: Anne
-drug -> person: At-Tufayl ibn Amr ad-Dawsi
-movie -> person: Ben Affleck
-movie -> person: Betty White
-movie -> person: Bill Cosby
-movie -> person: Brent Spiner
-place -> person: Brian Hartley
-place -> person: Callippus
-drug -> person: Captain Vivian S. Crea
-company -> person: Cecil Frank Powell
-drug -> person: Constantine
-movie -> person: Deion Sanders
-drug -> person: Demeter
-movie -> person: Dennis Quaid
-drug -> person: Diderot
-movie -> person: Donus
-movie -> person: Dosso Dossi
-place -> person: Elsie Weston
-movie -> person: Enyo
-movie -> person: Erkki Rekimies
-movie -> person: Fatty Arbuckle
-drug -> person: Gavrilo Princip
-drug -> person: Geminus
-movie -> person: Giorgos Seferis
-movie -> person: Giotto di Bondone
-movie -> person: Grandpa Jones
-movie -> person: Helios
-place -> person: Hephaistos
-movie -> person: Hippias of Elis
-drug -> person: Jean-Baptiste-Camille Corot
-movie -> person: Jim Thorpe
-movie -> person: Justice Souter
-movie -> person: Kalle Ptalo
-drug -> person: Kalypso
-movie -> person: Kiefer Sutherland
-movie -> person: King Mark
-movie -> person: Leif Panduro
-movie -> person: Liberius
-movie -> person: Linda Smith
-movie -> person: Lise Meitner
-movie -> person: Lucy Killea
-movie -> person: Master Chief Petty Officer Ginger Lee Simpson
-movie -> person: Maximilian von Spee
-movie -> person: Maya Angelou
-place -> person: Menaechmus
-place -> person: Namadeva
-movie -> person: Nicole d' Oresme
-movie -> person: Nicomedes
-movie -> person: Nuo Gonalves
-drug -> person: Odilon Redon
-movie -> person: Oliver Heaviside
-movie -> person: Paul Henri Balluet d'Estournelles de Constant de Rebecque
-drug -> person: Philip Sheridan
-movie -> person: Queen Victoria
-movie -> person: Rhonda Fleming Mann
-movie -> person: Sam Rice
-movie -> person: Serenus
-movie -> person: Sporus of Nicaea
-movie -> person: Takakazu Seki Kowa
-movie -> person: Tapio Hiisivaara
-movie -> person: Teiji Takagi
-movie -> person: Theon of Smyrna
-place -> person: Thomas Gainsborough
-movie -> person: Thomas Stearns Eliot
-place -> person: Thompson
-movie -> person: Tsu Ch'ung Chi
-drug -> person: Tulasidas
-movie -> person: Ving Rhames
-drug -> person: Voltaire
-movie -> person: al-Rumi Qadi Zada
-drug -> place: Antrim
-drug -> place: Ars-Laquenexy
-person -> place: Avalon Beach
-movie -> place: Avoca Beach
-drug -> place: Belgium
-movie -> place: Blaenau Ffestiniog
-movie -> place: Boston Spa
-person -> place: Brightwell Baldwin
-movie -> place: Brive
-drug -> place: Caldicot
-person -> place: Chipping Campden
-person -> place: Collaroy Plateau
-drug -> place: Cotignac
-movie -> place: De Kwakel
-movie -> place: Dinas Powys
-movie -> place: Docklow
-drug -> place: Dominican Republic
-movie -> place: Drachten
-person -> place: East Kilbride
-person -> place: Ellesmere Port
-movie -> place: Evenki
-movie -> place: Fareham
-movie -> place: Fayence
-drug -> place: Frayssinet
-person -> place: French Riviera
-movie -> place: Gabon
-movie -> place: Geseke
-movie -> place: Glebe
-drug -> place: Glenluce
-movie -> place: Gorokan
-movie -> place: Gundagai
-person -> place: Hartley Wintney
-person -> place: Hatch Beauchamp
-drug -> place: Kaliningrad
-movie -> place: Kansas
-movie -> place: Killara
-movie -> place: La Ciotat
-movie -> place: La Plagne
-movie -> place: La Rochepot
-movie -> place: Lake Macquarie City
-person -> place: Le Havre
-movie -> place: Lea Cross
-person -> place: Llantwit Major
-movie -> place: Mere
-drug -> place: Midi-Pyrenees
-drug -> place: Morocco
-movie -> place: Nakhodka
-drug -> place: Namibia
-movie -> place: Niger
-movie -> place: Nimes
-drug -> place: Panzoult
-movie -> place: Passau
-movie -> place: Port Sunlight
-movie -> place: Pyrmont
-drug -> place: Remaisnil
-drug -> place: Ruffec
-movie -> place: Sandy
-drug -> place: Schiphol
-movie -> place: Seascale
-movie -> place: Seebruck
-movie -> place: Sheerness
-movie -> place: Somercotes
-person -> place: Sophia Antipolis
-person -> place: St Leonards
-movie -> place: St Marys
-person -> place: St. Columb Major
-person -> place: St. Germans
-movie -> place: Strathmiglo
-movie -> place: Symonds Yat
-movie -> place: Thredbo
-movie -> place: Trantlebeg
-drug -> place: Ulft
-company -> place: United Arab Emirates
-movie -> place: Upton Upon Severn
-drug -> place: Ventnor
-movie -> place: Vougeot
-movie -> place: West End
-movie -> place: White Roding
-drug -> place: Wroxeter
-place -> movie: $windle
-drug -> movie: 451 Forte
-company -> movie: A Chronicle of Corpses
-drug -> movie: Ad Libitum 1. An English Duet Alla Turca
-person -> movie: Alai Payuthey
-person -> movie: Alta Fidelidade
-place -> movie: Angst
-place -> movie: Arzew
-drug -> movie: Attraction
-place -> movie: Azzurro
-place -> movie: Bajland
-place -> movie: Baltic Sea
-drug -> movie: Baobab
-place -> movie: Barbecue-Pejo
-place -> movie: Bartleby
-drug -> movie: Bellyful
-person -> movie: Bharathi
-place -> movie: Bruiser
-place -> movie: Bull
-place -> movie: Butterfly
-person -> movie: Caf Chameleon
-person -> movie: Calcutta Chromosome
-drug -> movie: Carapaces
-person -> movie: Coconut Heads
-place -> movie: Comrades
-drug -> movie: Copacabana
-person -> movie: Cosmo Warrior Zero
-person -> movie: County Kilburn
-place -> movie: Crazy
-place -> movie: Cream
-place -> movie: Cult
-place -> movie: Cvennes
-drug -> movie: Daniel
-person -> movie: Das Teufelsweib
-person -> movie: De Omweg
-drug -> movie: Demobbed
-person -> movie: Der Austausch
-drug -> movie: Dolphins
-place -> movie: Dorsey
-person -> movie: Dr. Benny
-person -> movie: Dr. Lucille
-place -> movie: Driven
-place -> movie: Edelweiss
-person -> movie: El Botones Sacarino
-company -> movie: El Valley Centro
-drug -> movie: Enamored
-person -> movie: Epoch of Lotus
-drug -> movie: Exotic Time Machine 2
-drug -> movie: FDS - Fomos Desiludidos Sistematicamente
-drug -> movie: Filmredaksjonen
-person -> movie: Franck Spadone
-place -> movie: Freon
-person -> movie: Gallito Ciego
-person -> movie: Gelbe Kirschen
-place -> movie: Gormenghast
-drug -> movie: Great Sex
-person -> movie: Hamburger Bier
-person -> movie: Harm Done
-drug -> movie: Honolulu
-drug -> movie: IPC 215
-drug -> movie: Ilusiones compartidas
-drug -> movie: Impact Zone
-person -> movie: Jackie Bouvier Kennedy Onassis
-person -> movie: Jesus of Cinema
-person -> movie: Jigsaw Venus
-person -> movie: Jizz Junkies
-place -> movie: Karl
-person -> movie: Kinnara Thumbikal
-person -> movie: Kochu Kochu Santhoshangal
-place -> movie: Kong
-place -> movie: Korei
-place -> movie: Kouravudu
-drug -> movie: Krocodylus
-person -> movie: Le Lyce
-person -> movie: Leos Video
-place -> movie: Lloyd
-drug -> movie: M2M
-drug -> movie: M:I-2
-place -> movie: Manoharam
-place -> movie: Mariaaria
-place -> movie: Marmer
-place -> movie: Maryam
-drug -> movie: Melon Season 2
-drug -> movie: Mermaid
-place -> movie: Mirrorball
-drug -> movie: Modelo 73
-person -> movie: Mr. Butler
-person -> movie: Mr. Ed
-drug -> movie: NZx10
-place -> movie: Nachtwacht
-person -> movie: Neue Schuhe
-place -> movie: Ogopogo
-person -> movie: Ordinary Bolshevism
-drug -> movie: Ordinary Decent Criminal
-drug -> movie: P.R.
-place -> movie: Papa
-place -> movie: Peechan
-place -> movie: Penalty
-person -> movie: Peppermint Candy
-drug -> movie: Peril
-place -> movie: Persona
-person -> movie: Placido Rizzotto
-drug -> movie: Please 12
-drug -> movie: Prelude
-drug -> movie: Proibito baciare
-person -> movie: Raju Chacha
-person -> movie: Red Letters
-drug -> movie: Respect
-place -> movie: Rizoto
-place -> movie: Rohschnitt
-place -> movie: Rubbernecking
-person -> movie: Savage Honeymoon
-person -> movie: Selvsvings Ddsjov
-place -> movie: Shutterspeed
-drug -> movie: Sista 11
-place -> movie: Skullduggery
-place -> movie: Snow Graham Norton
-drug -> movie: Special Report
-place -> movie: Stageghost
-place -> movie: Stalled
-place -> movie: Stonecold
-person -> movie: Student Body
-drug -> movie: Summoner
-drug -> movie: Syphon Filter 2
-person -> movie: Szczesliwy czlowiek
-place -> movie: Sance
-person -> movie: T.T. Syndrome
-place -> movie: Taina
-place -> movie: Tigerland
-drug -> movie: Tinnef
-drug -> movie: U-571
-place -> movie: Udenfor
-place -> movie: Unchain
-place -> movie: Unshackled
-place -> movie: Usan
-drug -> movie: Uxoricide
-place -> movie: Uzumaki
-person -> movie: Verlorene Kinder
-person -> movie: Viva Boer Gerrit
-drug -> movie: Vizontele
-place -> movie: Watching
-person -> movie: Wiggly Walk
-drug -> movie: Xyzfear
-movie -> company: Becton Dickinson & Co
-drug -> company: Coca-Cola FEMSA
-movie -> company: Electricidade De Portugal
-movie -> company: Fiat Spa
-person -> company: Heinz H J Co
-drug -> company: Manufacturers' Services Limited
-drug -> company: Pepsi-Gemex S A De C V
-person -> company: Rouse Co
-movie -> company: Royal Bk Cda Montreal Que
-movie -> company: Sears Roebuck & Co
-person -> company: Standard Register
-movie -> company: Sunsource Cap Tr
+place -> drug: Abbokinase (0.353740479524)
+person -> drug: Almacone II (0.73739797551)
+movie -> drug: Amerge (0.552103516839)
+movie -> drug: Artane Sequels (0.544076798871)
+place -> drug: Astone (0.849098656843)
+place -> drug: Auroto (0.6631132994)
+movie -> drug: Backwoods Cutter (0.603203798855)
+company -> drug: Balminil Decongestant Syrup (0.505454853576)
+movie -> drug: Bion Tears (0.84548463796)
+movie -> drug: Bismed (0.4262872158)
+company -> drug: BQ Cold (0.330104767766)
+person -> drug: Brylcreem Antidandruff (0.731576458746)
+movie -> drug: Canesten 6-Day Therapy (0.619746884855)
+person -> drug: Carnation Good Start (0.524957009824)
+place -> drug: Celestone (0.751950254462)
+movie -> drug: Children's Sucrets (0.822111859168)
+movie -> drug: Climara (0.472854941173)
+person -> drug: Coppertone Dark Tanning (0.800976718759)
+movie -> drug: D(Rh o ) immune globulin (0.611201260273)
+place -> drug: DexFerrum (0.577963928424)
+movie -> drug: Diamox Sequels (0.714063699522)
+movie -> drug: Doktors (0.725181775335)
+movie -> drug: Essential Care Medicated Dandruff Wash (0.813470454274)
+person -> drug: EZ III (0.780748131491)
+place -> drug: Fer-gen-sol (0.602399381631)
+place -> drug: Ferralet (0.499883237137)
+movie -> drug: Fiberlan (0.345042709009)
+company -> drug: FML S.O.P. (0.747891854556)
+movie -> drug: Gasmas (0.646589609486)
+movie -> drug: Goniosoft (0.691276323129)
+movie -> drug: Goody's Headache Powders (0.99747124025)
+movie -> drug: Hold DM (0.50584933583)
+movie -> drug: Homapin (0.484026331668)
+place -> drug: Ircon (0.564068204349)
+place -> drug: Iveegam (0.889460230153)
+movie -> drug: Kiddy Koff 130 (0.600711115129)
+movie -> drug: Life Antacid (0.509021568978)
+company -> drug: Liquor Carbonis Detergens (0.322185199843)
+place -> drug: Lopurin (0.574405029929)
+movie -> drug: Monoket (0.451361720372)
+movie -> drug: Muse (0.505856224058)
+place -> drug: NebuPent (0.510173728002)
+place -> drug: Neupogen (0.588783627123)
+movie -> drug: North American coral snake antivenin2 (0.798028062383)
+place -> drug: Ombrelle Sunscreen (0.738288549715)
+movie -> drug: Onguent de Calamine (0.896942887267)
+person -> drug: P.N. Ophthalmic (0.556932334251)
+place -> drug: Pancrease (0.408943242555)
+place -> drug: Pontocaine (0.623916680466)
+movie -> drug: Posture 13 (0.60249858198)
+movie -> drug: Presun Clear (0.526893490831)
+movie -> drug: Primatuss Cough Mixture 4 (0.862083973465)
+movie -> drug: Pronto Lice Killing Shampoo Kit (0.973716490585)
+movie -> drug: Propa pH Medicated Cleansing Pads Sensitive Skin (0.699653826535)
+movie -> drug: Propecia (0.541560973063)
+movie -> drug: Pyopen (0.466668504212)
+movie -> drug: Q.T. Quick Tanning 32 (0.64460114225)
+place -> drug: Reserfia (0.726688950614)
+place -> drug: ReVia (0.548901105331)
+movie -> drug: Rogaine For Women (0.526637542657)
+place -> drug: Saleto (0.685861750083)
+movie -> drug: Semilente insulin: S (0.916076086245)
+movie -> drug: Sential (0.603900518915)
+place -> drug: Sertan (0.35954824902)
+movie -> drug: Soda Mint (0.707828223717)
+movie -> drug: Student's Choice Acne Medication (0.981971548006)
+movie -> drug: Tar Doak (0.687794950179)
+movie -> drug: Tarpaste `Doak' (0.551793182423)
+person -> drug: Triaz Cleanser (0.469196334949)
+movie -> drug: Trivora (0.393254755921)
+movie -> drug: Yoman (0.79274029529)
+drug -> person: Aethelwulf (0.720610256672)
+movie -> person: Amos Rusie (0.62235613053)
+place -> person: Anne (0.745954937915)
+drug -> person: At-Tufayl ibn Amr ad-Dawsi (0.542442637625)
+movie -> person: Ben Affleck (0.838594841029)
+movie -> person: Betty White (0.539124607778)
+movie -> person: Bill Cosby (0.448453854645)
+movie -> person: Brent Spiner (0.810167696913)
+place -> person: Brian Hartley (0.638411763806)
+place -> person: Callippus (0.523278737924)
+drug -> person: Captain Vivian S. Crea (0.412791629274)
+company -> person: Cecil Frank Powell (0.473644237303)
+drug -> person: Constantine (0.632293338618)
+movie -> person: Deion Sanders (0.76104308773)
+drug -> person: Demeter (0.690980819294)
+movie -> person: Dennis Quaid (0.725676714656)
+drug -> person: Diderot (0.802761948962)
+movie -> person: Donus (0.341219805903)
+movie -> person: Dosso Dossi (0.560488132898)
+place -> person: Elsie Weston (0.4988629174)
+movie -> person: Enyo (0.707971699538)
+movie -> person: Erkki Rekimies (0.658123040311)
+movie -> person: Fatty Arbuckle (0.593923363962)
+drug -> person: Gavrilo Princip (0.530987823558)
+drug -> person: Geminus (0.675115393206)
+movie -> person: Giorgos Seferis (0.830832233969)
+movie -> person: Giotto di Bondone (0.761214014433)
+movie -> person: Grandpa Jones (0.574998799711)
+movie -> person: Helios (0.769899531157)
+place -> person: Hephaistos (0.5624405257)
+movie -> person: Hippias of Elis (0.654107678472)
+drug -> person: Jean-Baptiste-Camille Corot (0.808812189746)
+movie -> person: Jim Thorpe (0.775334374022)
+movie -> person: Justice Souter (0.612189655429)
+movie -> person: Kalle Ptalo (0.673140444633)
+drug -> person: Kalypso (0.561021082336)
+movie -> person: Kiefer Sutherland (0.612541458048)
+movie -> person: King Mark (0.571227205159)
+movie -> person: Leif Panduro (0.850337599291)
+movie -> person: Liberius (0.81849788721)
+movie -> person: Linda Smith (0.446728888587)
+movie -> person: Lise Meitner (0.560381958056)
+movie -> person: Lucy Killea (0.468846504314)
+movie -> person: Master Chief Petty Officer Ginger Lee Simpson (0.677513335389)
+movie -> person: Maximilian von Spee (0.737235085365)
+movie -> person: Maya Angelou (0.693359742925)
+place -> person: Menaechmus (0.46491255774)
+place -> person: Namadeva (0.404040827365)
+movie -> person: Nicole d' Oresme (0.795355948106)
+movie -> person: Nicomedes (0.587994585314)
+movie -> person: Nuo Gonalves (0.938561182267)
+drug -> person: Odilon Redon (0.554092546872)
+movie -> person: Oliver Heaviside (0.565520286952)
+movie -> person: Paul Henri Balluet d'Estournelles de Constant de Rebecque (0.969138081871)
+drug -> person: Philip Sheridan (0.567471849013)
+movie -> person: Queen Victoria (0.472022785146)
+movie -> person: Rhonda Fleming Mann (0.545054204155)
+movie -> person: Sam Rice (0.457635108222)
+movie -> person: Serenus (0.578024697163)
+movie -> person: Sporus of Nicaea (0.894436462552)
+movie -> person: Takakazu Seki Kowa (0.842348856309)
+movie -> person: Tapio Hiisivaara (0.855062998004)
+movie -> person: Teiji Takagi (0.809374932812)
+movie -> person: Theon of Smyrna (0.557932445052)
+place -> person: Thomas Gainsborough (0.564620271377)
+movie -> person: Thomas Stearns Eliot (0.65140148061)
+place -> person: Thompson (0.386287946654)
+movie -> person: Tsu Ch'ung Chi (0.743392062412)
+drug -> person: Tulasidas (0.83466108573)
+movie -> person: Ving Rhames (0.62714599954)
+drug -> person: Voltaire (0.543593299528)
+movie -> person: al-Rumi Qadi Zada (0.531791802191)
+drug -> place: Antrim (0.758455114045)
+drug -> place: Ars-Laquenexy (0.877222086479)
+person -> place: Avalon Beach (0.409270617008)
+movie -> place: Avoca Beach (0.423090875282)
+drug -> place: Belgium (0.470613500942)
+movie -> place: Blaenau Ffestiniog (0.693687467559)
+movie -> place: Boston Spa (0.641547747551)
+person -> place: Brightwell Baldwin (0.888995531707)
+movie -> place: Brive (0.622455548121)
+drug -> place: Caldicot (0.725759456743)
+person -> place: Chipping Campden (0.413254775813)
+person -> place: Collaroy Plateau (0.551885887965)
+drug -> place: Cotignac (0.585026522663)
+movie -> place: De Kwakel (0.677133951744)
+movie -> place: Dinas Powys (0.636782871083)
+movie -> place: Docklow (0.461368386699)
+drug -> place: Dominican Republic (0.358921360127)
+movie -> place: Drachten (0.426430881548)
+person -> place: East Kilbride (0.766777764805)
+person -> place: Ellesmere Port (0.703494406537)
+movie -> place: Evenki (0.766465939085)
+movie -> place: Fareham (0.650517401223)
+movie -> place: Fayence (0.613446514411)
+drug -> place: Frayssinet (0.710644319811)
+person -> place: French Riviera (0.576582731546)
+movie -> place: Gabon (0.41841247117)
+movie -> place: Geseke (0.458289050525)
+movie -> place: Glebe (0.468570116029)
+drug -> place: Glenluce (0.467135780498)
+movie -> place: Gorokan (0.490337108421)
+movie -> place: Gundagai (0.564097268819)
+person -> place: Hartley Wintney (0.581336432688)
+person -> place: Hatch Beauchamp (0.63120063664)
+drug -> place: Kaliningrad (0.44519322683)
+movie -> place: Kansas (0.61402128301)
+movie -> place: Killara (0.492739335981)
+movie -> place: La Ciotat (0.872670489751)
+movie -> place: La Plagne (0.522494839456)
+movie -> place: La Rochepot (0.446951198398)
+movie -> place: Lake Macquarie City (0.829307196996)
+person -> place: Le Havre (0.373028278693)
+movie -> place: Lea Cross (0.619194966685)
+person -> place: Llantwit Major (0.686414566043)
+movie -> place: Mere (0.460637940925)
+drug -> place: Midi-Pyrenees (0.964430395687)
+drug -> place: Morocco (0.400303546817)
+movie -> place: Nakhodka (0.668943509922)
+drug -> place: Namibia (0.434429453531)
+movie -> place: Niger (0.441877541299)
+movie -> place: Nimes (0.68601625757)
+drug -> place: Panzoult (0.611164447979)
+movie -> place: Passau (0.60329637296)
+movie -> place: Port Sunlight (0.6268222363)
+movie -> place: Pyrmont (0.376455952035)
+drug -> place: Remaisnil (0.639360853161)
+drug -> place: Ruffec (0.596092065127)
+movie -> place: Sandy (0.55000362724)
+drug -> place: Schiphol (0.569379264525)
+movie -> place: Seascale (0.650108176819)
+movie -> place: Seebruck (0.789045844106)
+movie -> place: Sheerness (0.619923316046)
+movie -> place: Somercotes (0.668771399565)
+person -> place: Sophia Antipolis (0.90959349904)
+person -> place: St Leonards (0.561319688572)
+movie -> place: St Marys (0.698969482805)
+person -> place: St. Columb Major (0.858611644411)
+person -> place: St. Germans (0.497810065006)
+movie -> place: Strathmiglo (0.545702042991)
+movie -> place: Symonds Yat (0.49051416381)
+movie -> place: Thredbo (0.917055323534)
+movie -> place: Trantlebeg (0.5609023328)
+drug -> place: Ulft (0.466795724967)
+company -> place: United Arab Emirates (0.672202837792)
+movie -> place: Upton Upon Severn (0.483571431367)
+drug -> place: Ventnor (0.390509457179)
+movie -> place: Vougeot (0.510961023996)
+movie -> place: West End (0.527320043653)
+movie -> place: White Roding (0.541269319764)
+drug -> place: Wroxeter (0.624768023524)
+place -> movie: $windle (0.762061521218)
+drug -> movie: 451 Forte (0.948610917853)
+company -> movie: A Chronicle of Corpses (0.788501197352)
+drug -> movie: Ad Libitum 1. An English Duet Alla Turca (0.952009764331)
+person -> movie: Alai Payuthey (0.610670314216)
+person -> movie: Alta Fidelidade (0.399473862446)
+place -> movie: Angst (0.592444335895)
+place -> movie: Arzew (0.659287770194)
+drug -> movie: Attraction (0.565809160015)
+place -> movie: Azzurro (0.797721897155)
+place -> movie: Bajland (0.941681623543)
+place -> movie: Baltic Sea (0.382053980966)
+drug -> movie: Baobab (0.830231514151)
+place -> movie: Barbecue-Pejo (0.61277088466)
+place -> movie: Bartleby (0.97554501656)
+drug -> movie: Bellyful (0.665821267179)
+person -> movie: Bharathi (0.515114599718)
+place -> movie: Bruiser (0.694549398318)
+place -> movie: Bull (0.494871799151)
+place -> movie: Butterfly (0.734937301939)
+person -> movie: Caf Chameleon (0.606909491562)
+person -> movie: Calcutta Chromosome (0.347922898578)
+drug -> movie: Carapaces (0.51985781157)
+person -> movie: Coconut Heads (0.649231797282)
+place -> movie: Comrades (0.579699858513)
+drug -> movie: Copacabana (0.561910322047)
+person -> movie: Cosmo Warrior Zero (0.591591139712)
+person -> movie: County Kilburn (0.597906129357)
+place -> movie: Crazy (0.53047208805)
+place -> movie: Cream (0.599697020313)
+place -> movie: Cult (0.627494628472)
+place -> movie: Cvennes (0.975682307236)
+drug -> movie: Daniel (0.396457474689)
+person -> movie: Das Teufelsweib (0.544929153359)
+person -> movie: De Omweg (0.648864463245)
+drug -> movie: Demobbed (0.330389706549)
+person -> movie: Der Austausch (0.682023702928)
+drug -> movie: Dolphins (0.663828320894)
+place -> movie: Dorsey (0.941459530388)
+person -> movie: Dr. Benny (0.863357964285)
+person -> movie: Dr. Lucille (0.885683577897)
+place -> movie: Driven (0.365660825137)
+place -> movie: Edelweiss (0.748162635128)
+person -> movie: El Botones Sacarino (0.588284863089)
+company -> movie: El Valley Centro (0.429387567057)
+drug -> movie: Enamored (0.717383077052)
+person -> movie: Epoch of Lotus (0.703679137351)
+drug -> movie: Exotic Time Machine 2 (0.680753192204)
+drug -> movie: FDS - Fomos Desiludidos Sistematicamente (0.980914518379)
+drug -> movie: Filmredaksjonen (0.511257120297)
+person -> movie: Franck Spadone (0.930667683015)
+place -> movie: Freon (0.44590922976)
+person -> movie: Gallito Ciego (0.746837399422)
+person -> movie: Gelbe Kirschen (0.940390454449)
+place -> movie: Gormenghast (0.794729498882)
+drug -> movie: Great Sex (0.664303908637)
+person -> movie: Hamburger Bier (0.558433426071)
+person -> movie: Harm Done (0.641947599678)
+drug -> movie: Honolulu (0.811121544505)
+drug -> movie: IPC 215 (0.985609850202)
+drug -> movie: Ilusiones compartidas (0.522139354281)
+drug -> movie: Impact Zone (0.5849360044)
+person -> movie: Jackie Bouvier Kennedy Onassis (0.588559038096)
+person -> movie: Jesus of Cinema (0.584581769689)
+person -> movie: Jigsaw Venus (0.955421373559)
+person -> movie: Jizz Junkies (0.676407648345)
+place -> movie: Karl (0.483233618813)
+person -> movie: Kinnara Thumbikal (0.533107001757)
+person -> movie: Kochu Kochu Santhoshangal (0.992370689968)
+place -> movie: Kong (0.841882144713)
+place -> movie: Korei (0.619043329411)
+place -> movie: Kouravudu (0.812573013101)
+drug -> movie: Krocodylus (0.957206556836)
+person -> movie: Le Lyce (0.420502928706)
+person -> movie: Leos Video (0.756895392566)
+place -> movie: Lloyd (0.891257011528)
+drug -> movie: M2M (0.881963848329)
+drug -> movie: M:I-2 (0.740148806688)
+place -> movie: Manoharam (0.542394365296)
+place -> movie: Mariaaria (0.709024967459)
+place -> movie: Marmer (0.436745245733)
+place -> movie: Maryam (0.561942244359)
+drug -> movie: Melon Season 2 (0.777665452902)
+drug -> movie: Mermaid (0.548249868971)
+place -> movie: Mirrorball (0.825289952625)
+drug -> movie: Modelo 73 (0.809972275202)
+person -> movie: Mr. Butler (0.685365140001)
+person -> movie: Mr. Ed (0.657819073303)
+drug -> movie: NZx10 (0.997582032027)
+place -> movie: Nachtwacht (0.586592559678)
+person -> movie: Neue Schuhe (0.484271811577)
+place -> movie: Ogopogo (0.638261489128)
+person -> movie: Ordinary Bolshevism (0.731463545677)
+drug -> movie: Ordinary Decent Criminal (0.929181938788)
+drug -> movie: P.R. (0.794130791963)
+place -> movie: Papa (0.410376383564)
+place -> movie: Peechan (0.87196587692)
+place -> movie: Penalty (0.54798793936)
+person -> movie: Peppermint Candy (0.521981423944)
+drug -> movie: Peril (0.717194776117)
+place -> movie: Persona (0.453494278103)
+person -> movie: Placido Rizzotto (0.568070347462)
+drug -> movie: Please 12 (0.945296128824)
+drug -> movie: Prelude (0.716838748186)
+drug -> movie: Proibito baciare (0.512611275282)
+person -> movie: Raju Chacha (0.80265530699)
+person -> movie: Red Letters (0.509808981623)
+drug -> movie: Respect (0.475083799924)
+place -> movie: Rizoto (0.356479104705)
+place -> movie: Rohschnitt (0.918908153068)
+place -> movie: Rubbernecking (0.730536637794)
+person -> movie: Savage Honeymoon (0.760534704768)
+person -> movie: Selvsvings Ddsjov (0.682193380865)
+place -> movie: Shutterspeed (0.586957956311)
+drug -> movie: Sista 11 (0.587449102731)
+place -> movie: Skullduggery (0.641213017543)
+place -> movie: Snow Graham Norton (0.446094042284)
+drug -> movie: Special Report (0.476227369564)
+place -> movie: Stageghost (0.550018047793)
+place -> movie: Stalled (0.615875023853)
+place -> movie: Stonecold (0.60793382698)
+person -> movie: Student Body (0.644987534096)
+drug -> movie: Summoner (0.408715897849)
+drug -> movie: Syphon Filter 2 (0.491669773016)
+person -> movie: Szczesliwy czlowiek (0.625150786899)
+place -> movie: Sance (0.599132521088)
+person -> movie: T.T. Syndrome (0.60350105438)
+place -> movie: Taina (0.685460093561)
+place -> movie: Tigerland (0.585728009565)
+drug -> movie: Tinnef (0.64480749769)
+drug -> movie: U-571 (0.989556828523)
+place -> movie: Udenfor (0.917640395195)
+place -> movie: Unchain (0.871478969434)
+place -> movie: Unshackled (0.65051050325)
+place -> movie: Usan (0.407907078827)
+drug -> movie: Uxoricide (0.937824180698)
+place -> movie: Uzumaki (0.558401540261)
+person -> movie: Verlorene Kinder (0.826069936741)
+person -> movie: Viva Boer Gerrit (0.655482652311)
+drug -> movie: Vizontele (0.52948293805)
+place -> movie: Watching (0.591728578775)
+person -> movie: Wiggly Walk (0.688285806281)
+drug -> movie: Xyzfear (0.481213758302)
+movie -> company: Becton Dickinson & Co (0.538332623167)
+drug -> company: Coca-Cola FEMSA (0.529517622576)
+movie -> company: Electricidade De Portugal (0.661578459659)
+movie -> company: Fiat Spa (0.84194037101)
+person -> company: Heinz H J Co (0.785088422578)
+drug -> company: Manufacturers' Services Limited (0.34388543779)
+drug -> company: Pepsi-Gemex S A De C V (0.997325389603)
+person -> company: Rouse Co (0.610262001684)
+movie -> company: Royal Bk Cda Montreal Que (0.845025893457)
+movie -> company: Sears Roebuck & Co (0.576382275426)
+person -> company: Standard Register (0.631658013061)
+movie -> company: Sunsource Cap Tr (0.523977637162)
