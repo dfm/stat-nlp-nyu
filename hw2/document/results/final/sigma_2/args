@@ -1,0 +1,1 @@
+hw2_runner.py -e UnigramExtractor() | SuffixExtractor(4) | PrefixExtractor(4) | BigramExtractor() | NWordsExtractor() | NCharactersExtractor() | DigitExtractor() -i 50,100,150,200,250,300,350,400,450,500 -o hw2/document/results/final/sigma_2 -s 2

@@ -5,6 +5,7 @@ from __future__ import (division, print_function, absolute_import,
                         unicode_literals)
 
 import re
+import sys
 import numpy as np
 import matplotlib.pyplot as pl
 from collections import defaultdict
@@ -84,5 +85,6 @@ def plot_confusion_matrix(model):
 
 
 if __name__ == "__main__":
-    plot_convergence("full_500")
-    plot_confusion_matrix("full_500")
+    model = sys.argv[1]
+    plot_convergence(model)
+    plot_confusion_matrix(model)

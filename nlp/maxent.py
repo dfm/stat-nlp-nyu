@@ -4,9 +4,9 @@
 from __future__ import division, print_function, absolute_import
 
 __all__ = ["FeatureExtractor", "UnigramExtractor", "BigramExtractor",
-           "TrigramExtractor", "StopWordExtractor",
+           "TrigramExtractor", "StopWordsExtractor", "NStopWordsExtractor",
            "SuffixExtractor", "PrefixExtractor", "MaximumEntropyClassifier",
-           "DigitExtractor", "NWordsExtractor"]
+           "DigitExtractor", "NCharactersExtractor", "NWordsExtractor"]
 
 import os
 import re
@@ -37,14 +37,13 @@ class FeatureExtractor(object):
         return f
 
 
-class StopWordExtractor(FeatureExtractor):
+class StopWordsExtractor(FeatureExtractor):
 
     def __init__(self):
-        stopwords = list(set([w.strip()
-                              for w in os.path.join(os.path.dirname(
-                                                    os.path.abspath(__file__)),
-                                                    "stopwords.txt")]))
-        super(StopWordExtractor, self).__init__(stopwords)
+        words = [w.strip() for w in os.path.join(os.path.dirname(
+                 os.path.abspath(__file__)), "stopwords.txt")]
+        super(StopWordsExtractor, self).setup(words)
+        self.words = words
 
     def setup(self, training_data):
         pass
@@ -54,11 +53,35 @@ class StopWordExtractor(FeatureExtractor):
         f = np.zeros(self.nfeatures)
         for w in words:
             try:
-                ind = self.features.index(w)
+                ind = self.features.index(w.lower())
             except ValueError:
                 pass
             else:
                 f[ind] += 1
+        return f
+
+
+class NStopWordsExtractor(StopWordsExtractor):
+
+    def __init__(self, number=5):
+        super(NStopWordsExtractor, self).__init__()
+        self.features = range(number)
+        self.nfeatures = len(self.features)
+
+    def setup(self, training_data):
+        pass
+
+    def __call__(self, inst):
+        count = 0
+        for w in inst[1].split():
+            if w.lower() in self.words:
+                count += 1
+
+        f = np.zeros(self.nfeatures)
+        try:
+            f[count] = 1
+        except IndexError:
+            f[-1] = 1
         return f
 
 
@@ -209,6 +232,23 @@ class DigitExtractor(FeatureExtractor):
         f = np.zeros(self.nfeatures)
         try:
             f[len(self._re.findall(inst[1]))] = 1
+        except IndexError:
+            f[-1] = 1
+        return f
+
+
+class NCharactersExtractor(FeatureExtractor):
+
+    def __init__(self, number=100):
+        super(NCharactersExtractor, self).setup(range(number))
+
+    def setup(self, training_data):
+        pass
+
+    def __call__(self, inst):
+        f = np.zeros(self.nfeatures)
+        try:
+            f[len(inst[1])] = 1
         except IndexError:
             f[-1] = 1
         return f
