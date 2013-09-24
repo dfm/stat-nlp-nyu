@@ -74,12 +74,14 @@ def plot_confusion_matrix(model):
         for j, guess in enumerate(keys):
             conf[i, j] = matrix[gold][guess] / norm[gold]
 
-    fig = pl.figure(figsize=(8, 8))
-    fig.subplots_adjust(left=0.2, bottom=0.2, right=0.99, top=0.99,
+    fig = pl.figure(figsize=(9, 8))
+    fig.subplots_adjust(left=0.2, bottom=0.15, right=0.99, top=0.98,
                         wspace=0.0, hspace=0.0)
 
     ax = pl.gca()
-    ax.imshow(np.max(conf) - conf, cmap="gray", interpolation="nearest")
+    cax = ax.imshow(conf, cmap="gray_r", interpolation="nearest",
+                    vmin=0, vmax=1)
+    fig.colorbar(cax)
 
     ax.set_xticks(range(len(keys)))
     ax.set_xticklabels(keys)

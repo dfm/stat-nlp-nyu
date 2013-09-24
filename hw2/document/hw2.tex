@@ -37,8 +37,8 @@
 \newcommand{\Eq}[1]{Equation (\ref{eq:#1})}
 \newcommand{\eq}[1]{Equation (\ref{eq:#1})}
 \newcommand{\eqlabel}[1]{\label{eq:#1}}
-\newcommand{\Fig}[1]{Figure \ref{fig:#1}}
-\newcommand{\fig}[1]{Figure \ref{fig:#1}}
+\newcommand{\Fig}[1]{Figure~\ref{fig:#1}}
+\newcommand{\fig}[1]{Figure~\ref{fig:#1}}
 \newcommand{\figlabel}[1]{\label{fig:#1}}
 
 \newcommand{\pr}[1]{\ensuremath{p\left (#1 \right )}}
@@ -111,9 +111,9 @@ so we'll actually be computing the \emph{negative log-probability}
 \label{eq:logistic}
 \end{eqnarray}
 
-\paragraph{The gradient of equation \ref{eq:logistic}}
+\paragraph{The gradient of equation~\ref{eq:logistic}}
 I'll be using a gradient descent algorithm to find the maximum a posteriori
-parameters for the probabilistic model given by equation \ref{eq:logistic} so
+parameters for the probabilistic model given by equation~\ref{eq:logistic} so
 I'll need to compute the gradient of that function.
 Symbolically, this works out to be
 \begin{eqnarray}
@@ -131,8 +131,15 @@ To avoid over fitting, I also include the standard L2 regularization term
 \ell_\mathrm{L2} (\bvec{W}) &=&
 -\frac{1}{2\,\sigma^2}\,||\,\bvec{W}\,||_2^2
 \end{eqnarray}
-and optimize the sum of equations \ref{eq:logistic} and
-\ref{eq:regularization}.
+and optimize the sum of equations~\ref{eq:logistic}
+and~\ref{eq:regularization}
+\begin{eqnarray}
+\label{eq:fullmodel}
+\ell^\prime (\bvec{W}) = \ell (\bvec{W}) + \ell_\mathrm{L2} (\bvec{W}) \quad.
+\end{eqnarray}
+I also included the relevant terms in the gradient and confirmed that they
+were correctly computed numerically.
+I will discuss the choice of the free parameter $\sigma$ below.
 
 \paragraph{Extractor implementation}
 The classifier that I train in this assignment takes a list of feature
@@ -146,15 +153,42 @@ To start with, I'll describe and show the results for a simple
 
 The first model that I experimented with was a unigram model.
 To extract the features for this model, I simply count the number of times
-each character occurs in the string.
-Using these features and the probability model given by equation
-\ref{eq:logistic}
+each character occurs in the string to build a character histogram.
+Using these features and the probability model given by
+equation~\ref{eq:fullmodel}, I trained the weights using \code{L-BFGS} on the
+provided training set of examples.
+For this model, I simply used the default regularization with $\sigma = 1$.
+To test for convergence---and as an attempt to avoid over fitting---I plotted
+the probability and train/validation set performance as a function of
+the number of optimization iterations in \fig{unigram-convergence}.
+These features are clearly not very effective for classification producing a
+(seemingly converged) validation set accuracy of only $\sim67\%$.
+The intriguing thing about this plot is that the validation accuracy is
+actually \emph{better} than the training accuracy.
+This is surprising and I didn't see this behavior with any of the other
+feature sets that I tried.
+My guess is since the unigram counts are not a very descriptive feature, we
+simply got lucky with the validation set and the noise in the predictions
+pushed the accuracy up artificially.
+
+I decided to use the full \emph{case-sensitive} histogram because the number
+(and identities) of the capitalized letters seemed like they would be good
+features (especially for distinguishing \code{drug}s from other labels).
+I also found that in practice the model had better performance when using the
+capitalized characters but it's possible that we could do just as well using
+some sort of indicator feature that counts the number of capitalized
+characters.
 
 \begin{figure}[htbp]
 \begin{center}
     \includegraphics[width=\textwidth]{unigram_convergence.pdf}
 \end{center}
 \caption{%
+The progress of the optimization of equation~\ref{eq:logistic} as a function
+of number of iterations.
+\emph{top:} The value of equation~\ref{eq:fullmodel}.
+\emph{bottom:} The predictive accuracy of the model on the validation and test
+sets (as labeled).
 \figlabel{unigram-convergence}}
 \end{figure}
 
@@ -163,15 +197,28 @@ Using these features and the probability model given by equation
     \includegraphics[width=\textwidth]{unigram_confusion.pdf}
 \end{center}
 \caption{%
+The confusion matrix resulting from training $\bvec{W}$ in
+equation~\ref{eq:fullmodel} using only unigram features of the training set
+and then predicting the validation labels.
 \figlabel{unigram-confusion}}
 \end{figure}
 
 \begin{figure}[htbp]
 \begin{center}
-    \includegraphics[width=\textwidth]{full_500_convergence.pdf}
+    \includegraphics[width=0.7\textwidth]{unigram_confidence_hist.pdf}
 \end{center}
 \caption{%
-\figlabel{full500}}
+\figlabel{unigram-confidence-hist}}
 \end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{unigram_confidence_scale.pdf}
+\end{center}
+\caption{%
+\figlabel{unigram-confidence-scale}}
+\end{figure}
+
+\section{Larger N-gram models}
 
 \end{document}
