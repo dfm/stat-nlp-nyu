@@ -4,8 +4,9 @@
 from __future__ import division, print_function, absolute_import
 
 __all__ = ["FeatureExtractor", "UnigramExtractor", "BigramExtractor",
+           "TrigramExtractor",
            "SuffixExtractor", "PrefixExtractor", "MaximumEntropyClassifier",
-           "DigitExtractor"]
+           "DigitExtractor", "NWordsExtractor"]
 
 import re
 import numpy as np
@@ -110,7 +111,8 @@ class SuffixExtractor(FeatureExtractor):
         self.length = length
 
     def setup(self, training_data):
-        suffs = [w[-self.length:] for label, w in training_data]
+        suffs = [w.strip()[-self.length:] for label, instance in training_data
+                 for w in instance.split()]
         super(SuffixExtractor, self).setup(suffs)
 
     def __call__(self, instance):
@@ -128,7 +130,8 @@ class PrefixExtractor(FeatureExtractor):
         self.length = length
 
     def setup(self, training_data):
-        suffs = [w[:self.length] for label, w in training_data]
+        suffs = [w.strip()[:self.length] for label, instance in training_data
+                 for w in instance.split()]
         super(PrefixExtractor, self).setup(suffs)
 
     def __call__(self, instance):
@@ -154,6 +157,23 @@ class DigitExtractor(FeatureExtractor):
         f = np.zeros(self.nfeatures)
         try:
             f[len(self._re.findall(inst[1]))] = 1
+        except IndexError:
+            f[-1] = 1
+        return f
+
+
+class NWordsExtractor(FeatureExtractor):
+
+    def __init__(self, number=10):
+        super(NWordsExtractor, self).setup(range(number))
+
+    def setup(self, training_data):
+        pass
+
+    def __call__(self, inst):
+        f = np.zeros(self.nfeatures)
+        try:
+            f[len(inst[1].split())] = 1
         except IndexError:
             f[-1] = 1
         return f
