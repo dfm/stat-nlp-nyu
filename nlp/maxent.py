@@ -361,8 +361,8 @@ class MaximumEntropyClassifier(object):
             guess = self.classes[ind]
             if outfile is not None:
                 with open(outfile, "a") as f:
-                    f.write(("Example:\t{word}\tguess={guess}"
-                             "\tgold={correct}\tconfidence={confidence}\n")
+                    f.write(("Example:  {word}  guess={guess}"
+                             "  gold={correct}  confidence={confidence}\n")
                             .format(word=word, guess=guess,
                                     confidence=np.exp(p[ind]),
                                     correct=correct))
