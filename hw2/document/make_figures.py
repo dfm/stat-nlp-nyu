@@ -24,7 +24,7 @@ def plot_convergence(model):
                      xytext=(-5, 5), textcoords="offset points",
                      ha="right", va="bottom", xycoords="data")
     axes[0].set_xticklabels([])
-    axes[0].set_ylabel("negative log-likelihood")
+    axes[0].set_ylabel("negative log-probability")
     axes[0].yaxis.set_major_locator(MaxNLocator(5))
     axes[0].yaxis.set_label_coords(-0.1, 0.5)
 

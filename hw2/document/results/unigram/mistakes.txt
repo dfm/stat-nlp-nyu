@@ -1,0 +1,953 @@
+place -> drug: Abbokinase
+company -> drug: Acid Control
+person -> drug: Adrenalin Chloride
+place -> drug: Adrenaline
+movie -> drug: After Burn Double Strength Spray
+place -> drug: Ak-Sulf
+place -> drug: Allergen
+company -> drug: Almacone II
+place -> drug: Ambophen
+place -> drug: Amerge
+movie -> drug: Anacin with Codeine
+place -> drug: Androderm
+place -> drug: Antabuse
+place -> drug: Aquatensen
+place -> drug: Astone
+person -> drug: Azo Gantrisin
+place -> drug: Backwoods Cutter
+place -> drug: Beclodisk
+place -> drug: Beclometasone
+place -> drug: Benemid
+place -> drug: Benzodent
+place -> drug: Biohist-LA
+movie -> drug: Bion Tears
+person -> drug: Biquin Durules
+place -> drug: Bismatrol
+place -> drug: Bismed
+place -> drug: Blenoxane
+company -> drug: BQ Cold
+place -> drug: Brevital
+place -> drug: Bricanyl
+person -> drug: Bromadrine TR
+place -> drug: Bromanyl
+place -> drug: Brylcreem Antidandruff
+movie -> drug: Buf-Puf Acne Cleansing Bar with Vitamin E
+place -> drug: Butace
+movie -> drug: Butalbital Compound with Codeine
+movie -> drug: Butyl aminobenzoate
+place -> drug: Cafetrate
+place -> drug: Calci-Chew
+movie -> drug: Capital with Codeine
+place -> drug: Carbolith
+company -> drug: Carnation Good Start
+place -> drug: Cartrol
+place -> drug: Celestone
+company -> drug: Cenocort Forte
+place -> drug: Chemdec
+movie -> drug: Children's Sucrets
+company -> drug: Cipro
+company -> drug: Contac Non-Drowsy Formula Sinus Caplets
+company -> drug: Coppertone Dark Tanning
+place -> drug: Cortenema
+place -> drug: Crinone
+person -> drug: Cruex Aerosol Powder
+company -> drug: Cuticura Acne 5 Cream
+company -> drug: Cycrin
+place -> drug: Cylert
+movie -> drug: D(Rh o ) immune globulin
+company -> drug: Dalacin C
+person -> drug: Darvon-N with A.S.A.
+place -> drug: Delatestryl
+place -> drug: Delestrogen
+movie -> drug: Delsym Cough Formula
+movie -> drug: Doak Oil Forte
+place -> drug: Doktors
+place -> drug: Donphen
+person -> drug: Dramamine II
+movie -> drug: Drocode - acetaminophen with caffeine
+company -> drug: Ear Drops
+place -> drug: Emertabs
+person -> drug: Enkaid
+place -> drug: Ergometrine
+movie -> drug: Essential Care Medicated Dandruff Wash
+person -> drug: Estar
+place -> drug: Ethinyloestradiol
+company -> drug: EZ III
+place -> drug: Fer-gen-sol
+place -> drug: Feratab
+place -> drug: Ferralet
+person -> drug: Ferralet Slow Release
+place -> drug: Fiberlan
+place -> drug: Fibersource
+movie -> drug: Flavored Alka-Seltzer Effervescent Pain Reliever and Antacid
+place -> drug: Fluoderm
+place -> drug: Flurosyn
+company -> drug: FML S.O.P.
+place -> drug: Forane
+person -> drug: Gamulin Rh
+place -> drug: Gantanol
+place -> drug: Gasmas
+movie -> drug: Gaviscon Acid Plus Gas Relief 20
+place -> drug: GBH
+place -> drug: Gelusil
+person -> drug: Gelusil Extra Strength
+place -> drug: Genatuss
+person -> drug: Gerimal
+place -> drug: Glytuss
+place -> drug: Goniosoft
+movie -> drug: Goody's Headache Powders
+person -> drug: Gravol Liquid
+movie -> drug: Hawaiian Tropic Baby Faces 19
+movie -> drug: Hawaiian Tropic Baby Faces Sunblock 28
+movie -> drug: Hawaiian Tropic Just For Kids 10 28
+movie -> drug: Head & Shoulders Intensive Treatment 2 in 1
+person -> drug: Hold DM
+place -> drug: Hycort
+company -> drug: Imovax I.D.
+company -> drug: Indocid
+place -> drug: Infergen
+movie -> drug: Insta-Char Pediatric in an Aqueous Base with Cherry Flavor
+company -> drug: IPECAC
+company -> drug: Ircon
+company -> drug: Isocom
+movie -> drug: Isopto Alkaline
+place -> drug: Isuprel
+place -> drug: Iveegam
+person -> drug: IVIG
+movie -> drug: Johnson's Baby Sunblock Extra Protection 38
+person -> drug: Karidium
+movie -> drug: Liquor Carbonis Detergens
+place -> drug: Lofene
+place -> drug: Lopurin
+company -> drug: Lorcet Plus
+place -> drug: Magnaprin
+place -> drug: Marthritic
+place -> drug: Medotar
+place -> drug: Menest
+place -> drug: Mephyton
+place -> drug: Metandren
+place -> drug: Metastron
+person -> drug: Midol IB
+place -> drug: Migergot
+place -> drug: Migrazone
+place -> drug: Monoket
+place -> drug: Muse
+movie -> drug: My Baby Gas Relief Drops
+company -> drug: Mycobiotic II
+place -> drug: Naganol
+place -> drug: Nasalide
+place -> drug: Natulan
+place -> drug: Naturetin
+place -> drug: Nephron
+place -> drug: Neupogen
+place -> drug: Nidagel
+movie -> drug: North American coral snake antivenin2
+place -> drug: Novo-rythro
+place -> drug: Novofumar
+company -> drug: Novolin R
+place -> drug: Nutramigen
+place -> drug: Ocugestrin
+company -> drug: OMNIhist L.A.
+movie -> drug: Onguent de Calamine
+place -> drug: Ophthaine
+person -> drug: Orajel Extra Strength
+company -> drug: Otrivin Nasal Spray with Eucalyptol
+movie -> drug: Otrivin Nasal Spray with Moisturizers
+movie -> drug: Oxy Clean Regular Strength Medicated Cleanser Topical Solution
+movie -> drug: Oxy Clean Sensitive Skin Cleanser Topical Solution
+company -> drug: P.N. Ophthalmic
+place -> drug: Pancrease
+person -> drug: Peptamen Junior
+place -> drug: Pergonal
+place -> drug: Phazyme
+movie -> drug: Phenaphen with Codeine No.2
+place -> drug: Phenergan
+place -> drug: Phenetron
+place -> drug: Phentride
+place -> drug: Plegine
+place -> drug: Prelone
+person -> drug: Presun Clear
+place -> drug: Primethasone
+place -> drug: Probalan
+place -> drug: Profenamine
+place -> drug: Proleukin
+movie -> drug: Pronto Lice Killing Shampoo Kit
+company -> drug: Propa pH Medicated Acne Cream Maximum Strength
+movie -> drug: Propa pH Medicated Cleansing Pads Sensitive Skin
+place -> drug: Prothazine
+place -> drug: Psorigel
+company -> drug: Q.T. Quick Tanning 32
+place -> drug: Quinate
+person -> drug: Regular Insulin
+place -> drug: Reserfia
+person -> drug: ReVia
+place -> drug: Rhinocort
+place -> drug: Rhodis
+place -> drug: Riphenidate
+place -> drug: Robidone
+place -> drug: Robidrine
+movie -> drug: Robitussin Maximum Strength Cough Suppressant
+movie -> drug: Rogaine For Women
+place -> drug: Rogitine
+place -> drug: Salbutamol
+place -> drug: Saleto
+movie -> drug: Semilente insulin: S
+place -> drug: Sensorcaine
+place -> drug: Sential
+place -> drug: Sertan
+movie -> drug: Shield Burnasept Spray
+place -> drug: Spersaphrine
+person -> drug: SSKI
+movie -> drug: Student's Choice Acne Medication
+place -> drug: Sultrin
+place -> drug: Suprane
+place -> drug: Synphasic
+movie -> drug: T/Gel Therapeutic Shampoo
+movie -> drug: Tar Doak
+movie -> drug: Tarpaste `Doak'
+place -> drug: Therevac-SB
+movie -> drug: Thorazine Spansule
+place -> drug: Tolinase
+person -> drug: Triaz Cleanser
+company -> drug: Tricor
+movie -> drug: Ultra Tears
+place -> drug: Urabeth
+place -> drug: Uridon
+movie -> drug: Urispas
+movie -> drug: Vaseline Broad Spectrum Sunblock
+place -> drug: Venoglobulin-S
+person -> drug: Virilon IM
+place -> drug: Yodoquinol
+place -> drug: Yoman
+place -> drug: Zebeta
+place -> drug: Zosyn
+drug -> person: Abu Ali al-Haitam
+movie -> person: Adelard of Bath
+place -> person: Aethelwulf
+movie -> person: Aida Yasuaki
+movie -> person: Alfred N Whitehead
+movie -> person: Alfred von Schlieffen
+company -> person: Alonso Cano
+movie -> person: Amos Rusie
+drug -> person: Anatoly Malcev
+drug -> person: Andie MacDowell
+movie -> person: Andrzej Mostowski
+place -> person: Anne
+company -> person: Anne Rice
+movie -> person: Anthemius of Tralles
+movie -> person: Anton Fokker
+movie -> person: Antonio Lopez de Santa Anna
+movie -> person: Archytas of Tarentum
+drug -> person: At-Tufayl ibn Amr ad-Dawsi
+movie -> person: Auguste Dubail
+movie -> person: Auguste Marie Francois Beernaert
+movie -> person: Augustus De Morgan
+movie -> person: Axel Hugo Theodor Theorell
+movie -> person: Baron Manfred von Richthofen
+movie -> person: Ben Affleck
+movie -> person: Beniamino Segre
+movie -> person: Betty White
+movie -> person: Bjrnstjerne Bjrnson
+movie -> person: Bob Beamon
+company -> person: Brent Spiner
+company -> person: C. G. Mannerheim
+company -> person: Cal Ripken
+drug -> person: Callippus
+company -> person: Callistus II
+company -> person: Captain Vivian S. Crea
+company -> person: Cecil Frank Powell
+drug -> person: Charles Fox
+place -> person: Charlotte Bront
+drug -> person: Christian Doppler
+place -> person: Christiane Nsslein-Volhard
+movie -> person: Christopher Reeve
+company -> person: Clara Barton
+company -> person: Clive Cussler
+place -> person: Constantine
+drug -> person: Cozy Powell
+movie -> person: Daniel Defoe
+movie -> person: Dave Kunst
+movie -> person: David Baltimore
+movie -> person: David Gorenstein
+movie -> person: David Hyde Pierce
+movie -> person: Deion Sanders
+drug -> person: Demeter
+movie -> person: Dennis Quaid
+movie -> person: Diane Keaton
+drug -> person: Diderot
+place -> person: Donus
+movie -> person: Dosso Dossi
+movie -> person: Douglas Hartree
+drug -> person: Dr Helen Caldicott
+drug -> person: Duncan Sommerville
+company -> person: Earp Wyatt
+company -> person: Eileen M. Collins
+company -> person: Ernst Otto Fischer
+place -> person: Eugne Boudin
+place -> person: Eugne Catalan
+movie -> person: Fatty Arbuckle
+drug -> person: Felix Savart
+drug -> person: Ferdinand Morton
+drug -> person: Franz Aepinus
+company -> person: Frederic Chopin
+movie -> person: Fridtjof Nansen
+drug -> person: Fritz Pregl
+movie -> person: Gabrielle du Chtelet
+movie -> person: Galen of Pergamum
+movie -> person: Gaspard Monge
+company -> person: Gavrilo Princip
+movie -> person: Geena Davis
+place -> person: Geminus
+company -> person: Gen. Barry R. McCaffrey
+movie -> person: Geoffrey Taylor
+movie -> person: Geoffrey of Monmouth
+movie -> person: Georg Klgel
+movie -> person: George Eastman
+movie -> person: George Gabriel Stokes
+movie -> person: George Hoyt Whipple
+movie -> person: George Mathews
+movie -> person: George Yule
+drug -> person: Georgorio Ricci-Curbastro
+movie -> person: Ginetta Sagan
+movie -> person: Giorgos Seferis
+movie -> person: Giotto di Bondone
+company -> person: Giovanni Guccia
+company -> person: Glenn Close
+drug -> person: Gottfried Leibniz
+movie -> person: Guillaume Hoel
+drug -> person: Harold Davenport
+company -> person: Harry Connick
+drug -> person: Heidemarie M. Stefanyshyn-Piper
+place -> person: Helios
+movie -> person: Henrik Tikkanen
+movie -> person: Henry David Thoreau
+place -> person: Hephaistos
+place -> person: Herbert Turnbull
+movie -> person: Hipparchus of Rhodes
+movie -> person: Hippias of Elis
+movie -> person: Hudhayfah ibn al-Yaman
+movie -> person: Hugo Steinhaus
+drug -> person: Hypatia of Alexandria
+place -> person: Irmgard Flgge-Lotz
+movie -> person: Isaac Bashevis Singer
+drug -> person: Jean-Auguste-Dominique Ingres
+drug -> person: Jean-Baptiste-Camille Corot
+movie -> person: Joseph de Tilly
+movie -> person: Kalle Ptalo
+place -> person: Kalypso
+company -> person: Kathryn C. Thornton
+place -> person: Kenneth Branagh
+movie -> person: Kurt Reidemeister
+drug -> person: Lancelot Bosanquet
+movie -> person: Leif Panduro
+place -> person: Leland Stanford
+movie -> person: Leo Tolstoy
+drug -> person: Leonardo DiCaprio
+place -> person: Liberius
+drug -> person: Linda Mccartney
+movie -> person: Lise Meitner
+drug -> person: Lonnie Pitchford
+company -> person: Lord Alexander R. Todd
+movie -> person: Louis Botha
+movie -> person: Louis Puissant
+movie -> person: Louisa May Alcott
+movie -> person: Lucky Luciano
+movie -> person: Lucy Ware Webb Hayes
+drug -> person: Maria Goeppert-Mayer
+drug -> person: Marie Bracquemond
+movie -> person: Marion Davies
+movie -> person: Marisa Tomei
+movie -> person: Martha Longenecker
+movie -> person: Master Chief Petty Officer Ginger Lee Simpson
+drug -> person: Matt Damon
+drug -> person: Maximilian von Spee
+movie -> person: Maya Angelou
+drug -> person: Mel Ott
+movie -> person: Menachem Begin
+place -> person: Menaechmus
+place -> person: Michelangelo Buonarroti
+movie -> person: Muhammad ibn Maslamah
+place -> person: Namadeva
+place -> person: Nathaniel Bowditch
+movie -> person: Naum Il'ich Akhiezer
+drug -> person: Nicolas Malebranche
+movie -> person: Nicole d' Oresme
+drug -> person: Nicomedes
+movie -> person: Niels Ryberg Finsen
+drug -> person: Niels Stensen
+movie -> person: Nikolay Lobachevsky
+movie -> person: Nikolay Zhukovsky
+drug -> person: Nolan Ryan
+movie -> person: Nuo Gonalves
+company -> person: O.J. Simpson
+company -> person: O.c. Marsh
+drug -> person: Odilon Redon
+movie -> person: Oliver Heaviside
+drug -> person: Oliver Stone
+movie -> person: Otto Loewi
+drug -> person: Otto Stern
+drug -> person: Paolo Frisi
+movie -> person: Paul Henri Balluet d'Estournelles de Constant de Rebecque
+movie -> person: Paul Stckel
+drug -> person: Pave Alexandroff
+movie -> person: Pavel Urysohn
+drug -> person: Pete Rozelle
+drug -> person: Peter D. Mitchell
+movie -> person: Porphyry of Malchus
+drug -> person: Queen Victoria
+company -> person: Richard II
+company -> person: Richard M. Nixon
+company -> person: Robert F. Curl, Jr.
+movie -> person: Robert Feke
+movie -> person: Robert Grosseteste
+company -> person: Robert L. Curbeam, Jr.
+company -> person: Rodney R. Porter
+drug -> person: Rose Maddox
+movie -> person: Sam Houston
+drug -> person: Sam Rice
+movie -> person: Samuel Beckett
+movie -> person: Selig Brodetsky
+place -> person: Serenus
+movie -> person: Sergi Novikov
+movie -> person: Sporus of Nicaea
+company -> person: St. Alexander I
+company -> person: St. Callistus I
+company -> person: St. Paschal I
+drug -> person: St. Simplicius
+place -> person: Stefan Bergman
+movie -> person: Steven L. Smith
+movie -> person: Takakazu Seki Kowa
+movie -> person: Tapio Hiisivaara
+movie -> person: Teiji Takagi
+movie -> person: Theon of Smyrna
+movie -> person: Thomas Alva Edison
+movie -> person: Thomas Fiske
+movie -> person: Thomas Gainsborough
+movie -> person: Thomas Kirkman
+movie -> person: Thomas Mann
+movie -> person: Thomas More
+movie -> person: Thomas Stearns Eliot
+place -> person: Thompson
+movie -> person: Tim Berners-Lee
+movie -> person: Tim Keefe
+company -> person: Togo D. West, Jr.
+movie -> person: Tom Snyder
+movie -> person: Tony Blair
+movie -> person: Tsu Ch'ung Chi
+place -> person: Tulasidas
+company -> person: Ty Cobb
+movie -> person: Ubayy ibn Kab
+place -> person: Voltaire
+drug -> person: Volter Kilpi
+movie -> person: Walter Bayes
+company -> person: Winston E. Scott
+movie -> person: Yasser Arafat
+movie -> person: Yoshida Shigeru
+movie -> person: Yutaka Taniyama
+movie -> person: Zachary Taylor
+movie -> person: Zeno of Sidon
+place -> person: Zenodorus
+drug -> person: al-Rumi Qadi Zada
+person -> place: Airdrie
+drug -> place: Antrim
+person -> place: Arras
+drug -> place: Ars-Laquenexy
+person -> place: Avalon Beach
+movie -> place: Avoca Beach
+person -> place: Bad Sobernheim
+movie -> place: Bad Tlz
+movie -> place: Batemans Bay
+movie -> place: Bishop's Stortford
+movie -> place: Blaenau Ffestiniog
+company -> place: Boston Spa
+drug -> place: Calais
+drug -> place: Caldicot
+drug -> place: Cambrai
+company -> place: Carno
+drug -> place: Chippendale
+company -> place: Chipping Campden
+company -> place: Chipping Norton
+company -> place: Church Point
+person -> place: Coffs Harbour
+company -> place: Cognac
+drug -> place: Collaroy Plateau
+drug -> place: Cotignac
+drug -> place: Cours-la-Ville
+company -> place: Cucuron
+movie -> place: De Kwakel
+movie -> place: Dinas Powys
+drug -> place: Dominican Republic
+drug -> place: Dornie
+drug -> place: Douai
+drug -> place: Driffield
+person -> place: East Kilbride
+movie -> place: East Layton
+drug -> place: Eccles
+person -> place: Ellesmere Port
+person -> place: Evenki
+drug -> place: Fayence
+movie -> place: Fiji
+person -> place: French Riviera
+person -> place: Georgia
+movie -> place: Geseke
+movie -> place: Grafton Regis
+company -> place: Great Torrington
+person -> place: Guanica
+person -> place: Hartley Wintney
+movie -> place: Hatch Beauchamp
+movie -> place: Heath Town
+person -> place: Horton Kirby
+person -> place: Johnstone
+person -> place: Kiama
+person -> place: Killara
+person -> place: Kirribilli
+company -> place: La Ciotat
+movie -> place: La Plagne
+movie -> place: La Rochepot
+movie -> place: Lake Macquarie City
+person -> place: Le Havre
+company -> place: Lea Cross
+person -> place: Les Herbiers
+person -> place: Llantwit Major
+company -> place: London Colney
+drug -> place: Mainz
+drug -> place: Margaux
+drug -> place: Marple
+drug -> place: Midi-Pyrenees
+drug -> place: Milton
+drug -> place: Montignac-Lascaux
+drug -> place: Morocco
+person -> place: Moss Vale
+person -> place: Mount Colah
+drug -> place: Namibia
+drug -> place: Newport Pagnell
+drug -> place: Nimes
+person -> place: North Ryde
+drug -> place: Olpe
+drug -> place: Oss
+drug -> place: Otford
+drug -> place: Panzoult
+drug -> place: Pen-y-ffordd
+drug -> place: Penicuik
+drug -> place: Perpignan
+drug -> place: Port Sunlight
+drug -> place: Port-Bail
+drug -> place: Pyrmont
+movie -> place: Queens Park
+drug -> place: Ripon
+drug -> place: Roissy-en-France
+drug -> place: Saint-Leu-la-Fort
+drug -> place: Saint-Magne-de-Castillon
+drug -> place: Saint-Nazaire
+drug -> place: Saint-Victor-la-Coste
+drug -> place: Sainte-Foy-la-Grande
+drug -> place: Somercotes
+drug -> place: Sophia Antipolis
+movie -> place: South Africa
+movie -> place: South Lancing
+person -> place: St Helens Park
+movie -> place: St Leonards
+person -> place: St Marys
+company -> place: St. Agnes
+person -> place: St. Columb Major
+person -> place: St. Germans
+movie -> place: St. Leonards on Sea
+person -> place: Stratford St. Mary
+movie -> place: Symonds Yat
+drug -> place: Templecombe
+movie -> place: Thame
+drug -> place: Tourcoing
+drug -> place: Ulft
+drug -> place: Ultimo
+movie -> place: United Arab Emirates
+company -> place: Upton Upon Severn
+person -> place: West End
+movie -> place: West Mersea
+person -> place: White Roding
+person -> place: Whitley Bay
+place -> movie: $windle
+drug -> movie: 2000 AD
+drug -> movie: 2001 - Durchgeknallt im All
+drug -> movie: 451 Forte
+drug -> movie: 7-Teen Sips
+company -> movie: A Chinese in a Coma
+company -> movie: A Chronicle of Corpses
+person -> movie: A Good Burn
+person -> movie: A Living Hell
+company -> movie: A Trip to the Country
+person -> movie: A Well Story
+drug -> movie: Abierto 24 horas
+company -> movie: Action Man
+drug -> movie: Actors
+drug -> movie: Alex l'ariete
+person -> movie: Alone with War
+drug -> movie: Alta Fidelidade
+person -> movie: American Babylon
+drug -> movie: Anatomy
+drug -> movie: Angel Exit
+place -> movie: Angst
+drug -> movie: Apariencias
+place -> movie: Arzew
+drug -> movie: Attraction
+person -> movie: Azzurro
+place -> movie: Bajland
+person -> movie: Balkan Inventory
+place -> movie: Baobab
+place -> movie: Barbecue-Pejo
+place -> movie: Bartleby
+person -> movie: Bear Wars
+place -> movie: Bellyful
+person -> movie: Berlin Nights
+place -> movie: Bharathi
+person -> movie: Biker-Jens i USA
+place -> movie: BlackMale
+person -> movie: Bloody Murder
+person -> movie: Boiler Room
+person -> movie: Born in Absurdistan
+company -> movie: Born to Win
+place -> movie: Bounce
+person -> movie: Brasil Alternativo
+person -> movie: Brotherly Love
+place -> movie: Bruiser
+place -> movie: Bull
+place -> movie: Butterfly
+person -> movie: Cadere libera
+person -> movie: Caf Chameleon
+drug -> movie: Calcutta Chromosome
+person -> movie: Call Girl
+person -> movie: Car Years
+company -> movie: Carapaces
+place -> movie: Ch'im-Hyang
+person -> movie: Chal Mere Bhai
+place -> movie: Chasing Buddha
+company -> movie: Ciao America
+company -> movie: Coconut Heads
+company -> movie: Code inconnu
+place -> movie: Comeback
+drug -> movie: Commissariat Bastille
+place -> movie: Comrades
+company -> movie: Conscience and the Constitution
+drug -> movie: Copacabana
+person -> movie: Cosmo Warrior Zero
+person -> movie: County Kilburn
+drug -> movie: Crazy
+place -> movie: Cream
+drug -> movie: Cult
+drug -> movie: Cum Dumpster
+drug -> movie: Cumback Pussy 26
+place -> movie: Cvennes
+drug -> movie: D-dag - Niels-Henning
+drug -> movie: Dance
+drug -> movie: Daniel
+person -> movie: Dark Realm
+place -> movie: Deadlock
+place -> movie: Demobbed
+drug -> movie: Der Patriot
+company -> movie: Di pari passo con la notte
+person -> movie: Diablo II
+person -> movie: Diary of Early Winter Shower
+drug -> movie: Dolphins
+drug -> movie: Dora the Explorer
+place -> movie: Dorsey
+place -> movie: Downward Angel
+person -> movie: Dr. Benny
+person -> movie: Dr. Lucille
+drug -> movie: Driven
+company -> movie: Du pic au coeur
+person -> movie: Durango Kids
+place -> movie: Edelweiss
+person -> movie: El Botones Sacarino
+person -> movie: El Figurante
+person -> movie: El Valley Centro
+drug -> movie: Elite
+place -> movie: Enamored
+company -> movie: Eu, Tu, Eles
+drug -> movie: Exotic Time Machine 2
+drug -> movie: Exposure
+person -> movie: Extremely Yours, Jasmine St. Claire
+person -> movie: Far East
+drug -> movie: Film Club
+place -> movie: Filmredaksjonen
+company -> movie: For All Time
+company -> movie: Franck Spadone
+drug -> movie: Free Spirits
+place -> movie: Freon
+company -> movie: Friday Night, NYC
+place -> movie: Fugitives
+drug -> movie: Gallito Ciego
+drug -> movie: Gangland 10
+person -> movie: Gelbe Kirschen
+company -> movie: Getting a Ticket In America
+place -> movie: Girlfight
+place -> movie: Gormenghast
+drug -> movie: Great Sex
+person -> movie: Gunblast Vodka
+drug -> movie: HBO Boxing
+person -> movie: Hamburger Bier
+person -> movie: Harakiri
+person -> movie: Harem Hooters
+person -> movie: Harm Done
+person -> movie: Hayat baglari
+place -> movie: Heartlift
+person -> movie: Heller als der Mond
+place -> movie: Hero
+person -> movie: Hidden Whisper
+drug -> movie: High Explosive
+person -> movie: Himmel und Erde
+company -> movie: Hollywood, D.C.
+place -> movie: Honolulu
+place -> movie: Hopeless
+place -> movie: Hot
+drug -> movie: Hotbox
+drug -> movie: Hotel Splendide
+drug -> movie: IPC 215
+company -> movie: Icke
+company -> movie: If Tomorrow Comes
+place -> movie: Iki-jigoku
+company -> movie: Il Grande Torino
+company -> movie: Impact Zone
+person -> movie: In Absentia
+company -> movie: In de Gloria
+drug -> movie: Infection
+company -> movie: Introducing Gary Petty
+company -> movie: Invitation to Dinner
+person -> movie: Italian flair
+person -> movie: Jackie Bouvier Kennedy Onassis
+person -> movie: Jacky
+person -> movie: Jessica Simpson and Jason Raize In Concert
+person -> movie: Jesus of Cinema
+person -> movie: Jigsaw Venus
+person -> movie: Jizz Junkies
+person -> movie: Johnny the Amazing Firetruck
+person -> movie: Jrngnget
+person -> movie: K mori
+person -> movie: Kaho Naa... Pyaar Hai
+person -> movie: Kama Sutra
+place -> movie: Karl
+person -> movie: Kat and Allison
+person -> movie: Kinnara Thumbikal
+person -> movie: Kochu Kochu Santhoshangal
+place -> movie: Komiker
+place -> movie: Kong
+person -> movie: Korei
+place -> movie: Kouravudu
+place -> movie: Krocodylus
+drug -> movie: Kuppet
+place -> movie: L'Institutrice
+company -> movie: La Cama cinco
+company -> movie: La Caponera
+person -> movie: La Malquerida
+person -> movie: La Vrit vraie
+person -> movie: Labor Pains
+place -> movie: Large
+company -> movie: Le Conte du ventre plein
+company -> movie: Le Coup du lapin
+person -> movie: Les Globulyss
+place -> movie: Lloyd
+person -> movie: Love Hina
+drug -> movie: M2M
+drug -> movie: Mach 2
+place -> movie: Manoharam
+person -> movie: Manos libres
+person -> movie: Mariaaria
+place -> movie: Marmer
+company -> movie: Marmor, Stein & Eisen
+place -> movie: Maryam
+place -> movie: Mermaid
+place -> movie: Mirrorball
+drug -> movie: Modelo 73
+drug -> movie: Mortal Kombat 5
+person -> movie: Movie Virgins
+person -> movie: Mr. Butler
+company -> movie: Mr. Ed
+place -> movie: Murder.com
+person -> movie: Mutter wider Willen
+company -> movie: N.Y.U.K
+drug -> movie: NZx10
+place -> movie: Nachttanke
+place -> movie: Nachtwacht
+drug -> movie: Not Forgotten
+drug -> movie: O Palmenbaum
+drug -> movie: Obscuratio
+drug -> movie: Ogopogo
+drug -> movie: Olympic Sunrise
+person -> movie: On Hostile Ground
+company -> movie: Once Upon a Christmas
+drug -> movie: One
+person -> movie: Ordinary Bolshevism
+drug -> movie: Ordinary Decent Criminal
+company -> movie: P.R.
+drug -> movie: Panty Hoes 1
+drug -> movie: Papa
+place -> movie: Passengers
+drug -> movie: Past Presence
+place -> movie: Peechan
+place -> movie: Penalty
+company -> movie: Peppermint Candy
+drug -> movie: Peril
+place -> movie: Persona
+company -> movie: Pescado crudo
+place -> movie: Peters
+place -> movie: Piktogramy
+drug -> movie: Placido Rizzotto
+drug -> movie: Please 12
+drug -> movie: Popstars 2
+company -> movie: Por ese palpitar
+drug -> movie: Pozieres
+place -> movie: Prelude
+company -> movie: Prima pagare poi ricordare
+drug -> movie: Proibito baciare
+company -> movie: Pumper Pups
+person -> movie: Punch Drunk
+company -> movie: Quando una donna non dorme
+drug -> movie: Raging Silence
+person -> movie: Raju Chacha
+person -> movie: Rakilikal
+person -> movie: Real Men Wear Hawaiian Shirts
+place -> movie: Remnants
+place -> movie: Reshman
+drug -> movie: Respect
+company -> movie: Rip Girls
+drug -> movie: Rizoto
+place -> movie: Rohschnitt
+person -> movie: Rote Glut
+place -> movie: Rubbernecking
+person -> movie: Russell Gilbert Live
+place -> movie: Sammlerglck und Mehrwegflaschen
+drug -> movie: Sans plomb
+place -> movie: Sanyu
+drug -> movie: Scarlet Diva
+drug -> movie: Scooby-Doo's Creepiest Capers
+drug -> movie: Second Generation
+person -> movie: Seunlau ngaklau
+place -> movie: Sevraj
+drug -> movie: Sex Pack One
+person -> movie: Sex Wars
+drug -> movie: Sexy Beast
+place -> movie: SharkTank
+person -> movie: Shooting War
+place -> movie: Shutterspeed
+place -> movie: Sikanautaa
+drug -> movie: Single Dad
+drug -> movie: Sista 11
+place -> movie: Skullduggery
+place -> movie: Sleepwalker
+place -> movie: Snakeskin
+person -> movie: Snow Graham Norton
+place -> movie: Sommerwind
+drug -> movie: Special Report
+place -> movie: Stageghost
+place -> movie: Stalled
+person -> movie: Star Hunter
+place -> movie: Stardom
+drug -> movie: Starship Troopers
+drug -> movie: Stonecold
+place -> movie: Straight News
+place -> movie: Stuck
+place -> movie: Summoner
+person -> movie: Sumo Bruno
+drug -> movie: Super Nerds
+person -> movie: Susi rajalla
+place -> movie: Syahnam
+drug -> movie: Syphon Filter 2
+place -> movie: Sance
+company -> movie: T.T. Syndrome
+drug -> movie: Taina
+place -> movie: Tatawo
+company -> movie: Tatort - Der Trippler
+drug -> movie: The Boxing Prince
+place -> movie: The New Math(s)
+person -> movie: The Runner
+place -> movie: Tigerland
+place -> movie: Timeshare
+drug -> movie: Tinnef
+drug -> movie: Titus
+company -> movie: To and Fro
+company -> movie: Trigger Happy TV
+drug -> movie: U-571
+place -> movie: Udenfor
+place -> movie: Unchain
+place -> movie: Unshackled
+drug -> movie: Up Your Ass 14
+place -> movie: Usan
+drug -> movie: Uxoricide
+drug -> movie: Velocity
+person -> movie: Verlorene Kinder
+person -> movie: Vidas Cruzadas
+person -> movie: Viva Boer Gerrit
+drug -> movie: Vizontele
+place -> movie: Watching
+person -> movie: We Married Margo
+person -> movie: When Andrew Came Home
+person -> movie: Wiggly Walk
+person -> movie: Wild Ride to Berlin
+place -> movie: Witchblade
+drug -> movie: Xiao qinqin
+drug -> movie: Xyzfear
+company -> movie: Yi yi (A One and a Two)
+drug -> company: ANZ Exchangeable Preferred Trust
+drug -> company: Adecco SA
+person -> company: Alabama Power Co
+drug -> company: Amphenol Corporation
+person -> company: Avis Group Holdings
+drug -> company: BANK UTD CORP
+movie -> company: British Airways plc
+person -> company: Celanese AG
+drug -> company: Coca-Cola FEMSA
+person -> company: Commonwealth General Llc
+drug -> company: Companhia Siderurgica Nacional
+movie -> company: Compaa Cerveceras Unidas
+drug -> company: Controladora Comml Mexicana
+movie -> company: De Rigo S P A
+movie -> company: Delphi Automotive Systems Corporation
+movie -> company: Deutsche Telekom AG
+movie -> company: Duke Energy Corporation
+movie -> company: Duke-Weeks Realty Corporation
+drug -> company: Electricidade De Portugal
+movie -> company: Esterline Technologies Corporation
+drug -> company: Fiat Spa
+person -> company: Fletcher Challenge Ltd.
+person -> company: Gallaher Group Plc.
+person -> company: Heinz H J Co
+drug -> company: Hellenic Telecommunication Organization S.A.
+movie -> company: Hershey Foods Corporation
+drug -> company: Howell Corporation
+movie -> company: International Game Technology
+person -> company: Jefferies Group Inc.
+person -> company: Jilin Chem Indl Ltd
+movie -> company: John Hancock Bank And Thrift Opportunity Fund
+person -> company: John Nuveen Company
+drug -> company: Kemet Corporation
+movie -> company: Kinder Morgan Management, LLC
+drug -> company: Mac-Gray Corporation
+movie -> company: Manufacturers' Services Limited
+person -> company: Massey Energy Co.
+drug -> company: Maytag Corporation
+movie -> company: Mediaone Fin Tr Iii
+drug -> company: Medicis Pharmaceutial Corp
+movie -> company: Mesa Royalty Trust
+drug -> company: Met-ed Capital Trust
+movie -> company: National Westminster Bk Plc
+person -> company: Newell Rubbermaid Inc.
+movie -> company: Niagara Mohawk Power Corporation
+place -> company: Northwestern Corporation.
+movie -> company: Nuveen New York Municipal Value Fund
+movie -> company: Nuveen Select Maturities Municipal Fund
+drug -> company: Officemax Inc
+drug -> company: PEROT SYS CORP
+drug -> company: Pepsi-Gemex S A De C V
+drug -> company: Pillowtex Corporation
+person -> company: Reebok International Ltd.
+movie -> company: Reed Elsevier plc
+movie -> company: Renaissancere Hldgs Ltd
+movie -> company: Royal Bk Cda Montreal Que
+movie -> company: Salomon Brothers 2008 Worldwide Dollar Government Term Trust Inc.
+movie -> company: Sinopec Shanghai Petrochemical Company Limited
+movie -> company: Standard Register
+movie -> company: Teekay Shipping Corp
+movie -> company: Telecomunicacoes Brasileiras *
+movie -> company: Telekom Austria AG
+drug -> company: USX Corporation
+drug -> company: Upm-Kymmene Corp
+movie -> company: Van Kampen New York Quality Municipal Trust
+person -> company: Washington Gas Light Co.
