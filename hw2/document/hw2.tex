@@ -171,6 +171,32 @@ My guess is since the unigram counts are not a very descriptive feature, we
 simply got lucky with the validation set and the noise in the predictions
 pushed the accuracy up artificially.
 
+To explore the performance of my model, I also plotted the confusion matrix on
+the validation set in \fig{unigram-confusion}.
+This figure shows the fraction of validation samples classified as some class
+\code{guess} (columns) when the true label is \code{gold} (rows).
+This figure isn't particularly instructive in this case but we can already see
+that the main confusion is between \code{person} and \code{movie}.
+This isn't too surprising given that it's not uncommon for a movie to actually
+be named after a person and when I look at the data, there are a few
+surprising classifications!
+
+In order to check that the estimated confidence of the model predictions are
+reasonable, I looked at the validation accuracy as a function of confidence.
+\Fig{unigram-confidence-hist} shows the total number of correctly and
+incorrectly classified validation samples in confidence bins.
+As expected, the distribution of correctly classified samples peaks near high
+confidence and the number of incorrectly classified samples is negligible when
+the confidence is $\gtrsim 80 \%$.
+\Fig{unigram-confidence-scale} is even more instructive.
+This figure show the fraction of correctly classified samples in each of the
+bins as an estimate of the empirical confidence of the classifications.
+If the confidence values returned by the model were correct, this figure
+should show a one-to-one correlation.
+Instead, this model seems to be slightly \emph{under-confident} since most of
+the points are shifted a bit left of the one-to-one line.
+
+\paragraph{Note on capitalization}
 I decided to use the full \emph{case-sensitive} histogram because the number
 (and identities) of the capitalized letters seemed like they would be good
 features (especially for distinguishing \code{drug}s from other labels).
@@ -200,25 +226,69 @@ sets (as labeled).
 The confusion matrix resulting from training $\bvec{W}$ in
 equation~\ref{eq:fullmodel} using only unigram features of the training set
 and then predicting the validation labels.
+The cells indicate the fractional number of samples classified as \code{guess}
+conditioned on their ``true'' label \code{gold}.
 \figlabel{unigram-confusion}}
 \end{figure}
 
 \begin{figure}[htbp]
 \begin{center}
-    \includegraphics[width=0.7\textwidth]{unigram_confidence_hist.pdf}
+    \includegraphics[width=0.6\textwidth]{unigram_confidence_hist.pdf}
 \end{center}
 \caption{%
+The distribution of correctly (thick solid histogram) and incorrectly (thin
+dashed histogram) classified samples in the validation set (using the
+unigram model) as a function of the model's predicted confidence.
 \figlabel{unigram-confidence-hist}}
 \end{figure}
 
 \begin{figure}[htbp]
 \begin{center}
-    \includegraphics[width=0.7\textwidth]{unigram_confidence_scale.pdf}
+    \includegraphics[width=0.6\textwidth]{unigram_confidence_scale.pdf}
 \end{center}
 \caption{%
+The fraction of correctly classified samples in the validation set (using the
+unigram model) as a function of model confidence.
+The light grey line shows the one-to-one relation that the samples should
+follow if the confidences were exactly correct.
 \figlabel{unigram-confidence-scale}}
 \end{figure}
 
+\clearpage
+
 \section{Larger N-gram models}
+
+Since the unigram features were clearly not sufficiently discriminative to be
+good for classification, the next feature set that I decided to try was:
+\code{UnigramExtractor + BigramExtractor}.
+The \code{BigramExtractor} is similar to \code{UnigramExtractor} but it counts
+two-character pairs.
+To also take into account the suffix and prefix characters of the strings, I
+appended a \code{STOP} character and prepended a \code{START} character to the
+string before counting the pairs.
+At first, I tried just appending and prepending spaces but I found that the
+performance was better if I treated the string boundaries as different than
+word boundaries.
+This seems especially reasonable for samples labeled \code{company} because
+it is the only class that regularly ends with a period.
+
+\begin{figure}[htbp]
+\begin{center}
+    \includegraphics[width=\textwidth]{bigram_convergence.pdf}
+\end{center}
+\caption{%
+The same a \fig{unigram-convergence} but including bigram features.
+\figlabel{bigram-convergence}}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+    \includegraphics[width=\textwidth]{bigram_confusion.pdf}
+\end{center}
+\caption{%
+The same a \fig{unigram-confusion} but including bigram features.
+\figlabel{bigram-confusion}}
+\end{figure}
+
 
 \end{document}

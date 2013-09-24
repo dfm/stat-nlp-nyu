@@ -83,6 +83,14 @@ def plot_confusion_matrix(model):
                     vmin=0, vmax=1)
     fig.colorbar(cax)
 
+    for yi, gold in enumerate(keys):
+        for xi, guess in enumerate(keys):
+            ax.annotate("{0:.2f}".format(matrix[gold][guess]/norm[gold]),
+                        xy=(xi, yi), xytext=(0, 0),
+                        textcoords="offset points",
+                        ha="center", va="center", xycoords="data",
+                        bbox=dict(fc="w", ec="none", lw=2, alpha=0.7))
+
     ax.set_xticks(range(len(keys)))
     ax.set_xticklabels(keys)
     [l.set_rotation(90) for l in ax.get_xticklabels()]
@@ -97,15 +105,19 @@ def plot_confusion_matrix(model):
     # Plot histograms.
     pl.figure()
     bins = np.linspace(0, 1, 50)
-    nc, b, p = pl.hist(correct_confidences, bins, histtype="step", color="g")
-    ni, b, p = pl.hist(incorrect_confidences, bins, histtype="step", color="r")
+    nc, b, p = pl.hist(correct_confidences, bins, histtype="step", color="k",
+                       lw=2)
+    ni, b, p = pl.hist(incorrect_confidences, bins, histtype="step", color="k",
+                       ls="dashed")
     pl.xlabel("confidence")
     pl.ylabel("number of examples")
     pl.savefig("{0}_confidence_hist.pdf".format(model))
 
     pl.clf()
-    pl.plot(0.5*(bins[1:]+bins[:-1]), nc / (nc + ni), ".k")
-    pl.plot([0, 1], [0, 1], "--k", lw=2)
+    pl.plot([0, 1], [0, 1], "k", lw=2, alpha=0.3)
+    n = nc / (nc + ni)
+    pl.plot(np.array(zip(bins[:-1], bins[1:])).flatten(),
+            np.array(zip(n, n)).flatten(), "k", lw=2)
     pl.xlabel("confidence")
     pl.ylabel("fraction correct")
     pl.savefig("{0}_confidence_scale.pdf".format(model))
