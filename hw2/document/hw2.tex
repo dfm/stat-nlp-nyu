@@ -373,7 +373,7 @@ The same a \fig{trigram-confidence-scale} but with $\sigma = 1/2$.
 After trying the default N-gram feature sets described above, I wanted to try
 some more ``descriptive'' features based on something like \emph{domain
 knowledge} (translation: looking at the validation set and guessing).
-Some features that I thought of are:
+Some examples of features that I thought of are:
 \begin{itemize}
 \item{the total number of characters in the string,}
 \item{the number of words in the string,}
@@ -381,7 +381,113 @@ Some features that I thought of are:
 \item{the number and identities of the stop words in the string (English,
       French, etc.),}
 \item{the N-character suffixes and prefixes (considering the individual
-      words or the full string),}
+      words or the full string), and}
+\item{the number of words in the string that match the list of popular baby
+      names in the United States%
+\footnote{\url{http://www.ssa.gov/oact/babynames/}}.}
 \end{itemize}
+(I never actually implemented that last one but it does seem like it could be
+useful!)
+While debugging, I ran many combinations of these features to get an intuition
+for which features were most useful.
+In practice, the gains to be made over the basic trigram model seem to be
+pretty small and a huge number of parameters---in other words: many
+computations---are required to make a small difference in accuracy.
+As a demonstration, consider the model built on the features: unigrams,
+bigrams, trigrams, number of characters, number of words, number of digits,
+3-suffixes, 4-suffixes, 3-prefixes, and 4-prefixes.
+This model has many more parameters than the trigram model but the accuracy
+(shown in \fig{insane-0.5-confusion}) is only moderately better than the
+previous model.
+
+\begin{figure}[htbp]
+\begin{center}
+    \includegraphics[width=0.65\textwidth]{final/insane_0_5_confusion.pdf}
+\end{center}
+\caption{%
+The same a \fig{trigram-0.5-confusion} but with the features: unigrams,
+bigrams, trigrams, number of characters, number of words, number of digits,
+3-suffixes, 4-suffixes, 3-prefixes, and 4-prefixes.
+\figlabel{insane-0.5-confusion}}
+\end{figure}
+
+\clearpage
+
+\section{Empirical N-gram models}
+
+For comparison, I used the code that wrote for homework 1 (before I realized
+that all of the solutions were mistakenly provided) to generate a set of
+empirical N-gram probability distributions for each class.
+Given these distributions, the posterior probability of the class $y$
+conditioned on the word $\bvec{x}$ is
+\begin{eqnarray}
+p(y\,|\,\bvec{x}) &\propto& p(y)\,p(\bvec{x}\,|\,y)
+\end{eqnarray}
+where $p(y)$ is the empirical prior probability of observing the class $y$ and
+\begin{eqnarray}
+p(\bvec{x}\,|\,y) &=& \prod_{n} p(x_n\,|\,x_{n-1},\,x_{n-2},\,\ldots) \quad.
+\end{eqnarray}
+Each term in the likelihood is given by the empirical distribution of N-grams
+in the training set.
+
+Applying this model na\"ively using only character unigrams gives an accuracy
+of only $50.5\%$ on the validation set.
+For comparison, I got the best performance ($78.2\%$ accuracy on the
+validation set) by using a linearly interpolated trigram model:
+\begin{eqnarray}
+p(\bvec{x}\,|\,y) &=& \lambda_3\,p_\mathrm{tri}(\bvec{x}\,|\,y)
++(1-\lambda_3)\,\left [\lambda_2\,p_\mathrm{bi}(\bvec{x}\,|\,y)
++(1-\lambda_2)\,p_\mathrm{uni}(\bvec{x}\,|\,y)\right]
+\end{eqnarray}
+where $p_\mathrm{tri}$ is the standard empirical trigram conditional
+likelihood, and $p_\mathrm{bi}$ and $p_\mathrm{uni}$ are the same for bigrams
+and unigrams.
+I found the most accurate training results with $\lambda_2=0.9$ and
+$\lambda_3=0.9$.
+
+The confusion matrix for this model is shown in \fig{empirical-confusion} and
+most of the error features seen in the previous sections are visible (and more
+pronounced).
+Comparing \fig{empirical-confidence-scale} to \fig{trigram-confidence-scale},
+we can see that the empirical model is even more over-confident than the basic
+trigram model (even before regularization).
+
+The accuracy of this method is far worse than the discriminative model that
+uses the same features ($\sim 88\%$ accuracy for the discriminative model
+using unigram, bigram and trigram features) but it is far less computationally
+expensive to train.
+The performance is worse because the discriminative models are specifically
+designed to upweight the features that are good at \emph{discriminating}
+between classes versus these empirical models that basically treat each
+example of a feature with equal weight.
+For the problem that we're approaching in this assignment, a discriminative
+model is probably more appropriate because all we care about is how well we
+can determine that labels of the words.
+If we were asking a different question (like, for example, trying to better
+understand the structure of language and why particular character
+distributions are associated with particular classes of nouns) then a
+generative approach might be better because you can apply structure to the
+model and prior information (motivated domain knowledge and the question at
+hand) making the results more interpretable.
+
+\begin{figure}[htbp]
+\begin{center}
+    \includegraphics[width=0.65\textwidth]{empirical_confusion.pdf}
+\end{center}
+\caption{%
+The same a \fig{unigram-confusion} but for the empirical trigram model
+described in the text.
+\figlabel{empirical-confusion}}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+    \includegraphics[width=0.65\textwidth]{empirical_confidence_scale.pdf}
+\end{center}
+\caption{%
+The same a \fig{unigram-confidence-scale} but for the empirical trigram model
+described in the text.
+\figlabel{empirical-confidence-scale}}
+\end{figure}
 
 \end{document}

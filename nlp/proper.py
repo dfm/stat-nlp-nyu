@@ -68,6 +68,8 @@ class UnigramModel(object):
     def classify(self, word):
         prob = self.get_probabilities(word)
         classes, probabilities = zip(*(prob.items()))
+        probabilities = [self.prior[k] * p
+                         for k, p in zip(classes, probabilities)]
         ind = np.argmax(probabilities)
         norm = np.sum(probabilities)
         if norm > 0.0:
@@ -127,13 +129,52 @@ class BigramModel(UnigramModel):
         return prob
 
 
+class TrigramModel(BigramModel):
+
+    def __init__(self, training_set, f2=0.0, f3=1.0):
+        super(TrigramModel, self).__init__(training_set, f2=f2)
+        self.f3 = f3
+        self.trigrams = dict([(c, defaultdict(Distribution))
+                              for c in training_set.classes])
+        for cls, word in training_set:
+            dist = self.trigrams[cls]
+            w = START+START+word.lower()+STOP+STOP
+            [dist[w[i:i+2]].incr(char) for i, char in enumerate(w[2:])]
+
+    def get_probabilities(self, word):
+        prob = defaultdict(lambda: 1.0)
+        w = START+START+word.lower()+STOP+STOP
+        for i, char in enumerate(w[2:]):
+            ind = w[i:i+2]
+            for cls, dist in self.trigrams.items():
+                if ind not in dist:
+                    prob[cls] = 0.0
+                    continue
+                prob[cls] *= dist[ind][char]
+
+        # Linearly interpolate.
+        bigram_prob = super(TrigramModel, self).get_probabilities(word)
+        [prob.__setitem__(k, self.f3*prob[k]+(1-self.f3)*bigram_prob[k])
+         for k in prob]
+
+        return prob
+
+
 if __name__ == "__main__":
     training_set = Dataset("data/pnp-train.txt")
     validation_set = Dataset("data/pnp-validate.txt")
     test_set = Dataset("data/pnp-test.txt")
 
-    model = BigramModel(training_set)
-    # model = UnigramModel(training_set)
-    print("Validation accuracy: {0}".format(
+    model = UnigramModel(training_set)
+    print("Unigram validation accuracy: {0}".format(
         model.test(validation_set)))
-    model.test(test_set, outfile="hw2/output.txt")
+
+    model = BigramModel(training_set)
+    print("Bigram validation accuracy: {0}".format(
+        model.test(validation_set)))
+
+    model = TrigramModel(training_set, f3=0.9, f2=0.9)
+    print("Trigram validation accuracy: {0}".format(
+        model.test(validation_set, outfile="hw2/validation.txt")))
+
+    model.test(test_set, outfile="hw2/output_empirical.txt")

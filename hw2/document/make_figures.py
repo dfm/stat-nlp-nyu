@@ -125,5 +125,8 @@ def plot_confusion_matrix(model):
 
 if __name__ == "__main__":
     model = sys.argv[1]
-    plot_convergence(model)
+    try:
+        plot_convergence(model)
+    except:
+        pass
     plot_confusion_matrix(model)
