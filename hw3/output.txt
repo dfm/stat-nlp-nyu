@@ -230,7 +230,7 @@ n't	RB
 be	VB
 profitable	JJ
 .	.
-"	PRP$
+"	NNP
 
 It	PRP
 's	VBZ
@@ -997,7 +997,7 @@ W.	NNP
 Graae	NNP
 .	.
 
-***	PRP$
+***	NNP
 
 Bush	NNP
 also	RB
@@ -1278,7 +1278,7 @@ who	WP
 I	PRP
 am	VBP
 .	.
-"	PRP$
+"	NNP
 
 But	CC
 then	RB
@@ -1330,7 +1330,7 @@ War	NNP
 on	IN
 Terror	NN
 .	.
-"	PRP$
+"	NNP
 
 They	PRP
 happened	VBD
@@ -1625,7 +1625,7 @@ War	NNP
 on	IN
 Terror	NN
 .	.
-"	PRP$
+"	NNP
 
 So	IN
 his	PRP$
@@ -1702,7 +1702,7 @@ smuggle	VB
 explosives	NNS
 .	.
 
-http://www.amazon.ca/exec/obidos/ASIN/0915765381/701-3377456-8181939	PRP$
+http://www.amazon.ca/exec/obidos/ASIN/0915765381/701-3377456-8181939	NNP
 
 I	PRP
 've	VBP
@@ -2027,7 +2027,7 @@ from	IN
 the	DT
 CIA	NNP
 .	.
-"	PRP$
+"	NNP
 
 The	DT
 Briggs	NNP
@@ -2056,7 +2056,7 @@ since	IN
 retiring	VBG
 .	.
 
-http://www.disinfo.com/archive/pages/dossier/id334/pg1/	PRP$
+http://www.disinfo.com/archive/pages/dossier/id334/pg1/	NNP
 
 Last	JJ
 week	NN
@@ -2106,9 +2106,9 @@ government	NN
 .	.
 '	''
 
-http://www.bigeye.com/111003.htm	PRP$
+http://www.bigeye.com/111003.htm	NNP
 
-http://www.thekcrachannel.com/news/4503872/detail.html	PRP$
+http://www.thekcrachannel.com/news/4503872/detail.html	NNP
 
 looks	NNS
 like	IN
@@ -2119,8 +2119,8 @@ its	PRP$
 head	NN
 again	RB
 in	IN
-Louisianna	VBG
-..	PRP$
+Louisianna	NNP
+..	NNP
 
 Former	NNP
 Pastor	NNP
@@ -2131,7 +2131,7 @@ In	IN
 Church	NNP
 Child	NN
 Sex	NN
-Abuse	PRP$
+Abuse	NN
 
 PONCHATOULA	NNP
 ,	,
@@ -2411,9 +2411,9 @@ airliner	JJ
 bombing	NN
 ,	,
 were	VBD
-mentioned	VBD
+mentioned	VBN
 
-gandalf	PRP$
+gandalf	NNP
 
 Now	RB
 that	WDT
@@ -2723,7 +2723,7 @@ To	IN
 You	PRP
 .	.
 
-Get-A-Free-House.com	PRP$
+Get-A-Free-House.com	NNP
 
 When	WRB
 the	DT
@@ -2745,7 +2745,7 @@ death	NN
 is	VBZ
 not	RB
 the	DT
-end	VBP
+end	NN
 
 And	CC
 you	PRP
@@ -2770,7 +2770,7 @@ the	DT
 end	NN
 -	HYPH
 Bob	NNP
-Dylan	PRP$
+Dylan	NNP
 
 Afraid	RB
 I	PRP
@@ -2809,7 +2809,7 @@ of	IN
 Iraq	NNP
 Terrorists	NNP
 ?	.
-"	PRP$
+"	NNP
 
 (	(
 also	RB
@@ -3001,7 +3001,7 @@ a	DT
 terrifying	JJ
 prospect	NN
 .	.
-"	PRP$
+"	NNP
 
 American	NNP
 defence	NNP
@@ -3144,7 +3144,7 @@ been	VBN
 siphoned	VBN
 off	RP
 .	.
-"	PRP$
+"	NNP
 
 This	DT
 year	NN
@@ -3540,7 +3540,7 @@ to	IN
 God	NNP
 himself	PRP
 .	.
-"	PRP$
+"	NNP
 
 After	IN
 the	DT
@@ -3593,7 +3593,7 @@ in	IN
 hell	NN
 !	.
 '	''
-"	PRP$
+"	NNP
 
 From	IN
 SNAP	NNP
@@ -4135,7 +4135,7 @@ with	IN
 armed	JJ
 bodyguards	NNS
 .	.
-"	PRP$
+"	NNP
 
 In	IN
 the	DT
@@ -4231,7 +4231,7 @@ Center	NNP
 Intelligence	NNP
 Report	NNP
 .	.
-"	PRP$
+"	NNP
 
 An	DT
 editorial	NN
@@ -4303,9 +4303,9 @@ with	IN
 polygamous	JJ
 communities	NNS
 .	.
-"	PRP$
+"	NNP
 
-http://www.csmonitor.com/2006/0509/p02s01-ussc.html?s=t5	PRP$
+http://www.csmonitor.com/2006/0509/p02s01-ussc.html?s=t5	NNP
 
 Maybe	RB
 I	PRP
@@ -4336,8 +4336,8 @@ tracking	VBG
 mechanism	NN
 in	IN
 place	NN
-"	VBG
-?!?!?	PRP$
+"	NNP
+?!?!?	NNP
 
 Never	RB
 mind	NN
@@ -4371,8 +4371,8 @@ to	IN
 your	PRP$
 regularly	RB
 scheduled	VBN
-programming	VBG
-....	PRP$
+programming	NN
+....	NN
 
 just	RB
 go	VB
@@ -4911,7 +4911,7 @@ officials	NNS
 say	VBP
 ...	:
 
-http://www.rawstory.com/news/2006/US_outsourcing_special_operations_intelligence_gathering_0413.html	PRP$
+http://www.rawstory.com/news/2006/US_outsourcing_special_operations_intelligence_gathering_0413.html	NNP
 
 A	DT
 country	NN
@@ -5353,7 +5353,7 @@ that	DT
 priest	NN
 conviction	NN
 :	:
-http://www.sploid.com/news/2006/05/evil_priest_gui.php	PRP$
+http://www.sploid.com/news/2006/05/evil_priest_gui.php	NNP
 
 Umm	NNP
 ...	:
@@ -5408,7 +5408,7 @@ like	IN
 that	DT
 .	.
 
-http://www.laweekly.com/general/features/satan-loves-you/13454/	PRP$
+http://www.laweekly.com/general/features/satan-loves-you/13454/	NNP
 
 "	VBG
 Another	DT
@@ -5529,13 +5529,13 @@ of	IN
 righteousness	NN
 has	VBZ
 fallen	VBN
-to	IN
+to	TO
 ...	:
-Satan	VBG
-"	PRP$
+Satan	NNP
+"	NNP
 
-Hmmmmmm	VBG
-....................	PRP$
+Hmmmmmm	NNP
+....................	NNP
 
 The	DT
 people	NNS
@@ -5596,9 +5596,9 @@ some	DT
 information	NN
 into	IN
 it	PRP
-....	PRP$
+....	VBZ
 
-http://en.wikipedia.org/wiki/Aerocom	PRP$
+http://en.wikipedia.org/wiki/Aerocom	NNP
 
 So	RB
 ...	:
@@ -5617,7 +5617,7 @@ hates	VBZ
 a	DT
 void	NN
 .	.
-:)	PRP$
+:)	NNP
 
 Richard	NNP
 ,	,
@@ -6106,13 +6106,13 @@ wilt	VBZ
 "	JJ
 .	.
 
-http://youtube.com/watch?v=d46_ctqDmI4	PRP$
+http://youtube.com/watch?v=d46_ctqDmI4	NNP
 
 To	IN
 not	RB
 buying	VBG
 the	DT
-BS	PRP$
+BS	NN
 
 &	CC
 here	RB
@@ -6157,7 +6157,7 @@ of	IN
 morality	NN
 :	:
 
-http://news.bbc.co.uk/2/hi/programmes/this_world/4446342.stm	PRP$
+http://news.bbc.co.uk/2/hi/programmes/this_world/4446342.stm	NNP
 
 One	CD
 man	NN
@@ -6354,10 +6354,10 @@ and	CC
 satanism	NNS
 are	VBP
 closely	RB
-linked	VBD
+linked	VBN
 
 Michele	NNP
-Tollis	PRP$
+Tollis	NNP
 
 It	PRP
 emerged	VBD
@@ -6833,7 +6833,7 @@ of	IN
 1937	CD
 :	:
 
-http://en.wikipedia.org/wiki/Degenerate_art	PRP$
+http://en.wikipedia.org/wiki/Degenerate_art	NNP
 
 Ironically	NNP
 (	(
@@ -6945,7 +6945,7 @@ as	IN
 they	PRP
 wilt	VBZ
 .	.
-"	PRP$
+"	NNP
 
 A	DT
 question	NN
@@ -7135,9 +7135,9 @@ information	NN
 .	.
 )	)
 
-http://en.wikipedia.org/wiki/John_Balance	PRP$
+http://en.wikipedia.org/wiki/John_Balance	NNP
 
-http://www.guardian.co.uk/obituaries/story/0,3604,1371372,00.html	PRP$
+http://www.guardian.co.uk/obituaries/story/0,3604,1371372,00.html	NNP
 
 Balance	NNP
 died	VBD
@@ -7260,8 +7260,8 @@ am	VBP
 therefore	RB
 I	PRP
 think	VBP
-"	VBG
-:)	PRP$
+"	NNP
+:)	NNP
 
 Reporting	NNP
 from	IN
@@ -7403,7 +7403,7 @@ George	NNP
 Bush	NNP
 ?	.
 
-http://www.thetruthseeker.co.uk/article.asp?id=4503	PRP$
+http://www.thetruthseeker.co.uk/article.asp?id=4503	NNP
 
 I	PRP
 do	VBP
@@ -7509,7 +7509,7 @@ Bring	VB
 it	PRP
 on	RP
 !	.
-"	PRP$
+"	NNP
 
 America	NNP
 ,	,
@@ -7572,12 +7572,12 @@ of	IN
 scandals	NNS
 :	:
 
-http://www.dailykos.com/story/2006/5/12/232746/857	PRP$
+http://www.dailykos.com/story/2006/5/12/232746/857	NNP
 
 =	SYM
 Executive	NNP
 Orders	NNS
--	VBN
+-	HYPH
 
 very	RB
 creepy	JJ
@@ -7620,7 +7620,7 @@ that	DT
 hey	NNP
 wait	VB
 a	DT
-minute	JJ
+minute	NN
 
 ==	RB
 Why	WRB
@@ -7634,7 +7634,7 @@ today	NN
 ?	.
 
 by	IN
-exmearden	PRP$
+exmearden	NNP
 
 Fri	NNP
 May	NNP
@@ -7686,8 +7686,8 @@ Revocation	NNP
 of	IN
 Executive	NNP
 Order	NNP
-13011	VBD
-....	PRP$
+13011	NNP
+....	NNP
 
 I	PRP
 ca	MD
@@ -7721,7 +7721,7 @@ for	IN
 damn	RB
 sure	JJ
 .	.
-:)	PRP$
+:)	NNP
 
 I	PRP
 'm	VBP
@@ -8102,7 +8102,7 @@ ye	RB
 know	VB
 them	PRP
 .	.
-"	PRP$
+"	NNP
 
 I	PRP
 do	VBP
@@ -8958,7 +8958,7 @@ Office	NNP
 Applause	NN
 .	.
 )	)
-"	PRP$
+"	NNP
 
 Now	RB
 that	WDT
@@ -9765,7 +9765,7 @@ from	IN
 Mary	NNP
 Jo	NNP
 Foley	NNP
-]	PRP$
+]	NNP
 
 What	WP
 do	VBP
@@ -10820,7 +10820,7 @@ general	JJ
 strike	NN
 today	NN
 .	.
-"	PRP$
+"	NNP
 
 It	PRP
 read	VBD
@@ -10881,7 +10881,7 @@ from	IN
 the	DT
 city	NN
 .	.
-"	PRP$
+"	NNP
 
 The	DT
 clerics	NN
@@ -10978,8 +10978,8 @@ go	VB
 quietly	RB
 .	.
 
-See	VB
-http://www.gulf-news.com/Articles/news.asp?ArticleID=97508	PRP$
+See	NNP
+http://www.gulf-news.com/Articles/news.asp?ArticleID=97508	NNP
 
 In	IN
 the	DT
@@ -11190,7 +11190,7 @@ soldiers	NNS
 in	IN
 Iraq	NNP
 .	.
-"	PRP$
+"	NNP
 
 Ash	NNP
 -	HYPH
@@ -11365,7 +11365,7 @@ the	DT
 Israeli	JJ
 occupation	NN
 .	.
-"	PRP$
+"	NNP
 
 In	IN
 an	DT
@@ -12236,8 +12236,8 @@ Saturday	NNP
 From	IN
 Friday	NNP
 's	POS
-Daily	JJ
-Star	JJ
+Daily	NNP
+Star	NNP
 
 By	IN
 Juan	NNP
@@ -13288,8 +13288,8 @@ commentary	NN
 in	IN
 agreement	NN
 with	IN
-Agence	JJ
-Global	JJ
+Agence	NNP
+Global	NNP
 
 George	NNP
 W.	NNP
@@ -13517,7 +13517,7 @@ as	IN
 "	NNP
 Lee	NNP
 .	.
-"	PRP$
+"	NNP
 
 He	PRP
 could	MD
@@ -13540,7 +13540,7 @@ charge	NN
 of	IN
 Pakistan	NNP
 ?	.
-"	PRP$
+"	NNP
 
 Hiller	NNP
 asked	VBD
@@ -13659,7 +13659,7 @@ for	IN
 the	DT
 subcontinent	NN
 .	.
-"	PRP$
+"	NNP
 
 Gore	NNP
 released	VBD
@@ -13861,7 +13861,7 @@ bring	VB
 "	JJ
 stability	NN
 !	.
-"	PRP$
+"	NNP
 
 Musharraf	NNP
 made	VBD
@@ -13977,7 +13977,7 @@ with	IN
 "	JJ
 stability	NN
 .	.
-"	PRP$
+"	NNP
 
 And	CC
 ,	,
@@ -14267,7 +14267,7 @@ and	CC
 the	DT
 Palestinians	NNPS
 .	.
-"	PRP$
+"	NNP
 
 I	PRP
 do	VBP
@@ -14407,7 +14407,7 @@ it	PRP
 was	VBD
 coming	VBG
 ?	.
-"	PRP$
+"	NNP
 
 The	DT
 answer	NN
@@ -14416,7 +14416,7 @@ is	VBZ
 "	UH
 Yes	UH
 !	.
-"	PRP$
+"	UH
 
 We	PRP
 now	RB
@@ -15646,7 +15646,7 @@ slowest	JJS
 to	TO
 recover	VB
 .	.
-"	PRP$
+"	NNP
 
 That	DT
 he	PRP
@@ -17054,7 +17054,7 @@ laugh	VB
 about	RB
 that	IN
 .	.
-"	PRP$
+"	NNP
 
 Goodwyn	NNP
 dutifully	RB
@@ -17206,7 +17206,7 @@ Osama	NNP
 bin	NNP
 Laden	NNP
 .	.
-"	PRP$
+"	NNP
 
 This	DT
 pledge	NN
@@ -18004,7 +18004,7 @@ Occupation	NN
 is	VBZ
 emphemeral	VBN
 .	.
-"	PRP$
+"	NNP
 
 The	DT
 radical	JJ
@@ -18099,7 +18099,7 @@ war	NN
 as	IN
 illegal	JJ
 .	.
-"	PRP$
+"	NNP
 
 It	PRP
 called	VBD
@@ -18584,7 +18584,7 @@ couple	NN
 of	IN
 days	NNS
 .	.
-]	PRP$
+]	NNP
 
 My	PRP$
 opinion	NN
@@ -18805,7 +18805,7 @@ war	NN
 on	IN
 terror	NN
 .	.
-"	PRP$
+"	NNP
 
 Al	NNP
 -	HYPH
@@ -18854,7 +18854,7 @@ years	NNS
 to	TO
 come	VB
 .	.
-]	PRP$
+]	NNP
 
 DPA	LS
 :	:
@@ -19965,7 +19965,7 @@ ACCIDENT	NNP
 :	:
 TEN	CD
 YEARS	NNS
-ON	RP
+ON	IN
 
 In	IN
 the	DT
@@ -20149,7 +20149,7 @@ deterioration	NN
 in	IN
 neonatal	JJ
 health	NN
-....	PRP$
+....	NN
 
 The	DT
 dynamics	NNS
@@ -20313,55 +20313,55 @@ Report	NNP
 Lessons	NNP
 learned	VBD
 
-http://www.ibiblio.org/expo/soviet.exhibit/chernobyl.html	PRP$
+http://www.ibiblio.org/expo/soviet.exhibit/chernobyl.html	NNP
 
-http://www.ibrae.ac.ru/IBRAE/eng/chernobyl/nat_rep/nat_repe.htm#24	PRP$
+http://www.ibrae.ac.ru/IBRAE/eng/chernobyl/nat_rep/nat_repe.htm#24	NNP
 
-http://www.nsrl.ttu.edu/chernobyl/wildlifepreserve.htm	PRP$
+http://www.nsrl.ttu.edu/chernobyl/wildlifepreserve.htm	NNP
 
-http://www.environmentalchemistry.com/yogi/hazmat/articles/chernobyl1.html	PRP$
+http://www.environmentalchemistry.com/yogi/hazmat/articles/chernobyl1.html	NNP
 
-http://digon_va.tripod.com/Chernobyl.htm	PRP$
+http://digon_va.tripod.com/Chernobyl.htm	NNP
 
-http://www.oneworld.org/index_oc/issue196/byckau.html	PRP$
+http://www.oneworld.org/index_oc/issue196/byckau.html	NNP
 
-http://www.collectinghistory.net/chernobyl/	PRP$
+http://www.collectinghistory.net/chernobyl/	NNP
 
-http://www.ukrainianweb.com/chernobyl_ukraine.htm	PRP$
+http://www.ukrainianweb.com/chernobyl_ukraine.htm	NNP
 
-http://www.bullatomsci.org/issues/1993/s93/s93Marples.html	PRP$
+http://www.bullatomsci.org/issues/1993/s93/s93Marples.html	NNP
 
-http://www.calguard.ca.gov/ia/Chernobyl-15%20years.htm	PRP$
+http://www.calguard.ca.gov/ia/Chernobyl-15%20years.htm	NNP
 
-http://www.infoukes.com/history/chornobyl/gregorovich/index.html	PRP$
+http://www.infoukes.com/history/chornobyl/gregorovich/index.html	NNP
 
-http://www.un.org/ha/chernobyl/	PRP$
+http://www.un.org/ha/chernobyl/	NNP
 
-http://www.tecsoc.org/pubs/history/2002/apr26.htm	PRP$
+http://www.tecsoc.org/pubs/history/2002/apr26.htm	NNP
 
-http://www.chernobyl.org.uk/page2.htm	PRP$
+http://www.chernobyl.org.uk/page2.htm	NNP
 
-http://www.time.com/time/daily/chernobyl/860901.accident.html	PRP$
+http://www.time.com/time/daily/chernobyl/860901.accident.html	NNP
 
-http://www.infoukes.com/history/chornobyl/elg/	PRP$
+http://www.infoukes.com/history/chornobyl/elg/	NNP
 
-http://www.world-nuclear.org/info/chernobyl/inf07.htm	PRP$
+http://www.world-nuclear.org/info/chernobyl/inf07.htm	NNP
 
-http://www.nea.fr/html/rp/chernobyl/conclusions5.html	PRP$
+http://www.nea.fr/html/rp/chernobyl/conclusions5.html	NNP
 
-http://www.nea.fr/html/rp/chernobyl/c01.html	PRP$
+http://www.nea.fr/html/rp/chernobyl/c01.html	NNP
 
-http://www.nea.fr/html/rp/chernobyl/c05.html	PRP$
+http://www.nea.fr/html/rp/chernobyl/c05.html	NNP
 
-http://www.physics.isu.edu/radinf/chern.htm	PRP$
+http://www.physics.isu.edu/radinf/chern.htm	NNP
 
-http://www.chernobyl.info/en	PRP$
+http://www.chernobyl.info/en	NNP
 
-http://www.arps.org.au/Chernobyl.htm	PRP$
+http://www.arps.org.au/Chernobyl.htm	NNP
 
-http://www-formal.stanford.edu/jmc/progress/chernobyl.html	PRP$
+http://www-formal.stanford.edu/jmc/progress/chernobyl.html	NNP
 
-http://www.21stcenturysciencetech.com/articles/chernobyl.html	PRP$
+http://www.21stcenturysciencetech.com/articles/chernobyl.html	NNP
 
 I	PRP
 would	MD
@@ -20433,7 +20433,7 @@ but	CC
 stopped	VBN
 the	DT
 treatments	NNS
-....	PRP$
+....	VBP
 
 Remember	VB
 the	DT
@@ -20487,7 +20487,7 @@ of	IN
 radiation	NN
 in	IN
 Chernobyl	NNP
-.......	PRP$
+.......	NNP
 
 The	DT
 Chernobyl	NNP
@@ -20897,7 +20897,7 @@ the	DT
 big	JJ
 "	NNP
 G	NNP
-"	PRP$
+"	NNP
 
 Following	VBG
 on	IN
@@ -20939,11 +20939,11 @@ Mozilla	JJ
 project	NN
 and	CC
 community	NN
-:-)	PRP$
+:-)	NNS
 
 Posted	VBN
 by	IN
-darin	PRP$
+darin	NNP
 
 Ben	NNP
 made	VBD
