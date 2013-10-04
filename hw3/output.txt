@@ -2044,7 +2044,7 @@ Wilson	NNP
 did	VBD
 not	RB
 work	VB
-"	VBN
+"	NNS
 directly	RB
 or	CC
 indirectly	RB
@@ -2404,7 +2404,7 @@ papers	NNS
 ,	,
 showing	VBG
 him	PRP
-complicit	NN
+complicit	IN
 in	IN
 the	DT
 airliner	NN
@@ -2477,8 +2477,8 @@ be	VB
 .	.
 
 I	PRP
-like	IN
-yuor	DT
+like	VBP
+yuor	JJ
 blog	NN
 .	.
 
@@ -3823,7 +3823,7 @@ out	IN
 there	EX
 today	NN
 jeff	NNS
-....	NNS
+....	CC
 thank	VBP
 god	VBN
 and	CC
@@ -4336,8 +4336,8 @@ tracking	VBG
 mechanism	NN
 in	IN
 place	NN
-"	NN
-?!?!?	NN
+"	NNP
+?!?!?	NNP
 
 Never	RB
 mind	NN
@@ -5712,7 +5712,7 @@ hell	NN
 no	RB
 ,	,
 kill	VB
-thy	JJ
+thy	DT
 neighbor	NN
 -	HYPH
 now	RB
@@ -5821,7 +5821,7 @@ lip	JJ
 service	NN
 to	IN
 loving	VBG
-thy	JJ
+thy	DT
 neighbor	NN
 ,	,
 but	CC
@@ -6065,7 +6065,7 @@ take	VB
 actions	NNS
 that	WDT
 seem	VBP
-senseless	NNS
+senseless	JJ
 and	CC
 incompetent	JJ
 ,	,
@@ -6451,7 +6451,7 @@ past	JJ
 several	JJ
 months	NNS
 :	:
-"	NN
+"	NNS
 To	IN
 hell	NN
 with	IN
@@ -6906,7 +6906,7 @@ take	VB
 actions	NNS
 that	WDT
 seem	VBP
-senseless	NNS
+senseless	JJ
 and	CC
 incompetent	JJ
 ,	,
@@ -6943,7 +6943,7 @@ they	PRP
 do	VBP
 as	IN
 they	PRP
-wilt	VBD
+wilt	VBP
 .	.
 "	NNP
 
@@ -7967,7 +7967,7 @@ real	JJ
 problem	NN
 is	VBZ
 with	IN
-literalist	JJ
+literalist	NN
 fundamentalists	NNS
 ,	,
 of	IN
@@ -8232,7 +8232,7 @@ These	DT
 people	NNS
 are	VBP
 dangerous	JJ
-wether	IN
+wether	NN
 they	PRP
 're	VBP
 head	NN
@@ -8647,8 +8647,8 @@ at	RB
 least	RBS
 two	CD
 other	JJ
-horsemen	NN
-following	NN
+horsemen	NNS
+following	VBG
 .	.
 
 It	PRP
@@ -9452,7 +9452,7 @@ and	CC
 building	VBG
 the	DT
 best	JJS
-nukes	IN
+nukes	NNS
 the	DT
 world	NN
 's	POS
@@ -9771,7 +9771,7 @@ What	WP
 do	VBP
 the	DT
 new	JJ
-al	NN
+al	JJ
 -	HYPH
 Qaeda	NN
 videotape	NN
@@ -9820,9 +9820,9 @@ of	IN
 the	DT
 top	JJ
 25	CD
-al	NN
+al	NNP
 -	HYPH
-Qaeda	NN
+Qaeda	NNP
 commanders	NNS
 ,	,
 the	DT
@@ -9984,7 +9984,7 @@ seats	NNS
 went	VBD
 to	IN
 the	DT
-fundamentalist	RBS
+fundamentalist	JJ
 religious	JJ
 party	NN
 coalition	NN
@@ -10109,8 +10109,8 @@ a	DT
 small	JJ
 group	NN
 of	IN
-Arab	JJ
-mujahidin	NN
+Arab	NNP
+mujahidin	NNP
 would	MD
 virtually	RB
 take	VB
@@ -10165,7 +10165,7 @@ to	TO
 repeal	VB
 the	DT
 contentious	JJ
-"	NN
+"	NNP
 Legal	NNP
 Framework	NNP
 Order	NNP
@@ -11281,7 +11281,7 @@ a	DT
 communique	NN
 saying	VBG
 ,	,
-"	VBD
+"	VBG
 It	PRP
 is	VBZ
 a	DT
@@ -13924,13 +13924,13 @@ I	PRP
 still	RB
 remember	VBP
 him	PRP
-stuttering	VBP
-about	RB
-"	VB
+stuttering	VBG
+about	IN
+"	NNP
 the	DT
 General	NNP
 ,	,
-"	VBD
+"	VBZ
 unable	JJ
 to	TO
 remember	VB
@@ -15119,8 +15119,8 @@ a	DT
 handful	NN
 of	IN
 Texas	NNP
-multi-millionnaires	POS
-close	NN
+multi-millionnaires	VBZ
+close	RB
 to	IN
 the	DT
 Bush	NNP
@@ -16439,7 +16439,7 @@ election	NN
 in	IN
 September	NNP
 of	IN
-'72	CD
+'72	NNP
 ,	,
 Red	NNP
 Blount	NNP
@@ -17755,7 +17755,7 @@ met	VBD
 with	IN
 September	NNP
 11	CD
-ringleader	CC
+ringleader	NNP
 Muhammad	NNP
 Atta	NNP
 ,	,
@@ -18615,8 +18615,8 @@ Arafat	NNP
 secular	NN
 nationalism	NN
 was	VBD
-supple	RB
-enough	JJ
+supple	JJ
+enough	RB
 to	TO
 compromise	VB
 with	IN
@@ -20315,11 +20315,11 @@ learned	VBD
 
 http://www.ibiblio.org/expo/soviet.exhibit/chernobyl.html	NNP
 
-http://www.ibrae.ac.ru/IBRAE/eng/chernobyl/nat_rep/nat_repe.htm#24	CD
+http://www.ibrae.ac.ru/IBRAE/eng/chernobyl/nat_rep/nat_repe.htm#24	JJ
 
 http://www.nsrl.ttu.edu/chernobyl/wildlifepreserve.htm	NNP
 
-http://www.environmentalchemistry.com/yogi/hazmat/articles/chernobyl1.html	DT
+http://www.environmentalchemistry.com/yogi/hazmat/articles/chernobyl1.html	IN
 
 http://digon_va.tripod.com/Chernobyl.htm	NNP
 
@@ -20347,11 +20347,11 @@ http://www.infoukes.com/history/chornobyl/elg/	NNP
 
 http://www.world-nuclear.org/info/chernobyl/inf07.htm	PRP
 
-http://www.nea.fr/html/rp/chernobyl/conclusions5.html	DT
+http://www.nea.fr/html/rp/chernobyl/conclusions5.html	IN
 
-http://www.nea.fr/html/rp/chernobyl/c01.html	DT
+http://www.nea.fr/html/rp/chernobyl/c01.html	IN
 
-http://www.nea.fr/html/rp/chernobyl/c05.html	DT
+http://www.nea.fr/html/rp/chernobyl/c05.html	IN
 
 http://www.physics.isu.edu/radinf/chern.htm	NNP
 
@@ -20361,7 +20361,7 @@ http://www.arps.org.au/Chernobyl.htm	NNP
 
 http://www-formal.stanford.edu/jmc/progress/chernobyl.html	NNP
 
-http://www.21stcenturysciencetech.com/articles/chernobyl.html	DT
+http://www.21stcenturysciencetech.com/articles/chernobyl.html	IN
 
 I	PRP
 would	MD
@@ -20433,7 +20433,7 @@ but	CC
 stopped	VBD
 the	DT
 treatments	NNS
-....	NN
+....	CC
 
 Remember	VB
 the	DT
@@ -20895,7 +20895,7 @@ Me	PRP
 and	CC
 the	DT
 big	JJ
-"	NN
+"	NNP
 G	NNP
 "	NNP
 
